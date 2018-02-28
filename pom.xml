@@ -66,12 +66,6 @@
 			    <artifactId>sikulixapi</artifactId>
 			    <version>1.1.0</version>
 				</dependency>
-				<dependency>
-            <groupId>atu.testng.reports.ATUReports</groupId>
-            <artifactId>atu-reports</artifactId>
-            <version>2.1</version>
-            <scope>system</scope>
-            <systemPath>C:\CI_CD_CT\Jars\ATUTestRecorder_2.1.jar</systemPath>
-</dependency>
+			
 		</dependencies>
 </project>

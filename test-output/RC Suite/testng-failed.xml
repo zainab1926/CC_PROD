@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite verbose="2" name="Failed suite [RC Suite]" parallel="methods">
   <parameter name="browser" value="FF"/>
-  <parameter name="module" value="PersonalInfo"/>
-  <parameter name="url" value="https://qalive.circuitcity.com/ "/>
+  <parameter name="Module" value="CheckoutFlow"/>
+  <parameter name="url" value="https://qalive.circuitcity.com/"/>
   <listeners>
     <listener class-name="Test.EnvReaderListener"/>
   </listeners>

@@ -3,8 +3,14 @@ package Test;
 
 import static org.openqa.selenium.OutputType.FILE;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -48,13 +54,15 @@ import static Test.TestConstants.SELECT_INFO_TYPE_FIRST_SELECTED_OPTION;
 import static Test.TestConstants.SELECT_INFO_TYPE_OPTIONS;
 import static Test.TestConstants.WAIT_SLEEP;
 
-public class Browser {
-
-	public static WebDriver browser = BrowserFactory.getBrowser("Browser","url");
+public class Browser 
+{
+	
+	public static WebDriver browser = BrowserFactory.getBrowser("browser","url");
 	public static Logger log = Logger.getLogger(Browser.class);
 	ExtentReports extent;
 	ExtentTest test;
 	WebDriver driver;
+	static String s;
 	/**
 	 * Wrapper method for Webdriver get, basically opens a URL in the browser.
 	 * Handles IE issue for non protected mode URLS to run with IP
@@ -732,8 +740,13 @@ public class Browser {
 	 */
 	public  void sendKeys(String webElementLocator, String text)
 			throws Exception {
-		findTheElement(webElementLocator).clear();
+		//findTheElement(webElementLocator).clear();
 		findTheElement(webElementLocator).sendKeys(text);
+	}
+	
+	public  void clear(String webElementLocator)
+			throws Exception {
+		findTheElement(webElementLocator).clear();
 	}
 
 	/**
@@ -1157,5 +1170,37 @@ public class Browser {
 
 		return selectInfoMap;
 	}
-
+	//writing in notepad
+    public  void write_Notepad(String newPwd,String filePath) throws Exception {
+   //create file for writing
+     
+     BufferedWriter b = new BufferedWriter(new FileWriter(filePath));
+    
+     
+     //write Data in the file
+     b.write(newPwd);
+     b.close();
+    }
+    
+    //reading from notepad
+     public static void readNotepad(String filePath) throws IOException
+     {
+    
+    FileReader fr = new FileReader(filePath);
+    BufferedReader br = new BufferedReader(fr);
+    
+    while((s=br.readLine())!= null)
+    {
+     System.out.println(s);
+     return;
+    }
+    //br.close();
+ }
+     
+     public static String chkPwd(String filePath)throws Exception
+     {
+     Browser.readNotepad(filePath);
+     return s;
+      
+     }
 }

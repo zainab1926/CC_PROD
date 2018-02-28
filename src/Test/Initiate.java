@@ -30,7 +30,7 @@ public class Initiate {
 
 	ExtentReports extent;
 	ExtentTest test;
-	public static WebDriver browser = BrowserFactory.getBrowser("Browser","url");
+	public static WebDriver browser = BrowserFactory.getBrowser("browser","url");
 	BrowserFactory br = new BrowserFactory();
 	Report rpt = new Report();
 	WebDriver wb;
@@ -42,11 +42,9 @@ public class Initiate {
 //		System.setProperty("webdriver.gecko.driver", "C:\\CI_CD_CT\\Browser_Executables\\geckodriver.exe");
 //		driver = new FirefoxDriver();
 
-		//adding a comment to check INtegration with Jenkins
-		
 	}
 	@SuppressWarnings("static-access")
-	@Parameters({"browser","url","module"})
+	@Parameters({"browser","url","Module"})
 	@Test
 	public void checkHome(String Browser, String Url,String Module)throws Exception
 	{
@@ -58,16 +56,6 @@ public class Initiate {
 		//test.log(Status.PASS,"Browser Opened As Expected");
 		//br.captureScreenShot("HomePage");
 		
-//		checkRegistration();
-//      	chkAddress_Book();
-//		chkPersonalInfo();
-//		chkSearch();
-		
-		//skipTest();
-		//checkFail();
-//		extent.flush();
-		
-		
 		if (Module != null) 
 		{
 			
@@ -75,26 +63,139 @@ public class Initiate {
 				checkRegistration();
 			} else if ("AddressBook".equalsIgnoreCase(Module)) {
 				chkAddress_Book();
-			} else if ("PersonalInfo".equalsIgnoreCase(Module)) {
+			} else if ("PersonalInformation".equalsIgnoreCase(Module)) {
 				chkPersonalInfo();
 			} 
 			else if("Search".equalsIgnoreCase(Module)){
 				chkSearch();
 			}	
-			else if("SignIn & Forgot Password".equalsIgnoreCase(Module)){
+			else if("SignIn_Forgot_Password".equalsIgnoreCase(Module)){
 				chkSignIn();
 			}	
+			else if("WishList".equalsIgnoreCase(Module)){
+				chkWishList();
+			}
+			else if("changePassword".equalsIgnoreCase(Module)){
+				chkchangePassword();
+			}
+			else if("productComparison".equalsIgnoreCase(Module)){
+				chckproduct();
+			}
+			else if("savedPaymentMehods".equalsIgnoreCase(Module)){
+				chksavedPaymentMehods();
+			}
+			else if("shoppingCart".equalsIgnoreCase(Module)){
+				chkshoppingCart();
+			}
+			else if("Regression".equalsIgnoreCase(Module)){
+				chkRegression();
+			}
+			else if("plpModule".equalsIgnoreCase(Module)){
+				chkplpModule();
+			}
+			else if("orderHistoryModule".equalsIgnoreCase(Module)){
+				chkorderHistoryModule();
+			}
+			else if("PDPModule".equalsIgnoreCase(Module)){
+				chkPDPModule();
+			}
+			else if("previousViewed".equalsIgnoreCase(Module)){
+				chkpreviousViewed();
+			}
+			else if("HomePage".equalsIgnoreCase(Module)){
+				chkHomePage();
+			}
+			else if("CheckoutFlow".equalsIgnoreCase(Module)){
+				chk_CheckoutFlow();
+			}
+			else if("Modules".equalsIgnoreCase(Module))
+			{
+				checkRegistration();
+		      	chkAddress_Book();
+				chkPersonalInfo();
+				chkSignIn();
+				chkchangePassword();
+				chkWishList();
+				chksavedPaymentMehods();
+			}
+			
 			else if("All Modules".equalsIgnoreCase(Module))
 			{
+				chkHomePage();
+				chkpreviousViewed();
+				chkPDPModule();
+				chkorderHistoryModule();
+				chkRegression();
 				checkRegistration();
 		      	chkAddress_Book();
 				chkPersonalInfo();
 				chkSearch();
 				chkSignIn();
-			}
+				chkchangePassword();
+				chkWishList();
+				chckproduct();
+				chksavedPaymentMehods();
+				chkshoppingCart();
+				chkplpModule();
 				
+			}	
 		}
-		
+	}
+	public void chk_CheckoutFlow()throws Exception
+	{
+		CheckoutFlow sc=new CheckoutFlow();
+		sc.executeAll();
+	}
+	public void chkHomePage()throws Exception
+	{
+		HomePage sc=new HomePage();
+		sc.ExecuteAll_HomePage();
+	}
+	public void chkpreviousViewed()throws Exception
+	{
+		previousViewed sc=new previousViewed();
+		sc.ExecuteCase();
+	}
+	public void chkPDPModule()throws Exception
+	{
+		PDPModule sc=new PDPModule();
+		sc.executeAll();
+	}
+	public void chkorderHistoryModule()throws Exception
+	{
+		orderHistoryModule sc=new orderHistoryModule();
+		sc.executeAll();
+	}
+	public void chkplpModule()throws Exception
+	{
+		plpModule sc=new plpModule();
+		sc.executeAll();
+	}
+	public void chkRegression()throws Exception
+	{
+		Regression sc=new Regression();
+		sc.executeAll();
+	}
+	
+	public void chkshoppingCart()throws Exception
+	{
+		shoppingCart sc=new shoppingCart();
+		sc.executeAll();
+	}
+	public void chksavedPaymentMehods() throws Exception
+	{
+		savedPaymentMehods sp = new savedPaymentMehods();
+		sp.executeAll();
+	}
+	public void chkchangePassword()throws Exception
+	{
+		changePassword reg  = new changePassword();
+		reg.executeAllTestcase();
+	}
+	public void chkWishList()throws Exception
+	{
+		WishList reg  = new WishList();
+		reg.executeAllTest();
 	}
 	public void chkSignIn()throws Exception
 	{
@@ -110,19 +211,24 @@ public class Initiate {
 	
 	public void chkPersonalInfo()throws Exception
 	{
-		PERSONAL_INFO pi = new PERSONAL_INFO();
+		PersonalInformation pi = new PersonalInformation();
 		pi.executeAllTestcase();
 	}
 	
 	public void chkAddress_Book()throws Exception
 	{
-		ADDRESS_BOOK add = new ADDRESS_BOOK();
+		AddressBook add = new AddressBook();
 		add.executeAllTest();
 	}
 	public void chkSearch()throws Exception
 	{
-		SEARCH srch = new SEARCH();
+		Search srch = new Search();
 		srch.execute_Alltestcases();
+	}
+	public void chckproduct()throws Exception
+	{
+		productComparison p = new productComparison();
+		p.executeAll();
 	}
 	
 	public void checkFail()throws Exception

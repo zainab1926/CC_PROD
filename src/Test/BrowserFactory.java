@@ -85,7 +85,7 @@ public class BrowserFactory {
 			remoteDriver = new FirefoxDriver(profile);
 		} else {
 			extent = Report.GetExtent();
-			System.setProperty("webdriver.gecko.driver", "C:\\CI_CD_CT\\Browser_Executables\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", "C:\\Automation\\geckodriver.exe");
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setAcceptInsecureCerts(true);
 		    browser  = new FirefoxDriver(dc);	
@@ -102,11 +102,7 @@ public class BrowserFactory {
 			{
 			test.fail("Application Title Not Matching");
 			}
-			
-			
-			
-		    
-		    
+		
 		}
 		return remoteDriver;
 
@@ -124,7 +120,7 @@ public class BrowserFactory {
 						true);
 
 		System.setProperty("webdriver.ie.driver",
-				"C:\\CI_CD_CT\\Browser_Executables\\IEDriverServer.exe");
+				"C:\\Automation\\IEDriverServer.exe");
 		remoteDriver = new InternetExplorerDriver(capabilities);
 		DesiredCapabilities dc = new DesiredCapabilities();
 		dc.setAcceptInsecureCerts(true);
@@ -147,7 +143,7 @@ public class BrowserFactory {
 					"src/main/resources/browser_exe/chrome/chromedriver");
 		} else {
 			System.setProperty("webdriver.chrome.driver",
-					"C:\\CI_CD_CT\\Browser_Executables\\chromedriver.exe");
+					"C:\\Automation\\chromedriver.exe");
 		}		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");

@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Test.Initiate">
+      <class name="Test.CheckoutFlow">
         <methods>
-          <include name="Ini"/>
-          <include name="checkHome"/>
-          <include name="tear"/>
+          <include name="executeAll"/>
         </methods>
-      </class> <!-- Test.Initiate -->
+      </class> <!-- Test.CheckoutFlow -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

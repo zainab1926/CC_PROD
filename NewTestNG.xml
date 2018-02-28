@@ -8,14 +8,20 @@
     <!-- <parameter name="url" value="http://cct-live.qa.coc.ibmcloud.com/webapp/wcs/stores/servlet/en/circuitcityb2c" /> -->
     
     
-    <parameter name="browser" value="sample browser"/>
+   <!--  <parameter name="browser" value="sample browser"/>
     <parameter name="url" value="sample url" /> 
-    <parameter name="module" value="sample module" /> 
+    <parameter name="module" value="sample module" />  -->
   
   <!-- DA-38 Commiting with Review COmments-->
  
   <!--  <parameter name="browser" value="FF"/>  
-   <parameter name="url" value="https://qalive.circuitcity.com/ " />-->
+   <parameter name="url" value="https://qalive.circuitcity.com/ " />
+   <parameter name="Module" value="shoppingCart" /> -->
+   
+   <parameter name="browser" value="FF"/>  
+   <parameter name="url" value="https://prodlive.circuitcity.com/" />
+   <parameter name="Module" value="CheckoutFlow" />
+   
     <!-- <parameter name="url" value="172.125.38.144/webapp/wcs/stores/servlet/en/circuitcityb2c/" />-->
     <test name="RC Test" verbose="2">
         <classes>
