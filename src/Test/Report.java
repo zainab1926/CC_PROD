@@ -43,9 +43,9 @@ public class Report {
 	private static ExtentTest test;
 	private static ExtentHtmlReporter htmlReporter;
 		
-	private static String filePath = "C:\\Users\\user\\workspace\\CC\\test-output\\myReport.html";
+	private static String filePath = "D:\\CC_PROD\\test-output\\myReport.html";
 	public static WebDriver browser = BrowserFactory.getBrowser("browser","URL");
-	static String imagePath="C:\\Users\\user\\workspace\\CC\\Screenshots\\";
+	static String imagePath="D:\\CC_PROD\\Screenshots\\";
 	
 		
 	private static long counter =0;

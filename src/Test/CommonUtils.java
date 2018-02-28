@@ -16,7 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 public class CommonUtils {
 
 	// private final static Logger logger = Logger.getLogger(CommonUtils.class);
-	private static final String CONFIG_PROPERTY_FILE_PATH = "C:\\Users\\user\\workspace\\CC\\src\\config.properties";
+	private static final String CONFIG_PROPERTY_FILE_PATH = "D:\\CC_PROD\\src\\config.properties";
 //	private static final String CONFIG_PROPERTY_FILE_PATH = ".src/config.properties";
 
 	
