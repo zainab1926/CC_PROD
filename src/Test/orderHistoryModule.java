@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openqa.selenium.remote.server.handler.SendKeys;
+
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 

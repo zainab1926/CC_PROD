@@ -16,8 +16,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.server.handler.FindElement;
-import org.python.modules.thread.thread;
+
+
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
