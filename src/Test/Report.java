@@ -38,9 +38,10 @@ public class Report {
 	private static ExtentTest test;
 	private static ExtentHtmlReporter htmlReporter;
 		
-	private static String filePath = "D:\\CC_PROD\\test-output\\myReport.html";
+	private static final String filePath = new File("test-output/myReport.html").getAbsolutePath();
 	public static WebDriver browser = BrowserFactory.getBrowser("browser","URL");
-	static String imagePath="D:\\CC_PROD\\Screenshots\\";
+	private String imagePath = new File("Screenshots").getAbsolutePath();
+
 	
 		
 	private static long counter =0;
@@ -149,23 +150,26 @@ public class Report {
 	
 	
 		
-	public static String CaptureScreen(WebDriver driver,String imgName)
-	{
-
-		TakesScreenshot oScn = (TakesScreenshot) driver;
-		File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
-		String fileName = imagePath+imgName+(++counter)+".png";
-		File oDest = new File(fileName);
-		try
-		{
-			FileUtils.copyFile(oScnShot, oDest);
-		} 
-		catch (IOException e)
-		{
-			System.out.println(e.getMessage());
-		}
-		return fileName;
-	}
+	public String CaptureScreen(WebDriver driver,String imgName) throws Exception
+	 {
+	  try {
+	   TakesScreenshot oScn = (TakesScreenshot) driver;
+	   File oScnShot = oScn.getScreenshotAs(OutputType.FILE);
+	   String fileName = imagePath+imgName+(++counter)+".png";
+	   File oDest = new File(fileName);
+	   try
+	   {
+	    FileUtils.copyFile(oScnShot, oDest);
+	   } 
+	   catch (IOException e)
+	   {
+	    System.out.println(e.getMessage());
+	   }
+	   return fileName;
+	  } catch (Exception e) {
+	   e.printStackTrace();
+	   return "Screenshot Capture Failed";
+	  }
 	
   /* public static String CaptureFullScreen(WebDriver driver,String imgName)
    { 
@@ -184,4 +188,5 @@ public class Report {
 	return imgName;
 	   
    }*/
+	 }
 }

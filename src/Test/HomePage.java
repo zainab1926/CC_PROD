@@ -31,62 +31,74 @@ public class HomePage extends Browser {
 	
 	public void ExecuteAll_HomePage() throws Exception
 	{
-//		homePage(); //TC-1
-//		HP_logoHyperlink();
-//		Thread.sleep(3000);
-//		mainBanner(); //TC-6
-//		Hp_ShopNow_TopDeal();
-//		Thread.sleep(3000);
-//		HP_LearnMore();
-//		Thread.sleep(3000);
-//		HP_ShopNow_FeaturedProduct(); //TO CHECK 
-//		Thread.sleep(3000);
-		HP_Discover_LearnMore();
-//		Thread.sleep(3000);
-//		customiseRoom(); //TC-13
-//		smartRoom(); //TC-14
-//		featuredProduct(); //TC-15 TO ASK
-//		HP_discoverMore();
-//		Thread.sleep(3000);
-//		HP_Chat();
-//		Thread.sleep(3000);
-//		HP_Call();
-//		Thread.sleep(3000);
-//		HP_Email();
-//		Thread.sleep(3000);
-//		HP_PriceMatchguarantee();
-//		Thread.sleep(3000);
-//		HP_FreeShipping();
-//		Thread.sleep(3000);
-//		HP_ScheduleService();
-//		HP_Subscribe();
-//		HP_SigninOrCreateAccount();
-//		HP_wishlistFooter();
-//		Thread.sleep(3000);
-//		HP_RebatesFooter();
-//		HP_OrderStatusFooter();
-//		Thread.sleep(2000);
-//		HP_OrderHistoryFooter();
-//		HP_ShippingAndDeliveryFooter();
-//		Thread.sleep(2000);
-//		HP_ReturnAndExchange();
-//		HP_CareerFooter();
-//		HP_ReturnAnItemFooter();
-//		HP_ContactUsFooter();
-//		HP_Help();
-//		HP_CustomerServicesFooter();
-//		HP_ProtectionPlanFooter();
-//		HP_TradeInProgramFooter();
-//		HP_ProductRecallsFooter();
-//		HP_PrivacyAndSecurityFooter();
-//		HP_FeedbackFooter();
-//		HP_twitterFooter();
-//		HP_FacebookFooter();
-//		HP_YouTubeFooter();
-//		HP_PinterestFooter();
-//		HP_InstagramFooter();
-//		HP_GooglePlusFooter();
-//		HP_featuredProductsCarosel();
+		homePage(); //TC-1
+		HP_logoHyperlink();
+
+		mainBanner(); //TC-6
+		Hp_ShopNow_TopDeal();
+
+		HP_LearnMore();
+
+		HP_ShopNow_FeaturedProduct(); 
+
+//		//HP_Discover_LearnMore(); //To Ask
+
+		customiseRoom(); //TC-13 //this section is missing in prod-live
+		smartRoom(); //TC-14   //this section is missing in prod-live
+		featuredProduct(); //TC-15 
+		HP_discoverMore();
+     	ShopAllTopCategories(); //TC 25
+		bestSeller(); //TC -26
+		//shopNow_FeaturedProduct(); //TC 27 //repeated Tc
+		bannerDisplay(); //TC-32
+
+		HP_Chat();
+
+//		HP_Call(); out of scope
+
+		HP_Email();
+
+		HP_PriceMatchguarantee();
+
+		HP_FreeShipping();
+
+		HP_ScheduleService(); //TC 38 missing in prod-live
+		HP_Subscribe();
+		connectWithUs();
+		HP_SigninOrCreateAccount();
+		HP_wishlistFooter();
+		
+		HP_RebatesFooter();
+		HP_OrderStatusFooter();
+		
+		HP_OrderHistoryFooter();
+		HP_ShippingAndDeliveryFooter();
+
+		HP_ReturnAndExchange();
+		
+		HP_ReturnAnItemFooter();
+		HP_ContactUsFooter();
+		HP_Help();
+		HP_CustomerServicesFooter();
+		HP_ProtectionPlanFooter();
+		HP_TradeInProgramFooter();
+		HP_ProductRecallsFooter();
+		HP_PrivacyAndSecurityFooter();
+		HP_FeedbackFooter();
+		Installations();
+		AboutUs();
+		OurStory();
+		HP_CareerFooter();
+		PartnerWithUs();
+		HP_featuredProductsCarosel();
+		HP_BestSellerCarosel();
+		HP_twitterFooter();
+		HP_FacebookFooter();
+		HP_YouTubeFooter();
+		HP_PinterestFooter();
+		HP_InstagramFooter();
+		HP_GooglePlusFooter();
+		
 	}
 	
 	//CC_HP_001
@@ -377,6 +389,8 @@ public class HomePage extends Browser {
 //		{
 //			System.out.println("Fail");
 //		}
+		Thread.sleep(2000);
+		 click("id=contentImage_1_HeaderStoreLogo_Content");
 	}
 	
 	
@@ -468,36 +482,27 @@ public class HomePage extends Browser {
 	 //CC-15
 	 public void featuredProduct()throws Exception
 	 {
-		 Map<String,String> fields= new HashMap<String,String>();
-	   	  fields.put("Name", "");
-	   	  fields.put("Price", "");
-	   	  fields.put("Rating", "//section[@id='pr-category-snippets-JAB1009860000102']/section/section/div/div/div[3]");
-	   	  fields.put("Shop Now", "//a[contains(text(),'Shop Now')]");
-	   	  fields.put("Carosel", "//a[contains(@href, '#')]");
-//	   	  fields.put("Save $250 on Apple 13.3 MacBook Pro", ".//*[@id='deal_of_the_day']/a/div[2]/p[2]");
-//	   	  fields.put("Sign In", "//*[@id='Header_GlobalLogin_signInQuickLink']");
-//	   	   fields.put("WishList", "//*[@id='wishListQuickLink_alt']");
-//	   	   fields.put("Cart", "//*[@id='widget_minishopcart']");
-	   		
-	   		 for(Map.Entry<String, String> field : fields.entrySet() )
-	   		 {
-	   			 if (findTheElement("xpath=" + field.getValue() + "").isDisplayed())
-	   			 {
-	   				 rpt.createTest("CIRCUIT CITY - Verify Featured Product", "Featured Product Content :"+field.getKey()+" Displayed ");
-	   		         rpt.Pass("Featured Product Content :"+field.getKey()+" Displayed ");
-	   		         rpt.Category("CIRCUIT CITY - Verify Featured Product");
-	   		         String path = rpt.CaptureScreen(browser, "ValidMessage");
-	   		         rpt.imgPathPass(path);
-	   			 }
-	   			 else
-	   			 {
-	   				 rpt.createTest("CIRCUIT CITY - Verify Featured Product", "Featured Product Content :"+field.getKey()+" NOT Displayed");
-	   		         rpt.Fail("Featured Product Content :"+field.getKey()+" NOT Displayed");
-	   		         rpt.Category("CIRCUIT CITY - Verify Featured Product");
-	   		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
-	   		         rpt.imgPathFail(path);
-	   			 }
-	   		 }
+		 String product=findTheElement("css=div.carouselWrapper").getText();
+		 Thread.sleep(2000);
+		 System.out.println(product);
+		 if(product!=null)
+		 {
+			
+				 rpt.createTest("CIRCUIT CITY - Verify Featured Product", "Featured Product Section is displayed properly");
+		         rpt.Pass("Featured Product Section is displayed properly : " +product);
+		         rpt.Category("CIRCUIT CITY - Verify Featured Product");
+		         String path = rpt.CaptureScreen(browser, "ValidMessage");
+		         rpt.imgPathPass(path);
+			}
+			else
+			{
+				
+				rpt.createTest("CIRCUIT CITY - Verify Featured Productr", "Featured Product NOT displayed properly");
+		         rpt.Fail("Featured Product NOT displayed properly");
+		         rpt.Category("CIRCUIT CITY - Verify Featured Product");
+		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+		         rpt.imgPathFail(path);
+			}
 	 }
 	 
 	 //CC_HP_016 TO CHECK 
@@ -513,7 +518,7 @@ public class HomePage extends Browser {
 		 
 		 //click("xpath=//a[@href ='https://qalive.circuitcity.com/ClickInfo?URL=http%3a%2f%2fqalive.circuitcity.com%2fProductDisplay%3ftop_category5%3d%26top_category4%3d%26top_category3%3d%26urlRequestType%3dBase%26productId%3d3074457345616698676%26catalogId%3d3074457345616676668%26top_category2%3d%26categoryId%3d%26errorViewName%3dProductDisplayErrorView%26urlLangId%3d-1%26langId%3d-1%26top_category%3d%26parent_category_rn%3d%26storeId%3d10801&evtype=CpgnClick&mpe_id=715839388&intv_id=715839384&storeId=10801&catalogId=3074457345616676668&langId=-1&expDataType=CatalogEntryId&expDataUniqueID=3074457345616698676&catEntryId=3074457345616698676']");
 		 if (findTheElement(
-					"xpath=//a[@href ='https://qalive.circuitcity.com/ClickInfo?URL=http%3a%2f%2fqalive.circuitcity.com%2fProductDisplay%3ftop_category5%3d%26top_category4%3d%26top_category3%3d%26urlRequestType%3dBase%26productId%3d3074457345616698676%26catalogId%3d3074457345616676668%26top_category2%3d%26categoryId%3d%26errorViewName%3dProductDisplayErrorView%26urlLangId%3d-1%26langId%3d-1%26top_category%3d%26parent_category_rn%3d%26storeId%3d10801&evtype=CpgnClick&mpe_id=715839388&intv_id=715839384&storeId=10801&catalogId=3074457345616676668&langId=-1&expDataType=CatalogEntryId&expDataUniqueID=3074457345616698676&catEntryId=3074457345616698676']")
+					"xpath=(//a[contains(text(),'Shop Now')])[7]")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify ShopNow_FeaturedProduct",
 						"ShopNow FeaturedProduct Displayed - For Verify ShopNow_FeaturedProduct");
@@ -521,7 +526,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify ShopNow_FeaturedProduct");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href ='https://qalive.circuitcity.com/ClickInfo?URL=http%3a%2f%2fqalive.circuitcity.com%2fProductDisplay%3ftop_category5%3d%26top_category4%3d%26top_category3%3d%26urlRequestType%3dBase%26productId%3d3074457345616698676%26catalogId%3d3074457345616676668%26top_category2%3d%26categoryId%3d%26errorViewName%3dProductDisplayErrorView%26urlLangId%3d-1%26langId%3d-1%26top_category%3d%26parent_category_rn%3d%26storeId%3d10801&evtype=CpgnClick&mpe_id=715839388&intv_id=715839384&storeId=10801&catalogId=3074457345616676668&langId=-1&expDataType=CatalogEntryId&expDataUniqueID=3074457345616698676&catEntryId=3074457345616698676']");
+				click("xpath=(//a[contains(text(),'Shop Now')])[7]");
 				//click("xpath=//a[contains(text(),'Shop Now')][8]");
 
 			} else {
@@ -570,19 +575,19 @@ public class HomePage extends Browser {
 		  if (findTheElement(
 				  "xpath=//button[@class='learn-more'][1]")
 					.isDisplayed()) {
-				rpt.createTest("CC - Home Page - Verify Discover � Learn More",
-						"Discover � Learn More Displayed - For Verify Discover � Learn More ");
-				rpt.Pass("Discover � Learn More Displayed - For Verify Discover � Learn More ");
-				rpt.Category("CC_Home Page - Verify Discover � Learn More ");
+				rpt.createTest("CC - Home Page - Verify Discover Learn More",
+						"Discover  Learn More Displayed - For Verify Discover Learn More ");
+				rpt.Pass("Discover  Learn More Displayed - For Verify Discover  Learn More ");
+				rpt.Category("CC_Home Page - Verify Discover  Learn More ");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
 				click("xpath=//button[@class='learn-more'][1]");
 
 			} else {
-				rpt.createTest("CC - Home Page - Verify Discover � Learn More ",
-						" Discover � Learn More Page is NOT Displayed - For Verify Discover � Learn More ");
-				rpt.Fail("Discover � Learn More is NOT Displayed - For Verify Discover � Learn More ");
-				rpt.Category("CC_Home Page - Verify Discover � Learn More ");
+				rpt.createTest("CC - Home Page - Verify Discover  Learn More ",
+						" Discover Learn More Page is NOT Displayed - For Verify Discover  Learn More ");
+				rpt.Fail("Discover  Learn More is NOT Displayed - For Verify Discover  Learn More ");
+				rpt.Category("CC_Home Page - Verify Discover  Learn More ");
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
@@ -608,15 +613,15 @@ public class HomePage extends Browser {
 		 //click("xpath=/html/body/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/div/div/div/div/a");
 		 
 		 if (findTheElement(
-				 "xpath=/html/body/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/div/div/div/div/a")
+				 "link=DISCOVER MORE")
 					.isDisplayed()) {
-				rpt.createTest("CC - Home Page - Verify Discover � More",
+				rpt.createTest("CC - Home Page - Verify Discover More",
 						"Discover More Displayed - For Verify Discover More");
 				rpt.Pass("Discover MoreDisplayed - For Verify Discover More");
 				rpt.Category("CC_Home Page - Verify Discover More");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=/html/body/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/div/div/div/div/a");
+				click("link=DISCOVER MORE");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Discover More",
@@ -626,28 +631,135 @@ public class HomePage extends Browser {
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
-
+		 Thread.sleep(2000);
+		 click("id=contentImage_1_HeaderStoreLogo_Content");
 		 
-		String s= getText("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/div/div[1]/ul/h3");
-		System.out.println(s);
-		if(s.equals("Product by Category"))
-		{
-			System.out.println("Discover More - Passed");
-		}
-		else
-		{
-			System.out.println("Discover More - Failed");
-		}
+//		String s= getText("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/div/div[1]/ul/h3");
+//		System.out.println(s);
+//		if(s.equals("Product by Category"))
+//		{
+//			System.out.println("Discover More - Passed");
+//		}
+//		else
+//		{
+//			System.out.println("Discover More - Failed");
+//		}
 	 }
-	 //CC-TC 24
+	 //CC 25
+	   public void ShopAllTopCategories() throws Exception
+	   {
+	     Thread.sleep(5000);
+	     
+	     if (findTheElement(
+	       "link=SHOP ALL CATEGORIES").isDisplayed()) {
+	      rpt.createTest("CC - Home Page - Verify Shop All Top Categories",
+	        "Shop All Top Categories Displayed - For Verify Shop All Top Categories");
+	      rpt.Pass("Discover MoreDisplayed - For Verify Discover More");
+	      rpt.Category("CC_Home Page - Verify Shop All Top Categories");
+	      String path = rpt.CaptureScreen(browser, "ValidMessage");
+	      rpt.imgPathPass(path);
+	      click("link=SHOP ALL CATEGORIES");
+
+	     } else {
+	      rpt.createTest("CC - Home Page - Verify Shop All Top Categories",
+	        " Shop All Top Categories buttonis NOT Displayed - For Verify Shop All Top Categories");
+	      rpt.Fail("Shop All Top Categories is NOT Displayed - For Verify Shop All Top Categories");
+	      rpt.Category("CC_Home Page - Verify Shop All Top Categories");
+	      String path = rpt.CaptureScreen(browser, "InvalidMessage");
+	      rpt.imgPathPass(path);
+	     }
+	     Thread.sleep(3000);
+			click("id=contentImage_1_HeaderStoreLogo_Content");
+	   }
+	 
+	 //CC-TC 26
+	 public void bestSeller() throws Exception
+	 {
+		 String product=findTheElement("css=div.carouselWrapper").getText();
+		 Thread.sleep(2000);
+		 System.out.println(product);
+		 if(product!=null)
+		 {
+			
+				 rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Best Seller Section is displayed properly");
+		         rpt.Pass("Best Seller Section is displayed properly : " +product);
+		         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+		         String path = rpt.CaptureScreen(browser, "ValidMessage");
+		         rpt.imgPathPass(path);
+			}
+			else
+			{
+				
+				rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Best Seller Section NOT displayed properly");
+		         rpt.Fail("Best Seller Section NOT displayed properly");
+		         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+		         rpt.imgPathFail(path);
+			}
+	 }
+	 //TC 27
+	 public void shopNow_FeaturedProduct() throws Exception
+	 {
+//		 String product=findTheElement("css=div.carouselWrapper").getText();
+//		 Thread.sleep(2000);
+//		 System.out.println(product);
+		 if(findTheElement("xpath=//div[5]/div/div[2]/div/div/div/div/div/a").isDisplayed())
+		 {
+			 	//click("css=div.button primary");
+				 rpt.createTest("CIRCUIT CITY - Home Page", "Shop now from featured product is navigating to respective page");
+		         rpt.Pass("Shop now from featured product is navigating to respective page");
+		         rpt.Category("CIRCUIT CITY - Home Page");
+		         String path = rpt.CaptureScreen(browser, "ValidMessage");
+		         rpt.imgPathPass(path);
+		         click("xpath=//div[5]/div/div[2]/div/div/div/div/div/a");
+			}
+			else
+			{
+				
+				rpt.createTest("CIRCUIT CITY - Home Page", "Shop now from featured product NOT navigating to respective page");
+		         rpt.Fail("Shop now from featured product NOT navigating to respective page");
+		         rpt.Category("CIRCUIT CITY - Home Page");
+		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+		         rpt.imgPathFail(path);
+			}
+		 Thread.sleep(3000);
+			click("id=contentImage_1_HeaderStoreLogo_Content");
+	 }
+	 
+	 //TC-32 
+	 public void bannerDisplay()throws Exception
+	 { 
+		 String product=findTheElement("xpath=//div[@id='footerWrapper']/div/div").getText();
+//		 Thread.sleep(2000);
+		 System.out.println(product);
+		 if(findTheElement("xpath=//div[@id='footerWrapper']/div/div").isDisplayed())
+		 {
+			 	//click("css=div.button primary");
+				 rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Banner is displayed with chat,call and email :" +product);
+		         rpt.Pass("Banner is displayed with chat,call and email :"+product);
+		         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+		         String path = rpt.CaptureScreen(browser, "ValidMessage");
+		         rpt.imgPathPass(path);
+			}
+			else
+			{
+				
+				rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Banner NOT displayed with chat,call and email");
+		         rpt.Fail("Banner NOT displayed with chat,call and email");
+		         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+		         rpt.imgPathFail(path);
+			}
+		 
+	 }
 	 //CC_HP_033 - Chat
 	 public void HP_Chat() throws Exception
 	 {
-		 Thread.sleep(30000);
+		 //Thread.sleep(30000);
 		// click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/chat.png']");
 		 //Report
 		 if (findTheElement(
-				 "xpath=//img[@src='/wcsstore/CircuitCitySAS/images/chat.png']")
+				 "xpath=//div[@id='footerWrapper']/div/div/span[3]/a/span")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat",
 						"Chat Displayed - For Verify Chat");
@@ -655,7 +767,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/chat.png']");
+				click("xpath=//div[@id='footerWrapper']/div/div/span[3]/a/span");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat",
@@ -677,11 +789,11 @@ public class HomePage extends Browser {
 					 System.out.println("Chat - Failed");
 				 }
 				 
-		 
+		 Thread.sleep(2000);
 		//Submit Chat
 		//click("id=lc_chat_offline_name");	
 				 if (findTheElement(
-						 "id=lc_chat_offline_name")
+						 "xpath=//div[@id='lc_prechat_form']/ul/li/input")
 							.isDisplayed()) {
 						rpt.createTest("CC - Home Page - Verify Chat - User Name",
 								"Chat - User Name Displayed - For Verify Chat - User Name");
@@ -689,7 +801,7 @@ public class HomePage extends Browser {
 						rpt.Category("CC_Home Page - Verify Chat - User Name");
 						String path = rpt.CaptureScreen(browser, "ValidMessage");
 						rpt.imgPathPass(path);
-						click("id=lc_chat_offline_name");
+						click("xpath=//div[@id='lc_prechat_form']/ul/li/input");
 
 					} else {
 						rpt.createTest("CC - Home Page - Verify Chat - User Name",
@@ -702,7 +814,7 @@ public class HomePage extends Browser {
 
 		 //sendKeys("id=lc_chat_offline_name", "Kanimozhi");
 		 if (findTheElement(
-				 "id=lc_chat_offline_name")
+				 "xpath=//div[@id='lc_prechat_form']/ul/li/input")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - User Name",
 						"Chat - User Name Displayed - For Verify Chat - User Name");
@@ -710,7 +822,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - User Name");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				sendKeys("id=lc_chat_offline_name", "Kanimozhi");
+				sendKeys("xpath=//div[@id='lc_prechat_form']/ul/li/input", "Test User");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - User Name",
@@ -725,7 +837,7 @@ public class HomePage extends Browser {
 		 
 		 //click("id=lc_chat_offline_email");
 		 if (findTheElement(
-				 "id=lc_chat_offline_email")
+				 "xpath=//div[@id='lc_prechat_form']/ul/li[2]/input")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
 						"Chat - eMail Displayed - For Verify Chat - eMail");
@@ -733,7 +845,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - eMail");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("id=lc_chat_offline_email");
+				click("xpath=//div[@id='lc_prechat_form']/ul/li[2]/input");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
@@ -747,7 +859,7 @@ public class HomePage extends Browser {
 		 
 		 //sendKeys("id=lc_chat_offline_email","kanimozhi.p@rr.com");
 		 if (findTheElement(
-				 "id=lc_chat_offline_email")
+				 "xpath=//div[@id='lc_prechat_form']/ul/li[2]/input")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
 						"Chat - eMail Displayed - For Verify Chat - eMail");
@@ -755,7 +867,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - eMail");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				sendKeys("id=lc_chat_offline_email","kanimozhi.p@rr.com");
+				sendKeys("xpath=//div[@id='lc_prechat_form']/ul/li[2]/input","user@test.com");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
@@ -769,51 +881,51 @@ public class HomePage extends Browser {
 		 
 		// click("id=lc_chat_offline_textarea");
 		 
-		 if (findTheElement(
-				 "id=lc_chat_offline_textarea")
-					.isDisplayed()) {
-				rpt.createTest("CC - Home Page - Verify Chat - Message",
-						"Chat - Message Displayed - For Verify Chat - Message");
-				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
-				rpt.Category("CC_Home Page - Verify Chat - Message");
-				String path = rpt.CaptureScreen(browser, "ValidMessage");
-				rpt.imgPathPass(path);
-				click("id=lc_chat_offline_textarea");
-
-			} else {
-				rpt.createTest("CC - Home Page - Verify Chat - Message",
-						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
-				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
-				rpt.Category("CC_Home Page - Verify Chat - Message");
-				String path = rpt.CaptureScreen(browser, "InvalidMessage");
-				rpt.imgPathFail(path);
-			}
-
-		// sendKeys("id=lc_chat_offline_textarea","Testing");
-		 
-		 if (findTheElement(
-				 "id=lc_chat_offline_textarea")
-					.isDisplayed()) {
-				rpt.createTest("CC - Home Page - Verify Chat - Message",
-						"Chat - Message Displayed - For Verify Chat - Message");
-				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
-				rpt.Category("CC_Home Page - Verify Chat - Message");
-				String path = rpt.CaptureScreen(browser, "ValidMessage");
-				rpt.imgPathPass(path);
-				sendKeys("id=lc_chat_offline_textarea","Testing");
-
-			} else {
-				rpt.createTest("CC - Home Page - Verify Chat - Message",
-						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
-				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
-				rpt.Category("CC_Home Page - Verify Chat - Message");
-				String path = rpt.CaptureScreen(browser, "InvalidMessage");
-				rpt.imgPathFail(path);
-			}
+//		 if (findTheElement(
+//				 "id=lc_chat_offline_textarea")
+//					.isDisplayed()) {
+//				rpt.createTest("CC - Home Page - Verify Chat - Message",
+//						"Chat - Message Displayed - For Verify Chat - Message");
+//				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
+//				rpt.Category("CC_Home Page - Verify Chat - Message");
+//				String path = rpt.CaptureScreen(browser, "ValidMessage");
+//				rpt.imgPathPass(path);
+//				click("id=lc_chat_offline_textarea");
+//
+//			} else {
+//				rpt.createTest("CC - Home Page - Verify Chat - Message",
+//						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
+//				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
+//				rpt.Category("CC_Home Page - Verify Chat - Message");
+//				String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//				rpt.imgPathFail(path);
+//			}
+//
+//		// sendKeys("id=lc_chat_offline_textarea","Testing");
+//		 
+//		 if (findTheElement(
+//				 "id=lc_chat_offline_textarea")
+//					.isDisplayed()) {
+//				rpt.createTest("CC - Home Page - Verify Chat - Message",
+//						"Chat - Message Displayed - For Verify Chat - Message");
+//				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
+//				rpt.Category("CC_Home Page - Verify Chat - Message");
+//				String path = rpt.CaptureScreen(browser, "ValidMessage");
+//				rpt.imgPathPass(path);
+//				sendKeys("id=lc_chat_offline_textarea","Testing");
+//
+//			} else {
+//				rpt.createTest("CC - Home Page - Verify Chat - Message",
+//						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
+//				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
+//				rpt.Category("CC_Home Page - Verify Chat - Message");
+//				String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//				rpt.imgPathFail(path);
+//			}
 		 
 		// click("id=lc_offline_submit");
 		 if (findTheElement(
-				 "id=lc_offline_submit")
+				 "id=lc_prechat_submit")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - Submission",
 						"Chat - Submission Displayed - For Verify Chat - Submission");
@@ -821,7 +933,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - Submission");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("id=lc_offline_submit");
+				click("id=lc_prechat_submit");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - Submission",
@@ -831,7 +943,8 @@ public class HomePage extends Browser {
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
-
+		 Thread.sleep(2000);
+		 click("id=lc_minimize");
 		
 		 //Verifying Successfull Submissions
 		 String MessageAfterSubmission=getText("id=lc_chat_title");
@@ -906,11 +1019,11 @@ public class HomePage extends Browser {
 	//CC_HP_035 - Home page - Email (Captcha is present in this screen - N\A for Automate)
 		 public void HP_Email() throws Exception
 		 {
-			 Thread.sleep(30000);
+			 //Thread.sleep(30000);
 			 //click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/latter.png']");
 			 
 			 if (findTheElement(
-					 "xpath=//img[@src='/wcsstore/CircuitCitySAS/images/latter.png']")
+					 "xpath=//div[@id='footerWrapper']/div/div/span[3]/a[3]/span")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Email",
 							"Home Page_Email Displayed - For Verify Home Page_Email");
@@ -918,7 +1031,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Email");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/latter.png']");
+					click("xpath=//div[@id='footerWrapper']/div/div/span[3]/a[3]/span");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Email",
@@ -939,16 +1052,18 @@ public class HomePage extends Browser {
 					 {
 						 System.out.println("Email - Failed");
 					 }
+					 Thread.sleep(2000);
+					 browser.navigate().back();
 	 
 		 }
 		 
 		//CC_HP_036 - Home page - Price Match
 		 public void HP_PriceMatchguarantee() throws Exception
 		 {
-			 Thread.sleep(30000);
+			// Thread.sleep(30000);
 			 //click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shopPriceMatchGuarantee']")
+					 "link=DETAILS")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Price Match",
 							"Home Page_Price Match Displayed - For Verify Home Page_Price Match");
@@ -956,7 +1071,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Price Match");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
+					click("link=DETAILS");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Price Match",
@@ -966,17 +1081,32 @@ public class HomePage extends Browser {
 					String path = rpt.CaptureScreen(browser, "InvalidMessage");
 					rpt.imgPathFail(path);
 				}
+			 Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 
-			// String PageTitle=Browser.getTitle();
+			 String PageTitle=Browser.getTitle();
 			// Verifying Contact Us Page display
-					/* if(PageTitle.equals("Contact Us"))
+					 if(PageTitle.equals("Contact Us"))
 					 {
 						 System.out.println("Email - Passed");
 					 }
 					 else
 					 {
 						 System.out.println("Email - Failed");
-					 } */
+					 } 
+					 String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow); 
+					     }
+					  }   
 		 }
 	 
 		//CC_HP_037 - Home page - Free Shipping
@@ -985,7 +1115,7 @@ public class HomePage extends Browser {
 			 Thread.sleep(30000);
 			 //click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shopPriceMatchGuarantee']")
+					 "xpath=(//a[contains(text(),'DETAILS')])[2]")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Free Shipping",
 							"Home Page_Free Shipping Displayed - For Verify Home Page_Free Shipping");
@@ -993,7 +1123,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Free Shipping");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
+					click("xpath=(//a[contains(text(),'DETAILS')])[2]");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Free Shipping",
@@ -1003,17 +1133,31 @@ public class HomePage extends Browser {
 					String path = rpt.CaptureScreen(browser, "InvalidMessage");
 					rpt.imgPathFail(path);
 				}
-
-			// String PageTitle=Browser.getTitle();
+			 Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			 String PageTitle=Browser.getTitle();
 			// Verifying Contact Us Page display
-					/* if(PageTitle.equals("Contact Us"))
+					 if(PageTitle.equals("Contact Us"))
 					 {
 						 System.out.println("Email - Passed");
 					 }
 					 else
 					 {
 						 System.out.println("Email - Failed");
-					 } */
+					 } 
+					 String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow); 
+					     }
+					  }   
 		 }
 		 
 		//CC_HP_038 - Home page - schedule service 
@@ -1022,7 +1166,7 @@ public class HomePage extends Browser {
 			 Thread.sleep(30000);
 			// click("xpath=//a[@href='/en/shop/Installations']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shop/Installations']")
+					 "link=SCHEDULE NOW")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Schedule Service",
 							"Home Page_Schedule Service Displayed - For Verify Home Page_Schedule Service");
@@ -1030,7 +1174,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Schedule Service");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shop/Installations']");
+					click("link=SCHEDULE NOW");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Schedule Service",
@@ -1040,17 +1184,19 @@ public class HomePage extends Browser {
 					String path = rpt.CaptureScreen(browser, "InvalidMessage");
 					rpt.imgPathFail(path);
 				}
+			 Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 
-			// String PageTitle=Browser.getTitle();
+			 String PageTitle=Browser.getTitle();
 			// Verifying Contact Us Page display
-					/* if(PageTitle.equals("Contact Us"))
+					 if(PageTitle.equals("Contact Us"))
 					 {
 						 System.out.println("Email - Passed");
 					 }
 					 else
 					 {
 						 System.out.println("Email - Failed");
-					 } */
+					 } 
 		 }
 	 
 	   //cc_HP_39 - subscribe
@@ -1071,6 +1217,7 @@ public class HomePage extends Browser {
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
 					sendKeys("id=subscribeemail","Test@testmail.com");
+					
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Subscribe_Email id ",
@@ -1083,7 +1230,7 @@ public class HomePage extends Browser {
 
 			 //click("xpath=//input[@value='SUBSCRIBE']");
 			 if (findTheElement(
-					 "xpath=//input[@value='SUBSCRIBE']")
+					 "xpath=//div[@id='emailsubscribe']/input[2]")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Subcribe functionality Verification",
 							"Home Page_Subcribe functionality Verification Displayed - For Verify Home Page_Subcribe functionality Verification");
@@ -1091,7 +1238,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Subcribe functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//input[@value='SUBSCRIBE']");
+					click("xpath=//div[@id='emailsubscribe']/input[2]");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Subcribe functionality Verification",
@@ -1115,7 +1262,31 @@ public class HomePage extends Browser {
 				 System.out.println("Subscribe not Done - Failed");
 			 }
 		 }
-		 
+		 //TC-41
+		 public void connectWithUs()throws Exception
+		 {
+			 String product=findTheElement("css=div.connect_us").getText();
+//			 Thread.sleep(2000);
+			 System.out.println(product);
+			 if(findTheElement("css=div.connect_us").isDisplayed())
+			 {
+				 	//click("css=div.button primary");
+					 rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Connect with us in footer section is displayed");
+			         rpt.Pass("Connect with us in footer section is displayed");
+			         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+			         String path = rpt.CaptureScreen(browser, "ValidMessage");
+			         rpt.imgPathPass(path);
+				}
+				else
+				{
+					
+					rpt.createTest("CIRCUIT CITY - Verify Best Seller", "Connect with us in footer section NOT displayed");
+			         rpt.Fail("Connect with us in footer section NOT displayed");
+			         rpt.Category("CIRCUIT CITY - Verify Best Seller");
+			         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+			         rpt.imgPathFail(path);
+				}
+		 }
 		 //CC_HP_042 Sign in or create account 
 		 
 		 public void HP_SigninOrCreateAccount() throws Exception
@@ -1124,37 +1295,39 @@ public class HomePage extends Browser {
 			 
 			if (findTheElement(
 					 
-					 "xpath=//a[@href='/AjaxLogonForm?catalogId=3074457345616676668&langId=-1&storeId=10801']")
+					 "xpath=//div[3]/div/div/ul/li/a")
 						.isDisplayed()) {
-					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification",
-							"Home Page_Footer - Sign In or Create Accountfunctionality Verification Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
-					rpt.Pass("Home Page_Footer - Sign In or Create Accountfunctionality Verification Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Sign In or Create Account functionality Verification",
+							"Home Page_Footer - Sign In or Create Account functionality Verification Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
+					rpt.Pass("Home Page_Footer - Sign In or Create Account functionality Verification Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/AjaxLogonForm?catalogId=3074457345616676668&langId=-1&storeId=10801']");
+					click("xpath=//div[3]/div/div/ul/li/a");
 
 				} 
 						else {
-					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification",
-							" Home Page_Footer - Sign In or Create Accountfunctionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
-					rpt.Fail("Home Page_Footer - Sign In or Create Accountfunctionality Verification is NOT Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Sign In or Create Account functionality Verification",
+							" Home Page_Footer - Sign In or Create Account functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
+					rpt.Fail("Home Page_Footer - Sign In or Create Account functionality Verification is NOT Displayed - For Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Sign In or Create Accountfunctionality Verification");
 					String path = rpt.CaptureScreen(browser, "InvalidMessage");
 					rpt.imgPathFail(path);
 				}
 
 			 
-			 String PageTitle=getTitle();
+			 //String PageTitle=getTitle();
 			 
-			if(PageTitle.equals("SignIn"))
-			{
-			 System.out.println("Signin OrCreate Account Working Properly");
-			}
-			else
-			{
-				System.out.println("Signin OrCreate Account Working Properly. Case Failed");
-			}
+//			if(PageTitle.equals("SignIn"))
+//			{
+//			 System.out.println("Signin Or Create Account Working Properly");
+//			}
+//			else
+//			{
+//				System.out.println("Signin Or Create Account Working Properly. Case Failed");
+//			}
+			Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 		 }
 		 
  //CC_HP_045 Wish List Footer
@@ -1165,7 +1338,7 @@ public class HomePage extends Browser {
 			// click("xpath=//a[@href='/WishListDisplayView?listId=.&catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 
 			 if (findTheElement(
-					 "xpath=//a[@href='/WishListDisplayView?listId=.&catalogId=3074457345616676668&langId=-1&storeId=10801']")
+					 "xpath=//div[3]/div/div/ul/li[2]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Wishlistfunctionality Verification",
 							"Home Page_Footer - Wishlistfunctionality Verification Displayed - For Verify Home Page_Footer - Wishlistfunctionality Verification");
@@ -1173,7 +1346,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Wishlistfunctionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/WishListDisplayView?listId=.&catalogId=3074457345616676668&langId=-1&storeId=10801']");
+					click("xpath=//div[3]/div/div/ul/li[2]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Wishlistfunctionality Verification",
@@ -1185,16 +1358,18 @@ public class HomePage extends Browser {
 				}
 
 			 
-			 String PageTitle=getTitle();
-			 
-			if(PageTitle.equals("SignIn"))
-			{
-			 System.out.println("Footer Wish list is navigating to corresponding Page");
-			}
-			else
-			{
-				System.out.println("Footer Wish list is not navigating to corresponding Page,Case Failed");
-			}
+//			 String PageTitle=getTitle();
+//			 
+//			if(PageTitle.equals("SignIn"))
+//			{
+//			 System.out.println("Footer Wish list is navigating to corresponding Page");
+//			}
+//			else
+//			{
+//				System.out.println("Footer Wish list is not navigating to corresponding Page,Case Failed");
+//			}
+			Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 		 }
 		 
  //CC_HP_048 User Rebates
@@ -1204,7 +1379,7 @@ public class HomePage extends Browser {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/rebateUserTrackStatusView?catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/rebateUserTrackStatusView?catalogId=3074457345616676668&langId=-1&storeId=10801']")
+					 "xpath=//div[3]/div/div/ul/li[3]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Rebates functionality Verification",
 							"Home Page_Footer - Rebates functionality Verification Displayed - For Verify Home Page_Footer - Rebates functionality Verification");
@@ -1212,7 +1387,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Rebates functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/rebateUserTrackStatusView?catalogId=3074457345616676668&langId=-1&storeId=10801']");
+					click("xpath=//div[3]/div/div/ul/li[3]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Rebates functionality Verification",
@@ -1224,16 +1399,18 @@ public class HomePage extends Browser {
 				}
 
 			 
-			 String PageTitle=getTitle();
-			 
-			if(PageTitle.equals("User Rebate"))
-			{
-			 System.out.println("Footer-Rebate is navigating to corresponding Page");
-			}
-			else
-			{
-				System.out.println("Footer-Rebate is not navigating to corresponding Page. Case Failed");
-			}
+//			 String PageTitle=getTitle();
+//			 
+//			if(PageTitle.equals("User Rebate"))
+//			{
+//			 System.out.println("Footer-Rebate is navigating to corresponding Page");
+//			}
+//			else
+//			{
+//				System.out.println("Footer-Rebate is not navigating to corresponding Page. Case Failed");
+//			}
+			Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 		 }
 		 
 //CC_HP_049 Order Status - footer
@@ -1243,7 +1420,7 @@ public class HomePage extends Browser {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/TrackOrderSearch?catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/TrackOrderSearch?catalogId=3074457345616676668&langId=-1&storeId=10801']")
+					 "xpath=//div[3]/div/div[2]/ul/li/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Order Status functionality Verification",
 							"Home Page_Footer - Order Status functionality Verification Displayed - For Verify Home Page_Footer - Order Status functionality Verification");
@@ -1251,7 +1428,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Order Status functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/TrackOrderSearch?catalogId=3074457345616676668&langId=-1&storeId=10801']");
+					click("xpath=//div[3]/div/div[2]/ul/li/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Order Status functionality Verification",
@@ -1264,16 +1441,16 @@ public class HomePage extends Browser {
 
 			 Thread.sleep(4000);
 			 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -1287,6 +1464,19 @@ public class HomePage extends Browser {
 			{
 				System.out.println("Order Status Footer link is not navigating to corresponding Page. Case Failed");
 			}
+//			Thread.sleep(2000);
+//			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			String parentWindow = browser.getWindowHandle();
+			  Set<String> handles =  browser.getWindowHandles();
+			  for(String windowHandle  : handles)
+			  {
+			      if(!windowHandle.equals(parentWindow))
+			     {
+			       browser.switchTo().window(windowHandle);
+			       String childWindowTitle = getTitle();
+			       System.out.print(childWindowTitle);
+			       browser.close(); 
+			       browser.switchTo().window(parentWindow); }}
 		 }
 	 
 		 
@@ -1298,7 +1488,7 @@ public class HomePage extends Browser {
 			 //click("xpath=//a[@href='/en/shop/TrackOrderStatus?showOrderHeader=true&catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
 			 
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shop/TrackOrderStatus?showOrderHeader=true&catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']")
+					 "xpath=//div[3]/div/div[2]/ul/li[2]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Order History functionality Verification",
 							"Home Page_Footer - Order History functionality Verification Displayed - For Verify Home Page_Footer - Order History functionality Verification");
@@ -1306,7 +1496,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Order History functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shop/TrackOrderStatus?showOrderHeader=true&catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
+					click("xpath=//div[3]/div/div[2]/ul/li[2]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Order History functionality Verification",
@@ -1320,16 +1510,16 @@ public class HomePage extends Browser {
 			 
 			 Thread.sleep(4000);
 			 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -1343,6 +1533,20 @@ public class HomePage extends Browser {
 			{
 				System.out.println("Footer-Order History Link is not navigating to corresponding Page. Case Failed");
 			}
+//			Thread.sleep(2000);
+//			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			String parentWindow = browser.getWindowHandle();
+			  Set<String> handles =  browser.getWindowHandles();
+			  for(String windowHandle  : handles)
+			  {
+			      if(!windowHandle.equals(parentWindow))
+			     {
+			       browser.switchTo().window(windowHandle);
+			       String childWindowTitle = getTitle();
+			       System.out.print(childWindowTitle);
+			       browser.close(); 
+			       browser.switchTo().window(parentWindow); }}
+		 
 		 }
 		 
 //CC_HP_051 Shipping and Delivery - footer
@@ -1352,7 +1556,7 @@ public class HomePage extends Browser {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/en/shop/shippingdelivery']");
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shop/shippingdelivery']")
+					 "xpath=//div[3]/div/div[2]/ul/li[3]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Shipping and Deliveryfunctionality Verification",
 							"Home Page_Footer - Shipping and Deliveryfunctionality Verification Displayed - For Verify Home Page_Footer - Shipping and Deliveryfunctionality Verification");
@@ -1360,7 +1564,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Shipping and Deliveryfunctionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					 click("xpath=//a[@href='/en/shop/shippingdelivery']");
+					 click("xpath=//div[3]/div/div[2]/ul/li[3]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Shipping and Deliveryfunctionality Verification",
@@ -1373,16 +1577,16 @@ public class HomePage extends Browser {
 
 			 Thread.sleep(4000);
 			 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -1396,6 +1600,21 @@ public class HomePage extends Browser {
 			{
 				System.out.println("Footer-Shipoping and Delivery Link is not navigating to corresponding Page. Case Failed");
 			}
+//			Thread.sleep(2000);
+//			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			String parentWindow = browser.getWindowHandle();
+			  Set<String> handles =  browser.getWindowHandles();
+			  for(String windowHandle  : handles)
+			  {
+			      if(!windowHandle.equals(parentWindow))
+			     {
+			       browser.switchTo().window(windowHandle);
+			       String childWindowTitle = getTitle();
+			       System.out.print(childWindowTitle);
+			       browser.close(); 
+			       browser.switchTo().window(parentWindow);
+			       }
+			  }
 		 }
 	 
 	// CC_HP_052 Return and Exchange - footer
@@ -1405,7 +1624,7 @@ public class HomePage extends Browser {
 
 		//click("xpath=//a[@href='/en/shop/return-policy']");
 		if (findTheElement(
-				 "xpath=//a[@href='/en/shop/return-policy']")
+				 "xpath=//div[3]/div/div[2]/ul/li[4]/a")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Return and Exchange functionality Verification",
 						"Home Page_Footer - Return and Exchange functionality Verification Displayed - For Verify Home Page_Footer - Return and Exchange functionality Verification");
@@ -1413,7 +1632,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Home Page_Footer - Return and Exchange functionality Verification");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href='/en/shop/return-policy']");
+				click("xpath=//div[3]/div/div[2]/ul/li[4]/a");
 			} else {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Return and Exchange functionality Verification",
 						" Home Page_Footer - Return and Exchange functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Return and Exchange functionality Verification");
@@ -1425,16 +1644,16 @@ public class HomePage extends Browser {
 
 		Thread.sleep(2000);
 
-		java.util.Set<String> handles = browser.getWindowHandles();
-		System.out.println(handles);
-
-		for (String handle1 : browser.getWindowHandles()) {
-
-			System.out.println(handle1);
-
-			browser.switchTo().window(handle1);
-
-		}
+//		java.util.Set<String> handles = browser.getWindowHandles();
+//		System.out.println(handles);
+//
+//		for (String handle1 : browser.getWindowHandles()) {
+//
+//			System.out.println(handle1);
+//
+//			browser.switchTo().window(handle1);
+//
+//		}
 
 		System.out.println(browser.getTitle());
 
@@ -1447,7 +1666,21 @@ public class HomePage extends Browser {
 			System.out
 					.println("Footer-Return and Exchange Link is not navigating to corresponding Page. Case Failed");
 		}
-
+		Thread.sleep(2000);
+		// click("id=contentImage_1_HeaderStoreLogo_Content");
+		 String parentWindow = browser.getWindowHandle();
+		  Set<String> handles =  browser.getWindowHandles();
+		  for(String windowHandle  : handles)
+		  {
+		      if(!windowHandle.equals(parentWindow))
+		     {
+		       browser.switchTo().window(windowHandle);
+		       String childWindowTitle = getTitle();
+		       System.out.print(childWindowTitle);
+		       browser.close(); 
+		       browser.switchTo().window(parentWindow);
+		       }
+		  }
 	}
 	
 	//CC_HP_053 - Return an Item Footer
@@ -1456,7 +1689,7 @@ public class HomePage extends Browser {
 
 		//click("xpath=//a[@href='/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
 		if (findTheElement(
-				 "xpath=//input[@value='SUBSCRIBE']")
+				 "xpath=//div[3]/div/div[2]/ul/li[5]/a")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Return An Item functionality Verification",
 						"Home Page_Footer - Return An Item functionality Verification Displayed - For Verify Home Page_Footer - Return An Item functionality Verification");
@@ -1464,7 +1697,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Home Page_Footer - Return An Item functionality Verification");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href='/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
+				click("xpath=//div[3]/div/div[2]/ul/li[5]/a");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Return An Item functionality Verification",
@@ -1477,16 +1710,16 @@ public class HomePage extends Browser {
 
 		Thread.sleep(2000);
 
-		java.util.Set<String> handles = browser.getWindowHandles();
-		System.out.println(handles);
-
-		for (String handle1 : browser.getWindowHandles()) {
-
-			System.out.println(handle1);
-
-			browser.switchTo().window(handle1);
-
-		}
+//		java.util.Set<String> handles = browser.getWindowHandles();
+//		System.out.println(handles);
+//
+//		for (String handle1 : browser.getWindowHandles()) {
+//
+//			System.out.println(handle1);
+//
+//			browser.switchTo().window(handle1);
+//
+//		}
 
 		System.out.println(browser.getTitle());
 
@@ -1500,7 +1733,21 @@ public class HomePage extends Browser {
 			System.out
 					.println("Footer-Return an ItemLink is not navigating to corresponding Page. Case Failed");
 		}
-
+		Thread.sleep(2000);
+		 //click("id=contentImage_1_HeaderStoreLogo_Content");
+		String parentWindow = browser.getWindowHandle();
+		  Set<String> handles =  browser.getWindowHandles();
+		  for(String windowHandle  : handles)
+		  {
+		      if(!windowHandle.equals(parentWindow))
+		     {
+		       browser.switchTo().window(windowHandle);
+		       String childWindowTitle = getTitle();
+		       System.out.print(childWindowTitle);
+		       browser.close(); 
+		       browser.switchTo().window(parentWindow);
+		       }
+		  }
 	}
 	
 	//CC_HP_053 - Return an Item Footer
@@ -1510,7 +1757,7 @@ public class HomePage extends Browser {
 		//click("xpath=//a[@href='/en/shop/contact-us']");
 		
 		if (findTheElement(
-				 "xpath=//a[@href='/en/shop/contact-us']")
+				 "xpath=//div[3]/div/div[2]/ul/li[6]/a")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Contact Us functionality Verification",
 						"Home Page_Footer - Contact Us functionality Verification Displayed - For Verify Home Page_Footer - Contact Us functionality Verification");
@@ -1518,7 +1765,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Home Page_Footer - Contact Us functionality Verification");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href='/en/shop/contact-us']");
+				click("xpath=//div[3]/div/div[2]/ul/li[6]/a");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Contact Us functionality Verification",
@@ -1531,16 +1778,16 @@ public class HomePage extends Browser {
 
 		Thread.sleep(3000);
 
-		java.util.Set<String> handles = browser.getWindowHandles();
-		System.out.println(handles);
-
-		for (String handle1 : browser.getWindowHandles()) {
-
-			System.out.println(handle1);
-
-			browser.switchTo().window(handle1);
-
-		}
+//		java.util.Set<String> handles = browser.getWindowHandles();
+//		System.out.println(handles);
+//
+//		for (String handle1 : browser.getWindowHandles()) {
+//
+//			System.out.println(handle1);
+//
+//			browser.switchTo().window(handle1);
+//
+//		}
 
 		System.out.println(browser.getTitle());
 
@@ -1554,6 +1801,21 @@ public class HomePage extends Browser {
 			System.out
 					.println("Footer-Contact Us Link is not navigating to corresponding Page. Case Failed");
 		}
+		Thread.sleep(2000);
+		// click("id=contentImage_1_HeaderStoreLogo_Content");
+		String parentWindow = browser.getWindowHandle();
+		  Set<String> handles =  browser.getWindowHandles();
+		  for(String windowHandle  : handles)
+		  {
+		      if(!windowHandle.equals(parentWindow))
+		     {
+		       browser.switchTo().window(windowHandle);
+		       String childWindowTitle = getTitle();
+		       System.out.print(childWindowTitle);
+		       browser.close(); 
+		       browser.switchTo().window(parentWindow);
+		       }
+		  }
 
 	}
 	
@@ -1563,7 +1825,7 @@ public class HomePage extends Browser {
 
 		//click("xpath=//a[@href='/en/shop/help']");
 		if (findTheElement(
-				 "xpath=//a[@href='/en/shop/help']")
+				 "xpath=//div[3]/div/div[2]/ul/li[7]/a")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Help functionality Verification",
 						"Home Page_Footer - Help functionality Verification Displayed - For Verify Home Page_Footer - Help functionality Verification");
@@ -1571,7 +1833,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Home Page_Footer - Help functionality Verification");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href='/en/shop/help']");
+				click("xpath=//div[3]/div/div[2]/ul/li[7]/a");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Help functionality Verification",
@@ -1584,16 +1846,16 @@ public class HomePage extends Browser {
 
 		Thread.sleep(2000);
 
-		java.util.Set<String> handles = browser.getWindowHandles();
-		System.out.println(handles);
-
-		for (String handle1 : browser.getWindowHandles()) {
-
-			System.out.println(handle1);
-
-			browser.switchTo().window(handle1);
-
-		}
+//		java.util.Set<String> handles = browser.getWindowHandles();
+//		System.out.println(handles);
+//
+//		for (String handle1 : browser.getWindowHandles()) {
+//
+//			System.out.println(handle1);
+//
+//			browser.switchTo().window(handle1);
+//
+//		}
 
 		System.out.println(browser.getTitle());
 
@@ -1607,6 +1869,21 @@ public class HomePage extends Browser {
 			System.out
 					.println("Footer-Help is not navigating to corresponding Page. Case Failed");
 		}
+		Thread.sleep(2000);
+		// click("id=contentImage_1_HeaderStoreLogo_Content");
+		String parentWindow = browser.getWindowHandle();
+		  Set<String> handles =  browser.getWindowHandles();
+		  for(String windowHandle  : handles)
+		  {
+		      if(!windowHandle.equals(parentWindow))
+		     {
+		       browser.switchTo().window(windowHandle);
+		       String childWindowTitle = getTitle();
+		       System.out.print(childWindowTitle);
+		       browser.close(); 
+		       browser.switchTo().window(parentWindow);
+		       }
+		  }
 
 	}
 	//CC_HP_055 - Customer services
@@ -1615,7 +1892,7 @@ public class HomePage extends Browser {
 
 		//click("xpath=//a[@href='/en/shop/contact-us']");
 		if (findTheElement(
-				 "xpath=//a[@href='/en/shop/contact-us']")
+				 "xpath=//div[3]/div/div[3]/ul/li/a")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Customer Services functionality Verification",
 						"Home Page_Footer - Customer Services functionality Verification Displayed - For Verify Home Page_Footer - Customer Services functionality Verification");
@@ -1623,7 +1900,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Home Page_Footer - Customer Services functionality Verification");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//a[@href='/en/shop/contact-us']");
+				click("xpath=//div[3]/div/div[3]/ul/li/a");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Home Page_Footer - Customer Services functionality Verification",
@@ -1636,16 +1913,16 @@ public class HomePage extends Browser {
 
 		Thread.sleep(2000);
 
-		java.util.Set<String> handles = browser.getWindowHandles();
-		System.out.println(handles);
-
-		for (String handle1 : browser.getWindowHandles()) {
-
-			System.out.println(handle1);
-
-			browser.switchTo().window(handle1);
-
-		}
+//		java.util.Set<String> handles = browser.getWindowHandles();
+//		System.out.println(handles);
+//
+//		for (String handle1 : browser.getWindowHandles()) {
+//
+//			System.out.println(handle1);
+//
+//			browser.switchTo().window(handle1);
+//
+//		}
 
 		System.out.println(browser.getTitle());
 
@@ -1659,6 +1936,8 @@ public class HomePage extends Browser {
 			System.out
 					.println("Footer-Customer Services is not navigating to corresponding Page. Case Failed");
 		}
+		Thread.sleep(2000);
+		 click("id=contentImage_1_HeaderStoreLogo_Content");
 
 	}
 	 
@@ -1668,7 +1947,7 @@ public class HomePage extends Browser {
 
 			//click("xpath=//a[@href='/en/shop/protectionplans']");
 			if (findTheElement(
-					 "xpath=//a[@href='/en/shop/protectionplans']")
+					 "xpath=//div[3]/div/div[3]/ul/li[2]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Protection Plan functionality Verification",
 							"Home Page_Footer - Protection Plan functionality Verification Displayed - For Verify Home Page_Footer - Protection Plan functionality Verification");
@@ -1676,7 +1955,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Protection Plan functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shop/protectionplans']");
+					click("xpath=//div[3]/div/div[3]/ul/li[2]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Protection Plan functionality Verification",
@@ -1689,16 +1968,16 @@ public class HomePage extends Browser {
 
 			Thread.sleep(2000);
 
-			java.util.Set<String> handles = browser.getWindowHandles();
-			System.out.println(handles);
-
-			for (String handle1 : browser.getWindowHandles()) {
-
-				System.out.println(handle1);
-
-				browser.switchTo().window(handle1);
-
-			}
+//			java.util.Set<String> handles = browser.getWindowHandles();
+//			System.out.println(handles);
+//
+//			for (String handle1 : browser.getWindowHandles()) {
+//
+//				System.out.println(handle1);
+//
+//				browser.switchTo().window(handle1);
+//
+//			}
 
 			System.out.println(browser.getTitle());
 
@@ -1712,6 +1991,21 @@ public class HomePage extends Browser {
 				System.out
 						.println("Footer-Protection Plan link is not navigating to corresponding Page. Case Failed");
 			}
+			Thread.sleep(2000);
+			 //click("id=contentImage_1_HeaderStoreLogo_Content");
+			String parentWindow = browser.getWindowHandle();
+			  Set<String> handles =  browser.getWindowHandles();
+			  for(String windowHandle  : handles)
+			  {
+			      if(!windowHandle.equals(parentWindow))
+			     {
+			       browser.switchTo().window(windowHandle);
+			       String childWindowTitle = getTitle();
+			       System.out.print(childWindowTitle);
+			       browser.close(); 
+			       browser.switchTo().window(parentWindow);
+			       }
+			  }
 
 		}
 		//CC_HP_057 - Trade In Program
@@ -1720,7 +2014,7 @@ public class HomePage extends Browser {
 
 					//click("xpath=//a[@href='/en/shop/tradeinprogram']");
 					if (findTheElement(
-							 "xpath=//a[@href='/en/shop/tradeinprogram']")
+							 "xpath=//div[3]/div/div[3]/ul/li[3]/a")
 								.isDisplayed()) {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Trade In Program functionality Verification",
 									"Home Page_Footer - Trade In Program functionality Verification Displayed - For Verify Home Page_Footer - Trade In Program functionality Verification");
@@ -1728,7 +2022,7 @@ public class HomePage extends Browser {
 							rpt.Category("CC_Home Page - Verify Home Page_Footer - Trade In Program functionality Verification");
 							String path = rpt.CaptureScreen(browser, "ValidMessage");
 							rpt.imgPathPass(path);
-							click("xpath=//a[@href='/en/shop/tradeinprogram']");
+							click("xpath=//div[3]/div/div[3]/ul/li[3]/a");
 
 						} else {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Trade In Program functionality Verification",
@@ -1741,16 +2035,16 @@ public class HomePage extends Browser {
 
 					Thread.sleep(2000);
 
-					java.util.Set<String> handles = browser.getWindowHandles();
-					System.out.println(handles);
-
-					for (String handle1 : browser.getWindowHandles()) {
-
-						System.out.println(handle1);
-
-						browser.switchTo().window(handle1);
-
-					}
+//					java.util.Set<String> handles = browser.getWindowHandles();
+//					System.out.println(handles);
+//
+//					for (String handle1 : browser.getWindowHandles()) {
+//
+//						System.out.println(handle1);
+//
+//						browser.switchTo().window(handle1);
+//
+//					}
 
 					System.out.println(browser.getTitle());
 
@@ -1764,6 +2058,21 @@ public class HomePage extends Browser {
 						System.out
 								.println("Footer-Trade-In Program Link is not navigating to corresponding Page. Case Failed");
 					}
+					Thread.sleep(2000);
+					// click("id=contentImage_1_HeaderStoreLogo_Content");
+					String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow);
+					       }
+					  }
 
 				}
 				
@@ -1773,7 +2082,7 @@ public class HomePage extends Browser {
 
 					//click("xpath=//a[@href='/en/shop/productrecalls']");
 					if (findTheElement(
-							 "xpath=//a[@href='/en/shop/productrecalls']")
+							 "xpath=//div[3]/div/div[3]/ul/li[4]/a")
 								.isDisplayed()) {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Product Recalls functionality Verification",
 									"Home Page_Footer - Product Recalls functionality Verification Displayed - For Verify Home Page_Footer - Product Recalls functionality Verification");
@@ -1781,7 +2090,7 @@ public class HomePage extends Browser {
 							rpt.Category("CC_Home Page - Verify Home Page_Footer - Product Recalls functionality Verification");
 							String path = rpt.CaptureScreen(browser, "ValidMessage");
 							rpt.imgPathPass(path);
-							click("xpath=//a[@href='/en/shop/productrecalls']");
+							click("xpath=//div[3]/div/div[3]/ul/li[4]/a");
 
 						} else {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Product Recalls functionality Verification",
@@ -1794,16 +2103,16 @@ public class HomePage extends Browser {
 
 					Thread.sleep(2000);
 
-					java.util.Set<String> handles = browser.getWindowHandles();
-					System.out.println(handles);
-
-					for (String handle1 : browser.getWindowHandles()) {
-
-						System.out.println(handle1);
-
-						browser.switchTo().window(handle1);
-
-					}
+//					java.util.Set<String> handles = browser.getWindowHandles();
+//					System.out.println(handles);
+//
+//					for (String handle1 : browser.getWindowHandles()) {
+//
+//						System.out.println(handle1);
+//
+//						browser.switchTo().window(handle1);
+//
+//					}
 
 					System.out.println(browser.getTitle());
 
@@ -1817,6 +2126,21 @@ public class HomePage extends Browser {
 						System.out
 								.println("Footer-Product Recalls Link is not navigating to corresponding Page. Case Failed");
 					}
+					Thread.sleep(2000);
+					// click("id=contentImage_1_HeaderStoreLogo_Content");
+					String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow);
+					       }
+					  }
 
 				}
 				
@@ -1827,7 +2151,7 @@ public class HomePage extends Browser {
 					//click("xpath=//a[@href='/en/shop/privacy-policy']");
 					
 					if (findTheElement(
-							 "xpath=//a[@href='/en/shop/privacy-policy']")
+							 "xpath=//div[3]/div/div[3]/ul/li[5]/a")
 								.isDisplayed()) {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Privacy and Security functionality Verification",
 									"Home Page_Footer - Privacy and Security functionality Verification Displayed - For Verify Home Page_Footer - Privacy and Security functionality Verification");
@@ -1835,7 +2159,7 @@ public class HomePage extends Browser {
 							rpt.Category("CC_Home Page - Verify Home Page_Footer - Privacy and Security functionality Verification");
 							String path = rpt.CaptureScreen(browser, "ValidMessage");
 							rpt.imgPathPass(path);
-							click("xpath=//a[@href='/en/shop/privacy-policy']");
+							click("xpath=//div[3]/div/div[3]/ul/li[5]/a");
 						} else {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Privacy and Security functionality Verification",
 									" Home Page_Footer - Privacy and Security functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Privacy and Security functionality Verification");
@@ -1847,16 +2171,16 @@ public class HomePage extends Browser {
 
 					Thread.sleep(2000);
 
-					java.util.Set<String> handles = browser.getWindowHandles();
-					System.out.println(handles);
-
-					for (String handle1 : browser.getWindowHandles()) {
-
-						System.out.println(handle1);
-
-						browser.switchTo().window(handle1);
-
-					}
+//					java.util.Set<String> handles = browser.getWindowHandles();
+//					System.out.println(handles);
+//
+//					for (String handle1 : browser.getWindowHandles()) {
+//
+//						System.out.println(handle1);
+//
+//						browser.switchTo().window(handle1);
+//
+//					}
 
 					System.out.println(browser.getTitle());
 
@@ -1870,6 +2194,21 @@ public class HomePage extends Browser {
 						System.out
 								.println("Footer-Privacy And Security Link is not navigating to corresponding Page. Case Failed");
 					}
+					Thread.sleep(2000);
+					// click("id=contentImage_1_HeaderStoreLogo_Content");
+					String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow);
+					       }
+					  }
 
 				}
 				
@@ -1880,7 +2219,7 @@ public class HomePage extends Browser {
 
 					//click("xpath=//a[@href='/en/shop/feedback']");
 					if (findTheElement(
-							 "xpath=//a[@href='/en/shop/feedback']")
+							 "xpath=//div[3]/div/div[3]/ul/li[6]/a")
 								.isDisplayed()) {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Feedback functionality Verification",
 									"Home Page_Footer - Feedback functionality Verification Displayed - For Verify Home Page_Footer - Feedback functionality Verification");
@@ -1888,7 +2227,7 @@ public class HomePage extends Browser {
 							rpt.Category("CC_Home Page - Verify Home Page_Footer - Feedback functionality Verification");
 							String path = rpt.CaptureScreen(browser, "ValidMessage");
 							rpt.imgPathPass(path);
-							click("xpath=//a[@href='/en/shop/feedback']");
+							click("xpath=//div[3]/div/div[3]/ul/li[6]/a");
 
 						} else {
 							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Feedback functionality Verification",
@@ -1901,16 +2240,16 @@ public class HomePage extends Browser {
 
 					Thread.sleep(2000);
 
-					java.util.Set<String> handles = browser.getWindowHandles();
-					System.out.println(handles);
-
-					for (String handle1 : browser.getWindowHandles()) {
-
-						System.out.println(handle1);
-
-						browser.switchTo().window(handle1);
-
-					}
+//					java.util.Set<String> handles = browser.getWindowHandles();
+//					System.out.println(handles);
+//
+//					for (String handle1 : browser.getWindowHandles()) {
+//
+//						System.out.println(handle1);
+//
+//						browser.switchTo().window(handle1);
+//
+//					}
 
 					System.out.println(browser.getTitle());
 
@@ -1924,9 +2263,121 @@ public class HomePage extends Browser {
 						System.out
 								.println("Footer-Feedback Link is not navigating to corresponding Page. Case Failed");
 					}
+					Thread.sleep(2000);
+					 click("id=contentImage_1_HeaderStoreLogo_Content");
 
 				}
+				public void Installations()throws Exception
+				{
+					if (findTheElement(
+							 "xpath=(//a[contains(text(),'Installations')])[2]")
+								.isDisplayed()) {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Installations functionality Verification",
+									"Home Page_Footer - Installations functionality Verification Displayed - For Verify Home Page_Footer - Installations functionality Verification");
+							rpt.Pass("Home Page_Footer - Installations functionality Verification Displayed - For Verify Home Page_Footer - Installations functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Installations functionality Verification");
+							String path = rpt.CaptureScreen(browser, "ValidMessage");
+							rpt.imgPathPass(path);
+							click("xpath=(//a[contains(text(),'Installations')])[2]");
+
+						} else {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Installations functionality Verification",
+									" Home Page_Footer - Installations functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Installations functionality Verification");
+							rpt.Fail("Home Page_Footer - Installations functionality Verification is NOT Displayed - For Verify Home Page_Footer - Installations functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Installations functionality Verification");
+							String path = rpt.CaptureScreen(browser, "InvalidMessage");
+							rpt.imgPathFail(path);
+						}
+					Thread.sleep(2000);
+					// click("id=contentImage_1_HeaderStoreLogo_Content");
+					String parentWindow = browser.getWindowHandle();
+					  Set<String> handles =  browser.getWindowHandles();
+					  for(String windowHandle  : handles)
+					  {
+					      if(!windowHandle.equals(parentWindow))
+					     {
+					       browser.switchTo().window(windowHandle);
+					       String childWindowTitle = getTitle();
+					       System.out.print(childWindowTitle);
+					       browser.close(); 
+					       browser.switchTo().window(parentWindow);
+					       }
+					  }
+				}
+				public void AboutUs()throws Exception
+				{
+					if (findTheElement(
+							 "xpath=//div[3]/div/div[4]/ul/li/a")
+								.isDisplayed()) {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - About Us functionality Verification",
+									"Home Page_Footer - About Us functionality Verification Displayed - For Verify Home Page_Footer - About Us functionality Verification");
+							rpt.Pass("Home Page_Footer - About Us functionality Verification Displayed - For Verify Home Page_Footer - About Us functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - About Us functionality Verification");
+							String path = rpt.CaptureScreen(browser, "ValidMessage");
+							rpt.imgPathPass(path);
+							click("xpath=//div[3]/div/div[4]/ul/li/a");
+
+						} else {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - About Us functionality Verification",
+									" Home Page_Footer - About Us functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - About Us functionality Verification");
+							rpt.Fail("Home Page_Footer - About Us functionality Verification is NOT Displayed - For Verify Home Page_Footer - About Us functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - About Us functionality Verification");
+							String path = rpt.CaptureScreen(browser, "InvalidMessage");
+							rpt.imgPathFail(path);
+						}
+					Thread.sleep(2000);
+					 click("id=contentImage_1_HeaderStoreLogo_Content");
+				}
 				
+				public void OurStory()throws Exception
+				{
+					if (findTheElement(
+							 "xpath=//div[3]/div/div[4]/ul/li[2]/a")
+								.isDisplayed()) {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Our Story functionality Verification",
+									"Home Page_Footer - Our Story functionality Verification Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Pass("Home Page_Footer - Our Story functionality Verification Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Our Story functionality Verification");
+							String path = rpt.CaptureScreen(browser, "ValidMessage");
+							rpt.imgPathPass(path);
+							click("xpath=//div[3]/div/div[4]/ul/li[2]/a");
+
+						} else {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Our Story functionality Verification",
+									" Home Page_Footer - Our Story functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Fail("Home Page_Footer - Our Story functionality Verification is NOT Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Our Story functionality Verification");
+							String path = rpt.CaptureScreen(browser, "InvalidMessage");
+							rpt.imgPathFail(path);
+						}
+					Thread.sleep(2000);
+					 click("id=contentImage_1_HeaderStoreLogo_Content");
+				}
+				
+				public void PartnerWithUs()throws Exception
+				{
+					if (findTheElement(
+							 "xpath=//div[3]/div/div[4]/ul/li[4]/a")
+								.isDisplayed()) {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Our Story functionality Verification",
+									"Home Page_Footer - Our Story functionality Verification Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Pass("Home Page_Footer - Our Story functionality Verification Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Our Story functionality Verification");
+							String path = rpt.CaptureScreen(browser, "ValidMessage");
+							rpt.imgPathPass(path);
+							click("xpath=//div[3]/div/div[4]/ul/li[4]/a");
+
+						} else {
+							rpt.createTest("CC - Home Page - Verify Home Page_Footer - Our Story functionality Verification",
+									" Home Page_Footer - Our Story functionality Verification Page is NOT Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Fail("Home Page_Footer - Our Story functionality Verification is NOT Displayed - For Verify Home Page_Footer - Our Story functionality Verification");
+							rpt.Category("CC_Home Page - Verify Home Page_Footer - Our Story functionality Verification");
+							String path = rpt.CaptureScreen(browser, "InvalidMessage");
+							rpt.imgPathFail(path);
+						}
+					Thread.sleep(2000);
+					 click("id=contentImage_1_HeaderStoreLogo_Content");
+				}
 		
 	 //CC_HP_062 Career Footer
 		 
@@ -1936,7 +2387,7 @@ public class HomePage extends Browser {
 			 //click("xpath=//a[@href='/en/shop/careers']");
 			 
 			 if (findTheElement(
-					 "xpath=//a[@href='/en/shop/careers']")
+					 "xpath=//div[3]/div/div[4]/ul/li[3]/a")
 						.isDisplayed()) {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Careers functionality Verification",
 							"Home Page_Footer - Careers functionality Verification Displayed - For Verify Home Page_Footer - Careers functionality Verification");
@@ -1944,7 +2395,7 @@ public class HomePage extends Browser {
 					rpt.Category("CC_Home Page - Verify Home Page_Footer - Careers functionality Verification");
 					String path = rpt.CaptureScreen(browser, "ValidMessage");
 					rpt.imgPathPass(path);
-					click("xpath=//a[@href='/en/shop/careers']");
+					click("xpath=//div[3]/div/div[4]/ul/li[3]/a");
 
 				} else {
 					rpt.createTest("CC - Home Page - Verify Home Page_Footer - Careers functionality Verification",
@@ -1968,6 +2419,8 @@ public class HomePage extends Browser {
 			{
 				System.out.println("Footer-Career Link is not navigating to corresponding Page. Case Failed");
 			}
+			Thread.sleep(2000);
+			 click("id=contentImage_1_HeaderStoreLogo_Content");
 		 }
 		
 			//CC_HP_068 - Twitter Footer
@@ -1997,16 +2450,16 @@ public class HomePage extends Browser {
 
 				Thread.sleep(2000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -2020,6 +2473,21 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-Twitter Link is not navigating to corresponding Page. Case Failed");
 				}
+				Thread.sleep(2000);
+				 //click("id=contentImage_1_HeaderStoreLogo_Content");
+				String parentWindow = browser.getWindowHandle();
+				  Set<String> handles =  browser.getWindowHandles();
+				  for(String windowHandle  : handles)
+				  {
+				      if(!windowHandle.equals(parentWindow))
+				     {
+				       browser.switchTo().window(windowHandle);
+				       String childWindowTitle = getTitle();
+				       System.out.print(childWindowTitle);
+				       browser.close(); 
+				       browser.switchTo().window(parentWindow);
+				       }
+				  }
 
 			}
 			//CC_HP_069 - Facebook Footer
@@ -2029,7 +2497,7 @@ public class HomePage extends Browser {
 				//click("xpath=//a[@href='http://www.facebook.com/CircuitCity-1663290060604757/']");
 				
 				if (findTheElement(
-						 "xpath=//a[@href='http://www.facebook.com/CircuitCity-1663290060604757/']")
+						 "xpath=//div[@id='footerWrapper']/div[4]/div/a[2]")
 							.isDisplayed()) {
 						rpt.createTest("CC - Home Page - Verify Home Page_Footer - Facebook functionality Verification",
 								"Home Page_Footer - Facebook functionality Verification Displayed - For Verify Home Page_Footer - Facebook functionality Verification");
@@ -2037,7 +2505,7 @@ public class HomePage extends Browser {
 						rpt.Category("CC_Home Page - Verify Home Page_Footer - Facebook functionality Verification");
 						String path = rpt.CaptureScreen(browser, "ValidMessage");
 						rpt.imgPathPass(path);
-						click("xpath=//a[@href='http://www.facebook.com/CircuitCity-1663290060604757/']");
+						click("xpath=//div[@id='footerWrapper']/div[4]/div/a[2]");
 
 					} else {
 						rpt.createTest("CC - Home Page - Verify Home Page_Footer - Facebook functionality Verification",
@@ -2050,16 +2518,16 @@ public class HomePage extends Browser {
 
 				Thread.sleep(2000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -2073,6 +2541,20 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-FaceBook Link is not navigating to corresponding Page. Case Failed");
 				}
+				Thread.sleep(2000);
+				String parentWindow = browser.getWindowHandle();
+				  Set<String> handles =  browser.getWindowHandles();
+				  for(String windowHandle  : handles)
+				  {
+				      if(!windowHandle.equals(parentWindow))
+				     {
+				       browser.switchTo().window(windowHandle);
+				       String childWindowTitle = getTitle();
+				       System.out.print(childWindowTitle);
+				       browser.close(); 
+				       browser.switchTo().window(parentWindow);
+				       }
+				  }
 
 			}
 		
@@ -2084,7 +2566,7 @@ public class HomePage extends Browser {
 				//click("xpath=//a[@class='youtube']");
 				
 				if (findTheElement(
-						 "xpath=//a[@class='youtube']")
+						 "xpath=//div[@id='footerWrapper']/div[4]/div/a[3]")
 							.isDisplayed()) {
 						rpt.createTest("CC - Home Page - Verify Home Page_Footer - YouTube functionality Verification",
 								"Home Page_Footer - YouTube functionality Verification Displayed - For Verify Home Page_Footer - YouTube functionality Verification");
@@ -2092,7 +2574,7 @@ public class HomePage extends Browser {
 						rpt.Category("CC_Home Page - Verify Home Page_Footer - YouTube functionality Verification");
 						String path = rpt.CaptureScreen(browser, "ValidMessage");
 						rpt.imgPathPass(path);
-						click("xpath=//a[@class='youtube']");
+						click("xpath=//div[@id='footerWrapper']/div[4]/div/a[3]");
 
 					} else {
 						rpt.createTest("CC - Home Page - Verify Home Page_Footer - YouTube functionality Verification",
@@ -2105,16 +2587,16 @@ public class HomePage extends Browser {
 
 				Thread.sleep(2000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -2128,7 +2610,8 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-YouTube Link is not navigating to corresponding Page. Case Failed");
 				}
-
+				Thread.sleep(2000);
+				browser.navigate().back();
 			}
 
 			//CC_HP_071 - Printerest Footer
@@ -2160,16 +2643,16 @@ public class HomePage extends Browser {
 				
 				Thread.sleep(4000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -2183,7 +2666,21 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-Pinterest Link is not navigating to corresponding Page. Case Failed");
 				}
-
+				Thread.sleep(2000);
+				
+				String parentWindow = browser.getWindowHandle();
+				  Set<String> handles =  browser.getWindowHandles();
+				  for(String windowHandle  : handles)
+				  {
+				      if(!windowHandle.equals(parentWindow))
+				     {
+				       browser.switchTo().window(windowHandle);
+				       String childWindowTitle = getTitle();
+				       System.out.print(childWindowTitle);
+				       browser.close(); 
+				       browser.switchTo().window(parentWindow);
+				       }
+				  }
 			}
 			//CC_HP_072 - Instagram Footer
 			public void HP_InstagramFooter() throws Exception {
@@ -2213,22 +2710,23 @@ public class HomePage extends Browser {
 
 				Thread.sleep(4000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
 				String NewWindowTitle = Browser.getTitle();
 
-				if (NewWindowTitle.equals("Circuit City (@circuitcity) � Instagram photos and videos"))
+				if (NewWindowTitle.equals("Circuit City (@circuitcity) "
+						+ " Instagram photos and videos"))
 				{
 					System.out
 							.println("Footer-InstagramLink is navigating to corresponding Page");
@@ -2236,7 +2734,20 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-Instagram Link is not navigating to corresponding Page. Case Failed");
 				}
-
+				Thread.sleep(2000);
+				String parentWindow = browser.getWindowHandle();
+				  Set<String> handles =  browser.getWindowHandles();
+				  for(String windowHandle  : handles)
+				  {
+				      if(!windowHandle.equals(parentWindow))
+				     {
+				       browser.switchTo().window(windowHandle);
+				       String childWindowTitle = getTitle();
+				       System.out.print(childWindowTitle);
+				       browser.close(); 
+				       browser.switchTo().window(parentWindow);
+				       }
+				  }
 			}	 
 	 
 			//CC_HP_073 - GooglePlus Footer
@@ -2267,16 +2778,16 @@ public class HomePage extends Browser {
 
 				Thread.sleep(4000);
 
-				java.util.Set<String> handles = browser.getWindowHandles();
-				System.out.println(handles);
-
-				for (String handle1 : browser.getWindowHandles()) {
-
-					System.out.println(handle1);
-
-					browser.switchTo().window(handle1);
-
-				}
+//				java.util.Set<String> handles = browser.getWindowHandles();
+//				System.out.println(handles);
+//
+//				for (String handle1 : browser.getWindowHandles()) {
+//
+//					System.out.println(handle1);
+//
+//					browser.switchTo().window(handle1);
+//
+//				}
 
 				System.out.println(browser.getTitle());
 
@@ -2290,16 +2801,69 @@ public class HomePage extends Browser {
 					System.out
 							.println("Footer-Google Plus Link is not navigating to corresponding Page. Case Failed");
 				}
-
+				Thread.sleep(2000);
+				String parentWindow = browser.getWindowHandle();
+				  Set<String> handles =  browser.getWindowHandles();
+				  for(String windowHandle  : handles)
+				  {
+				      if(!windowHandle.equals(parentWindow))
+				     {
+				       browser.switchTo().window(windowHandle);
+				       String childWindowTitle = getTitle();
+				       System.out.print(childWindowTitle);
+				       browser.close(); 
+				       browser.switchTo().window(parentWindow);
+				       }
+				  }
 			}	
 			//CC_75 Featured Product Carousel
 			public void HP_featuredProductsCarosel() throws Exception
 			{
 				Thread.sleep(2000);
-				click("xpath=//a[@id='nextPageButton_4_-3012_3074457345618261104']"); //--Right Click
-				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommckendationWidget_4_-3012_3074457345618261104']"));
-				System.out.println("Number of Element"+a.size());
-			
+//				click("xpath=//a[@id='nextPageButton_4_-3012_3074457345618261104']"); //--Right Click
+//				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommckendationWidget_4_-3012_3074457345618261104']"));
+//				System.out.println("Number of Element"+a.size());
+			 //click("xpath=//div[5]/div/div[3]/a");
+			 if (findTheElement(
+					 "xpath=(//a[contains(@href, '#')])[62]")
+						.isDisplayed()) {
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+							"Home Page_Footer - 5 products is moved to right on clicking right carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Pass("Home Page_Footer - 5 products is moved to right on clicking right carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Category("CC_Home Page - Verify Home Page_Footer");
+					String path = rpt.CaptureScreen(browser, "ValidMessage");
+					rpt.imgPathPass(path);
+					click("xpath=(//a[contains(@href, '#')])[62]");
+
+				} else {
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+							" Home Page_Footer - 5 products NOT moved to right on clicking right carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Fail("Home Page_Footer - 5 products NOT moved to right on clicking right carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Category("CC_Home Page - Verify Home Page_Footer ");
+					String path = rpt.CaptureScreen(browser, "InvalidMessage");
+					rpt.imgPathFail(path);
+				}
+			 
+			 //click("xpath=//div[2]/div/div[5]/div/div/a");
+			 if (findTheElement(
+					 "xpath=(//a[contains(@href, '#')])[61]")
+						.isDisplayed()) {
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+							"Home Page_Footer - 5 products is moved to left on clicking left carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Pass("Home Page_Footer - 5 products is moved to left on clicking left carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Category("CC_Home Page - Verify Home Page_Footer");
+					String path = rpt.CaptureScreen(browser, "ValidMessage");
+					rpt.imgPathPass(path);
+					click("xpath=(//a[contains(@href, '#')])[61]");
+
+				} else {
+					rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+							" Home Page_Footer - 5 products NOT moved to left on clicking left carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Fail("Home Page_Footer - 5 products NOT moved to left on clicking left carosel from featured products section - For Verify Home Page_Footer ");
+					rpt.Category("CC_Home Page - Verify Home Page_Footer ");
+					String path = rpt.CaptureScreen(browser, "InvalidMessage");
+					rpt.imgPathFail(path);
+				}
 				
 				//click("xpath=//a[@id='prevPageButton_4_-3012_3074457345618261104']"); //--Left Click		
 				}
@@ -2307,12 +2871,53 @@ public class HomePage extends Browser {
 			//CC_76 Best Seller Carousel
 			public void HP_BestSellerCarosel() throws Exception
 			{
-				Thread.sleep(2000);
-				click("xpath=//a[@id='nextPageButton_9_-3012_3074457345618261105']");
-				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommendationWidget_4_-3012_3074457345618261104']"));
-				System.out.println("Number of Element"+a.size());
-			
+//				Thread.sleep(2000);
+//				click("xpath=//a[@id='nextPageButton_9_-3012_3074457345618261105']");
+//				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommendationWidget_4_-3012_3074457345618261104']"));
+//				System.out.println("Number of Element"+a.size());
+//			
 				//click("xpath=//a[@id='prevPageButton_9_-3012_3074457345618261105']"); //Left Click
+				 if (findTheElement(
+						 "xpath=(//a[contains(@href, '#')])[100]")
+							.isDisplayed()) {
+						rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+								"Home Page_Footer - 5 products is moved to right on clicking right carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Pass("Home Page_Footer - 5 products is moved to right on clicking right carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Category("CC_Home Page - Verify Home Page_Footer");
+						String path = rpt.CaptureScreen(browser, "ValidMessage");
+						rpt.imgPathPass(path);
+						click("xpath=(//a[contains(@href, '#')])[100]");
+
+					} else {
+						rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+								" Home Page_Footer - 5 products NOT moved to right on clicking right carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Fail("Home Page_Footer - 5 products NOT moved to right on clicking right carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Category("CC_Home Page - Verify Home Page_Footer ");
+						String path = rpt.CaptureScreen(browser, "InvalidMessage");
+						rpt.imgPathFail(path);
+					}
+				 
+				 //click("xpath=//div[2]/div/div[5]/div/div/a");
+				 if (findTheElement(
+						 "xpath=(//a[contains(@href, '#')])[99]")
+							.isDisplayed()) {
+						rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+								"Home Page_Footer - 5 products is moved to left on clicking left carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Pass("Home Page_Footer - 5 products is moved to left on clicking left carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Category("CC_Home Page - Verify Home Page_Footer");
+						String path = rpt.CaptureScreen(browser, "ValidMessage");
+						rpt.imgPathPass(path);
+						click("xpath=(//a[contains(@href, '#')])[99]");
+
+					} else {
+						rpt.createTest("CC - Home Page - Verify Home Page_Footer",
+								" Home Page_Footer - 5 products NOT moved to left on clicking left carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Fail("Home Page_Footer - 5 products NOT moved to left on clicking left carosel from Best Seller section - For Verify Home Page_Footer ");
+						rpt.Category("CC_Home Page - Verify Home Page_Footer ");
+						String path = rpt.CaptureScreen(browser, "InvalidMessage");
+						rpt.imgPathFail(path);
+					}
+					
 				
 			}
 			

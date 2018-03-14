@@ -85,7 +85,7 @@ public class BrowserFactory {
 			remoteDriver = new FirefoxDriver(profile);
 		} else {
 			extent = Report.GetExtent();
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/geckodriver.exe");
+			System.setProperty("browser.gecko.driver", System.getProperty("user.dir")+"/geckodriver.exe");
 			//System.setProperty("webdriver.gecko.driver", "C:\\Automation\\geckodriver.exe");
 			DesiredCapabilities dc = new DesiredCapabilities();
 			dc.setAcceptInsecureCerts(true);
@@ -119,7 +119,7 @@ public class BrowserFactory {
 				.setCapability(
 						InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
 						true);
-		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/IEDriverServer.exe");
+		System.setProperty("browser.IE.driver", System.getProperty("user.dir")+"/IEDriverServer.exe");
 		//System.setProperty("webdriver.ie.driver",
 				//"C:\\Automation\\IEDriverServer.exe");
 		remoteDriver = new InternetExplorerDriver(capabilities);
@@ -143,7 +143,7 @@ public class BrowserFactory {
 			System.setProperty("webdriver.chrome.driver",
 					"src/main/resources/browser_exe/chrome/chromedriver");
 		} else {
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/chromedriver.exe");
+			System.setProperty("browser.chrome.driver", System.getProperty("user.dir")+"/chromedriver.exe");
 //			System.setProperty("webdriver.chrome.driver",
 //					"C:\\Automation\\chromedriver.exe");
 		}		

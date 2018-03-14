@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 public class shoppingCart extends Browser
 {
 	Report rpt = new Report();
+	JavascriptExecutor jse = (JavascriptExecutor)browser;
+	WebElement Element;
 	//Browser br  = new Browser();
 	//WebDriver wd;
 	
@@ -93,7 +95,7 @@ public class shoppingCart extends Browser
 		Thread.sleep(5000);
 		//click("id=CatalogEntryProdImg_3074457345616727788"); 
 		Thread.sleep(5000);
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Shopping Cart - Verify Mini Cart", "Product Detail Page is Displayed - For Verify Mini Cart");
 	         rpt.Pass("Product Detail Page is Displayed - For Verify Mini Cart");
@@ -101,7 +103,7 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
 	 		//click("xpath=//a[contains(text(),'Asus')]"); 
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -368,7 +370,7 @@ public class shoppingCart extends Browser
 		Thread.sleep(5000);
 		//click("id=CatalogEntryProdImg_3074457345616727788"); 
 		Thread.sleep(5000);
-		if(findTheElement("xpath=//li[2]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Shopping Cart - Verify View Cart", "Product Detail Page is Displayed - For Verify View Cart");
 	         rpt.Pass("Product Detail Page is Displayed - For Verify View Cart");
@@ -376,7 +378,7 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
 	 		//click("xpath=//a[contains(text(),'Panasonic')]"); 
-	         click("xpath=//li[2]/.//div[@class='product_name']");
+	         click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -437,7 +439,7 @@ public class shoppingCart extends Browser
 		Thread.sleep(5000);
 		//click("id=CatalogEntryProdImg_3074457345616727788"); 
 		Thread.sleep(5000);
-		if(findTheElement("xpath=//li[3]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[3]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Shopping Cart - Verify Continue Shopping", "Product Detail Page is Displayed - For Verify Continue Shopping");
 	         rpt.Pass("Product Detail Page is Displayed - For Verify Continue Shopping");
@@ -445,7 +447,7 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
 	 		//click("xpath=//a[contains(text(),'Magic Chef')]"); 
-	         click("xpath=//li[3]/.//div[@class='product_name']");
+	         click("xpath=//div[@class='product_listing_container']//li[3]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -532,10 +534,11 @@ public class shoppingCart extends Browser
 //		scroll.sendKeys(Keys.PAGE_DOWN);
 //		Thread.sleep(5000);
 		Thread.sleep(3000);
-		 WebElement Element = findTheElement("xpath=html/body/div[10]/div/div[3]/div[3]/div/h2");
-	     JavascriptExecutor jse = (JavascriptExecutor)browser;
-	      jse.executeScript("arguments[0].scrollIntoView();", Element);
-	      Thread.sleep(3000);
+//		 WebElement Element = findTheElement("xpath=html/body/div[10]/div/div[3]/div[3]/div/h2");
+//	     JavascriptExecutor jse = (JavascriptExecutor)browser;
+//	      jse.executeScript("arguments[0].scrollIntoView();", Element);
+//	      Thread.sleep(3000);
+		jse.executeScript("window.scrollBy(0,1000)");
 		 
 		 Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Product Image", "//div[2]/div[2]/a/img");
@@ -589,14 +592,14 @@ public class shoppingCart extends Browser
 	{
 		 //click("xpath=.//*[@id='listViewAdd2Cart_3074457345616683129']"); //buy now
 		 Thread.sleep(5000);
-		 if(findTheElement("xpath=//a[contains(text(),'BUY NOW')]").isDisplayed())
+		 if(findTheElement("xpath=//div[@class='accessory '][1]//a[contains(text(),'BUY NOW')]").isDisplayed())
 		 {
 	         rpt.createTest("CC - Shopping Cart - Verify Add To Cart", "Add To Cart Button is Displayed and is functional - For Verify Add To Cart");
 	         rpt.Pass("Add To Cart Button is Displayed and is functional - For Verify Add To Cart");
 	         rpt.Category("CC_Shopping Cart - Verify Add To Cart");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-			 click("xpath=//a[contains(text(),'BUY NOW')]"); //buy now
+			 click("xpath=//div[@class='accessory '][2]//a[contains(text(),'BUY NOW')]"); //buy now
 		 }
 		 else
 		 {
@@ -1637,8 +1640,8 @@ public class shoppingCart extends Browser
 		sendKeys("id=WC_ShippingAddressForm_AddressEntryForm_FormInput_phone1_1",phoneNo);
 		Thread.sleep(2000);
 		click("id=summaryButton"); //continue
-		
-		
+		Thread.sleep(3000);
+		click("xpath=//a[contains(text(),'Back to Cart')]"); //back to cart
 		
 		
 	}

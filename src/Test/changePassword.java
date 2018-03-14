@@ -29,7 +29,7 @@ public class changePassword extends Browser
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']", oldpassword);
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_2']");
 		Thread.sleep(5000);
-		click("xpath=.//*[@id='Header_GlobalLogin_loggedInDropdown']/div/div/div/div[3]/div[1]/div[1]/a"); //my acc
+		click("xpath=//a[contains(text(),'My Account')]"); //my acc
 
 		//accountSummary();
 		accountPage();

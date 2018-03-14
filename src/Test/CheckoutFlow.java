@@ -46,10 +46,11 @@ public class CheckoutFlow extends Browser
 		click("link=Audio");//categories
 		Thread.sleep(2000);
 		//click("xpath=//a[contains(text(),'Creative')]"); //product
-		click("xpath=//li[1]/.//div[@class='product_image']");
+		//click("xpath=//li[1]/.//div[@class='product_image']");
+		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		Thread.sleep(8000);
 		click("id=add2CartBtn");//add to cart
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		click("xpath=//a[@id='WC_BreadCrumbTrailDisplay_links_2a']/div[2]"); //continue shopping
 		Thread.sleep(2000);
 		click("id=allDepartmentsButton");
@@ -60,7 +61,8 @@ public class CheckoutFlow extends Browser
 //		     JavascriptExecutor jse = (JavascriptExecutor)browser;
 //		      jse.executeScript("arguments[0].scrollIntoView();", Element);
 //		      Thread.sleep(3000);
-		click("xpath=//li[2]/.//div[@class='product_image']"); //product
+		//click("xpath=//li[2]/.//div[@class='product_image']"); //product
+		click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']");
 		Thread.sleep(8000);
 		click("id=add2CartBtn");//add to cart
 		Thread.sleep(2000);
@@ -70,7 +72,8 @@ public class CheckoutFlow extends Browser
 		Thread.sleep(2000);
 		click("link=Cell Phones");//categories
 		Thread.sleep(4000);
-		click("xpath=//li[3]/.//div[@class='product_image']"); //product
+		//click("xpath=//li[3]/.//div[@class='product_image']"); //product
+		click("xpath=//div[@class='product_listing_container']//li[3]/.//div[@class='product_name']");
 		Thread.sleep(8000);
 		click("id=add2CartBtn");//add to cart
 		Thread.sleep(2000);
@@ -80,7 +83,8 @@ public class CheckoutFlow extends Browser
 		Thread.sleep(2000);
 		click("link=Movies & Music");//categories
 		Thread.sleep(4000);
-		click("xpath=//li[4]/.//div[@class='product_image']"); //product
+		//click("xpath=//li[4]/.//div[@class='product_image']"); //product
+		click("xpath=//div[@class='product_listing_container']//li[4]/.//div[@class='product_name']");
 		Thread.sleep(8000);
 		click("id=add2CartBtn");//add to cart
 		Thread.sleep(2000);
@@ -89,13 +93,13 @@ public class CheckoutFlow extends Browser
 		//click("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div[2]/div/a/b"); //save for later
 		if(findTheElement("xpath=//b[contains(text(),'Save for Later')]").isDisplayed())
 	        {
-				//System.out.println("Mini Cart Button displayed");
+//				//System.out.println("Mini Cart Button displayed");
 				rpt.createTest("CIRCUIT CITY - CHECKOUT", "Product is moved to Save For Later from Cart");
 		         rpt.Pass("Product is moved to Save For Later from Cart");
 		         rpt.Category("CIRCUIT CITY - CHECKOUT");
 		         String path = rpt.CaptureScreen(browser, "ValidMessage");
 		         rpt.imgPathPass(path);
-			    //click("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div[2]/div/a/b"); //save for later
+//			    //click("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div[2]/div/a/b"); //save for later
 		         click("xpath=//b[contains(text(),'Save for Later')]");
 			  }
 			else
@@ -113,7 +117,7 @@ public class CheckoutFlow extends Browser
 		         jse.executeScript("arguments[0].scrollIntoView();", Element);
 		         Thread.sleep(3000);
 		if(findTheElement("xpath=//span[contains(text(),'Move to Cart')]").isDisplayed())
-        {
+       {
 			//System.out.println("Mini Cart Button displayed");
 			rpt.createTest("CIRCUIT CITY - CHECKOUT", "Product is moved to Cart from Save For Later");
 	         rpt.Pass("Product is moved to Cart from Save For Later");
@@ -121,13 +125,13 @@ public class CheckoutFlow extends Browser
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
 		    //click("css=div.blue"); //save for later
-	         //click("xpath=//div[@id='ShopCartPagingDisplay']/div[2]/div/div[2]/div/div[2]/div/div/div/div/a/span");
-	         //click("xpath=.//*[@id='WC_ShopCartDisplay_div_6']/div[2]/div[1]/div[2]/div/div[2]/div/div/div/div/a[1]/span");
+//	         //click("xpath=//div[@id='ShopCartPagingDisplay']/div[2]/div/div[2]/div/div[2]/div/div/div/div/a/span");
+//	         //click("xpath=.//*[@id='WC_ShopCartDisplay_div_6']/div[2]/div[1]/div[2]/div/div[2]/div/div/div/div/a[1]/span");
 	         click("xpath=//span[contains(text(),'Move to Cart')]");
 		  }
-		else
+	else
 		{
-			//System.out.println("Mini Cart Button NOT displayed");
+//			//System.out.println("Mini Cart Button NOT displayed");
 			 rpt.createTest("CIRCUIT CITY - CHECKOUT", "Product NOT moved to Cart from Save For Later");
 	         rpt.Fail("Product NOT moved to Cart from Save For Later");
 	         rpt.Category("CIRCUIT CITY - CHECKOUT");

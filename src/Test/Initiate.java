@@ -20,8 +20,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
-
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -106,16 +104,32 @@ public class Initiate {
 				chkHomePage();
 			}
 			else if("CheckoutFlow".equalsIgnoreCase(Module)){
-				chk_CheckoutFlow();
+				chkCheckoutFlow();
 			}
-			else if("Modules".equalsIgnoreCase(Module))
-			{
+			else if("Promotions".equalsIgnoreCase(Module)){
+				chkPromotions();
+			}
+			else if("productComparison".equalsIgnoreCase(Module)){
+				chkproductComparison();
+			}
+			else if("CustomRooms".equalsIgnoreCase(Module)){
+				chkCustomRooms();
+			}
+			else if("Modules".equalsIgnoreCase(Module)){
+				chkHomePage();
 				checkRegistration();
+				chkSignIn();
+				chkSearch();
+				
 		      	chkAddress_Book();
 				chkPersonalInfo();
-				chkSignIn();
-				chkchangePassword();
+				//chkchangePassword(); //no access to write in notepad line no 549
 				chkWishList();
+				
+				chkshoppingCart();
+				chkCheckoutFlow();
+				chkPromotions();
+				chkproductComparison();
 				chksavedPaymentMehods();
 			}
 			
@@ -137,11 +151,26 @@ public class Initiate {
 				chksavedPaymentMehods();
 				chkshoppingCart();
 				chkplpModule();
-				
+				chkPromotions();
 			}	
 		}
 	}
-	public void chk_CheckoutFlow()throws Exception
+	public void chkCustomRooms()throws Exception
+	{
+		CustomRooms sc=new CustomRooms();
+		sc.executeAll();
+	}
+	public void chkproductComparison()throws Exception
+	{
+		productComparison sc=new productComparison();
+		sc.executeAll();
+	}
+	public void chkPromotions()throws Exception
+	{
+		Promotions sc=new Promotions();
+		sc.executeAll();
+	}
+	public void chkCheckoutFlow()throws Exception
 	{
 		CheckoutFlow sc=new CheckoutFlow();
 		sc.executeAll();

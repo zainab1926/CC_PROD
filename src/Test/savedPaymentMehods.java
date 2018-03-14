@@ -253,8 +253,8 @@ public class savedPaymentMehods extends Browser
 			Select select = new Select(monthdd);
 			select.selectByVisibleText("2022");
 			browser.switchTo().defaultContent();
-			
-			   click("id=preferred_billing_select-button");
+			Thread.sleep(3000);
+			  // click("id=preferred_billing_select-button");
 		Thread.sleep(5000);
 //		WebElement sc = findTheElement("xpath=//*[@id='ui-id-11']");
 //		sc.sendKeys(Keys.PAGE_DOWN);
@@ -265,14 +265,29 @@ public class savedPaymentMehods extends Browser
 //		 WebElement Element = findTheElement("css=div.ui-menu-item-wrapper");
 //		   JavascriptExecutor jse = (JavascriptExecutor)browser;
 //		       jse.executeScript("arguments[0].scrollIntoView();", Element);
-		   click("xpath=//ul[@id='preferred_billing_select-menu']/li[2]/div");//selecting address
+		 //  click("xpath=//ul[@id='preferred_billing_select-menu']/li[2]/div");//selecting address
+		  // Thread.sleep(2000);
+		  // click("id=submit");
+		  click("xpath=//*[@id='preferred_billing_select-button']"); //prefered address dropdown
+		   Thread.sleep(3000);
+		    sendKeys("xpath=//*[@id='preferred_billing_select-button']", "Add");
+		    Robot robot = new Robot();
+		       robot.keyPress(KeyEvent.VK_ENTER);
+		       robot.keyRelease(KeyEvent.VK_ENTER);
 		   Thread.sleep(2000);
-		   click("id=submit");
-		   Thread.sleep(2000);
-//		   if(findTheElement("link=EDIT").isDisplayed())
-		   String savedCardText = "Edit" ;
-		   String savedCard = getText("link=EDIT");
-		   if(savedCard.equals(savedCardText))
+		   sendKeys("id=WC_QuickCheckoutAddressForm_NameEntryForm_FormInput_lastName_1",name);
+		     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_address1_1",address);
+		     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_city_1",city);
+		     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_state_1",state);
+		     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_zipCode_1",zipCode);
+		     sendKeys("id=WC_UserRegistrationAddForm_FormInput_email1_In_Register_1",Logon_ID);
+		     sendKeys("id=WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1",phoneNo);
+		     click("id=submit");
+		     
+		   if(findTheElement("link=EDIT").isDisplayed())
+		   //String savedCardText = "Edit" ;
+		   //String savedCard = getText("link=EDIT");
+			   if(findTheElement("link=EDIT").isDisplayed())
 		     {
 					//System.out.println("Passed");
 					 rpt.createTest("CC_Saved Payment Methods  - Verify Add Cards ", "New Credit Card is added successfully ");
@@ -387,8 +402,9 @@ public class savedPaymentMehods extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
-		Thread.sleep(5000);
-		click("xpath=//a[contains(text(),'Lenovo')]"); //product
+		Thread.sleep(10000);
+		//click("xpath=//a[contains(text(),'Lenovo')]"); //product
+		click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']");
 		Thread.sleep(3000);
 		//click("xpath=//*[@id='productPageAdd2Cart']"); //add to cart
 		if(findTheElement("xpath=//*[@id='add2CartBtn']").isDisplayed())
@@ -448,27 +464,28 @@ public class savedPaymentMehods extends Browser
 	         rpt.imgPathFail(path);
 		 }
 		Thread.sleep(5000);
-		click("xpath=//div[@id='shippingActive']/div/div[6]"); //chckbox for address
+		//click("xpath=//div[@id='shippingActive']/div/div[6]"); //chckbox for address
+		click("xpath=//div[@id='shippingActive']/div/div[2]");
 		Thread.sleep(2000);
 		click("id=summaryButton");
 		Thread.sleep(2000);
-		if (findTheElement("id=cardImagePaymentActive").isDisplayed())
-		{
-        rpt.createTest("CC - Saved Payment Methods - Verify Product", "Default Credit Card is Displayed - For Verify Product");
-        rpt.Pass("Default Credit Card is Displayed - For Verify Product");
-        rpt.Category("CC_Saved Payment Methods - Verify Product");
-        String path = rpt.CaptureScreen(browser, "ValidMessage");
-        rpt.imgPathPass(path);
-		//click("link=READY TO CHECKOUT"); //chckout
-	 }
-	  else
-	 {
-		 rpt.createTest("CC - Saved Payment Methods - Verify Product", "Default Credit Card NOT Displayed - For Verify Product");
-        rpt.Fail("Default Credit Card NOT Displayed - For Verify Product");
-        rpt.Category("CC_Saved Payment Methods - Verify Product");
-        String path = rpt.CaptureScreen(browser, "InvalidMessage");
-        rpt.imgPathFail(path);
-	 }
+//		if (findTheElement("id=cardImagePaymentActive").isDisplayed())
+//		{
+//        rpt.createTest("CC - Saved Payment Methods - Verify Product", "Default Credit Card is Displayed - For Verify Product");
+//        rpt.Pass("Default Credit Card is Displayed - For Verify Product");
+//        rpt.Category("CC_Saved Payment Methods - Verify Product");
+//        String path = rpt.CaptureScreen(browser, "ValidMessage");
+//        rpt.imgPathPass(path);
+//		//click("link=READY TO CHECKOUT"); //chckout
+//	 }
+//	  else
+//	 {
+//		 rpt.createTest("CC - Saved Payment Methods - Verify Product", "Default Credit Card NOT Displayed - For Verify Product");
+//        rpt.Fail("Default Credit Card NOT Displayed - For Verify Product");
+//        rpt.Category("CC_Saved Payment Methods - Verify Product");
+//        String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//        rpt.imgPathFail(path);
+//	 }
 	}	
 		//click("xpath=//*[@id='82632106;140']"); //chckbox for address
 		/*click("xpath=//*[@id='update']"); //continue
@@ -510,7 +527,8 @@ public class savedPaymentMehods extends Browser
 		Thread.sleep(1000);
 		click("xpath=//div[@id='section_list_settings']/ul/li[5]"); //payment methods
 		Thread.sleep(5000);
-		click("link=EDIT"); //edit
+		click("link=ADD A NEW CARD"); //edit
+		Thread.sleep(1000);
 		click("name=braintree-hosted-field-number");
 		  Thread.sleep(2000);
 		  sendKeys("name=braintree-hosted-field-number",creditCardNo);
@@ -532,10 +550,22 @@ public class savedPaymentMehods extends Browser
 			Select select = new Select(monthdd);
 			select.selectByVisibleText("2022");
 			browser.switchTo().defaultContent();
-		click("xpath=//*[@id='preferred_billing_select-button']"); //prefered address dropdown
-		 click("xpath=//ul[@id='preferred_billing_select-menu']/li[2]/div");//selecting address
-		   Thread.sleep(2000);
-		   click("id=submit");
+			Thread.sleep(3000);
+			 click("xpath=//*[@id='preferred_billing_select-button']"); //prefered address dropdown
+			   Thread.sleep(3000);
+			    sendKeys("xpath=//*[@id='preferred_billing_select-button']", "Add");
+			    Robot robot = new Robot();
+			       robot.keyPress(KeyEvent.VK_ENTER);
+			       robot.keyRelease(KeyEvent.VK_ENTER);
+			   Thread.sleep(2000);
+			   sendKeys("id=WC_QuickCheckoutAddressForm_NameEntryForm_FormInput_lastName_1",name);
+			     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_address1_1",address);
+			     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_city_1",city);
+			     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_state_1",state);
+			     sendKeys("id=WC_QuickCheckoutAddressForm_AddressEntryForm_FormInput_zipCode_1",zipCode);
+			     sendKeys("id=WC_UserRegistrationAddForm_FormInput_email1_In_Register_1",Logon_ID);
+			     sendKeys("id=WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1",phoneNo);
+			     click("id=submit");
 		   if(findTheElement("link=EDIT").isDisplayed())
 		     {
 					//System.out.println("Passed");

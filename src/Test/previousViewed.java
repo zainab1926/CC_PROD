@@ -4,6 +4,8 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -11,149 +13,35 @@ import org.testng.annotations.Test;
 public class previousViewed extends Browser {
 
 	Report rpt = new Report();
-	Browser br = new Browser();
+	//Browser br = new Browser();
+	JavascriptExecutor jse = (JavascriptExecutor)browser;
+	WebElement Element;
 
 	@SuppressWarnings("static-access")
 	@Parameters({ "browser" })
 	@Test
 	public void ExecuteCase() throws Exception {
 		Login();
-		compare_Previous();
-		loveIt();
-		shopNow();
+		shopNow(); //TC -03
+		addToComapre(); //tc - 04,05
+		loveIt(); //tc-06
+		
 	}
 
 	// CC_PV_05/04s
 	@BeforeTest
 	public void Login() throws Exception {
 		// click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		if (findTheElement(
-				"xpath=//*[@id='Header_GlobalLogin_signInQuickLink']")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Login",
-					"Login Displayed - For Verify Login");
-			rpt.Pass("Login Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Login",
-					"Login Page is NOT Displayed - For Verify Login");
-			rpt.Fail("Login Page is NOT Displayed - For Verify Login");
-			rpt.Category("CC_Previously Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-		// click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
-		if (findTheElement(
-				"xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify User Name",
-					"User Name Displayed - For Verify User Name");
-			rpt.Pass("User Name Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify User Name",
-					"User Name is NOT Displayed - For Verify User Name");
-			rpt.Fail("User Name Page is NOT Displayed - For Verify User Name");
-			rpt.Category("CC_Previously Viewed - Verify User Name");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-
-		// sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input","kanimozhi.p@royalcyber.com");
-		if (findTheElement(
-				"xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Entering User Name",
-					"User Name Displayed - For Verify Entering User Name");
-			rpt.Pass("User Name Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input","kanimozhi.p@royalcyber.com");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify User Name",
-					"User Name is NOT Displayed - For Verify User Name");
-			rpt.Fail("User Name Page is NOT Displayed - For Verify User Name");
-			rpt.Category("CC_Previously Viewed - Verify User Name");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-		
-		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input");
-		
-		if (findTheElement(
-				"xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Password",
-					"Password Displayed - For Verify Password");
-			rpt.Pass("Password Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Password",
-					"Password is NOT Displayed - For Verify Password");
-			rpt.Fail("Password Page is NOT Displayed - For Verify Password");
-			rpt.Category("CC_Previously Viewed - Verify Password");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-
-		
-		
-		//sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input","Kanimozhi1234");
-		if (findTheElement(
-				"xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Entering Password",
-					"Password Displayed - For Verify Entering Password");
-			rpt.Pass("Password Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input","Kanimozhi1234");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Password",
-					"Password is NOT Displayed - For Verify Password");
-			rpt.Fail("Password Page is NOT Displayed - For Verify Password");
-			rpt.Category("CC_Previously Viewed - Verify Password");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-
-		//click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");
-		if (findTheElement(
-				"id=Header_GlobalLogin_WC_AccountDisplay_links_2")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Login",
-					"Login Displayed - For Verify Login");
-			rpt.Pass("Login Displayed - For Verify Login");
-			rpt.Category("CC_Previous Viewed - Verify Login ");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Login",
-					"Login is NOT Displayed - For Verify Login");
-			rpt.Fail("Login Page is NOT Displayed - For Verify Login");
-			rpt.Category("CC_Previously Viewed - Verify Login");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-
+		 click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
+			click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']");
+			sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']", "user@test.com");
+			click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']");
+			sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']", "Royalcyber1");
+			click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_2']");//sign in
+			//click("xpath=html/body/div[2]/div[1]/div[2]/div[2]/div[4]/ul/li[3]/a[1]");
+			Thread.sleep(6000);
+//			click("xpath=.//*[@id='Header_GlobalLogin_loggedInDropdown']/div/div/div/div[3]/div[1]/div[1]/a"); //my acc
+			click("xpath=//a[contains(text(),'My Account')]"); //my acc
 		
 		
 	}
@@ -303,146 +191,258 @@ public class previousViewed extends Browser {
 	
 	// CC_PV_06
 	public void loveIt() throws Exception {
-		Thread.sleep(30000);
-		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+		//Thread.sleep(30000);
+//		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+//		if (findTheElement(
+//				"xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span")
+//				.isDisplayed()) {
+//			rpt.createTest("CC - Previous Viewed - Verify Products",
+//					"Products Displayed - For Verify Products");
+//			rpt.Pass("Products Displayed - For Verify Products");
+//			rpt.Category("CC_Previous Viewed - Verify Products ");
+//			String path = rpt.CaptureScreen(browser, "ValidMessage");
+//			rpt.imgPathPass(path);
+//			click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+//
+//		} else {
+//			rpt.createTest("CC - Previous Viewed - Verify Products",
+//					"Products is NOT Displayed - For Verify Products");
+//			rpt.Fail("Products Page is NOT Displayed - For Verify Products");
+//			rpt.Category("CC_Previously Viewed - Verify Products");
+//			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//			rpt.imgPathFail(path);
+//		}
+//
+//		//click("id=departmentLink_3074457345616682180_alt");
+//		if (findTheElement(
+//				"id=departmentLink_3074457345616682180_alt")
+//				.isDisplayed()) {
+//			rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
+//					"Selecting Products Displayed - For Verify Selecting Products");
+//			rpt.Pass("Selecting Products Displayed - For Verify Selecting Products");
+//			rpt.Category("CC_Previous Viewed - Verify Selecting Products ");
+//			String path = rpt.CaptureScreen(browser, "ValidMessage");
+//			rpt.imgPathPass(path);
+//			click("id=departmentLink_3074457345616682180_alt");
+//
+//		} else {
+//			rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
+//					"Selecting Products is NOT Displayed - For Verify Selecting Products");
+//			rpt.Fail("Selecting Products Page is NOT Displayed - For Verify Selecting Products");
+//			rpt.Category("CC_Previously Viewed - Verify Selecting Products");
+//			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//			rpt.imgPathFail(path);
+//		}
+//		Thread.sleep(30000);
+//		//click("xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img");
+//		if (findTheElement(
+//				"xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img")
+//				.isDisplayed()) {
+//			rpt.createTest("CC - Previous Viewed - Verify Love It Functionality",
+//					"Love It Functionality Displayed - For Verify Love It Functionality");
+//			rpt.Pass("Love It Functionality Displayed - For Verify Love It Functionality");
+//			rpt.Category("CC_Previous Viewed - Verify Love It Functionality ");
+//			String path = rpt.CaptureScreen(browser, "ValidMessage");
+//			rpt.imgPathPass(path);
+//			click("xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img");
+//
+//		} else {
+//			rpt.createTest("CC - Previous Viewed - Verify Love It Functionality",
+//					"Love It Functionality is NOT Displayed - For Verify Love It Functionality");
+//			rpt.Fail("Love It Functionality Page is NOT Displayed - For Verify Love It Functionality");
+//			rpt.Category("CC_Previously Viewed - Verify Love It Functionality");
+//			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//			rpt.imgPathFail(path);
+//		}
+		
+		//click("css=img.icon heartIcon");
 		if (findTheElement(
-				"xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Products",
-					"Products Displayed - For Verify Products");
-			rpt.Pass("Products Displayed - For Verify Products");
-			rpt.Category("CC_Previous Viewed - Verify Products ");
+				"xpath=//div/div[2]/div/div[2]/div/span/div[2]/div/a/span")
+				.isDisplayed())
+		{
+			rpt.createTest("CC - Previous Viewed - Verify Love It",
+					"Product is added to wishlist from previously viewed section - For Verify Love It");
+			rpt.Pass("Product is added to wishlist from previously viewed section - For Verify Love It");
+			rpt.Category("CC_Previous Viewed - Verify Love It ");
 			String path = rpt.CaptureScreen(browser, "ValidMessage");
 			rpt.imgPathPass(path);
-			click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+			//click("css=img.icon heartIcon");
+			click("xpath=//div/div[2]/div/div[2]/div/span/div[2]/div/a/span");
 
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Products",
-					"Products is NOT Displayed - For Verify Products");
-			rpt.Fail("Products Page is NOT Displayed - For Verify Products");
-			rpt.Category("CC_Previously Viewed - Verify Products");
+		} else 
+		{
+			rpt.createTest("CC - Previous Viewed - Verify Love It",
+					"Product NOT added to wishlist from previously viewed section - For Verify Love It");
+			rpt.Fail("Product NOT added to wishlist from previously viewed section - For Verify Love It");
+			rpt.Category("CC_Previously Viewed - Verify Love It");
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
-
-		//click("id=departmentLink_3074457345616682180_alt");
-		if (findTheElement(
-				"id=departmentLink_3074457345616682180_alt")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
-					"Selecting Products Displayed - For Verify Selecting Products");
-			rpt.Pass("Selecting Products Displayed - For Verify Selecting Products");
-			rpt.Category("CC_Previous Viewed - Verify Selecting Products ");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("id=departmentLink_3074457345616682180_alt");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
-					"Selecting Products is NOT Displayed - For Verify Selecting Products");
-			rpt.Fail("Selecting Products Page is NOT Displayed - For Verify Selecting Products");
-			rpt.Category("CC_Previously Viewed - Verify Selecting Products");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-		Thread.sleep(30000);
-		//click("xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img");
-		if (findTheElement(
-				"xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img")
-				.isDisplayed()) {
-			rpt.createTest("CC - Previous Viewed - Verify Love It Functionality",
-					"Love It Functionality Displayed - For Verify Love It Functionality");
-			rpt.Pass("Love It Functionality Displayed - For Verify Love It Functionality");
-			rpt.Category("CC_Previous Viewed - Verify Love It Functionality ");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("xpath=/html/body/div[3]/div[3]/div/div/div[4]/div/div[2]/div/div[2]/div[1]/div/div[1]/div/div[2]/div[1]/div[2]/div/span[1]/div[2]/div[1]/a[1]/img");
-
-		} else {
-			rpt.createTest("CC - Previous Viewed - Verify Love It Functionality",
-					"Love It Functionality is NOT Displayed - For Verify Love It Functionality");
-			rpt.Fail("Love It Functionality Page is NOT Displayed - For Verify Love It Functionality");
-			rpt.Category("CC_Previously Viewed - Verify Love It Functionality");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
-
+		Thread.sleep(2000);
+		click("link=WISHLIST");
+		Thread.sleep(2000);
+		click("link=Remove");
+		Thread.sleep(2000);
+		click("id=shoppingListCreateSuccessPopup_continue_shopping");
+		Thread.sleep(2000);
+		click("id=widget_minishopcart");
+		Thread.sleep(2000);
+		click("id=GotoCartButton1");
+		Thread.sleep(2000);
+		click("xpath=//a[@id='WC_OrderItemDetailsf_links_2_1']/b");
+		Thread.sleep(2000);
+		 click("id=myAccountQuickLink");
+		   Thread.sleep(2000);
+		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
 	}
 
 	
-	// CC_PV_06
+	// //TC -03
 	public void shopNow() throws Exception {
 		Thread.sleep(30000);
-		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
-				if (findTheElement(
-						"xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span")
-						.isDisplayed()) {
-					rpt.createTest("CC - Previous Viewed - Verify Products",
-							"Products Displayed - For Verify Products");
-					rpt.Pass("Products Displayed - For Verify Products");
-					rpt.Category("CC_Previous Viewed - Verify Products ");
-					String path = rpt.CaptureScreen(browser, "ValidMessage");
-					rpt.imgPathPass(path);
-					click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
-
-				} else {
-					rpt.createTest("CC - Previous Viewed - Verify Products",
-							"Products is NOT Displayed - For Verify Products");
-					rpt.Fail("Products Page is NOT Displayed - For Verify Products");
-					rpt.Category("CC_Previously Viewed - Verify Products");
-					String path = rpt.CaptureScreen(browser, "InvalidMessage");
-					rpt.imgPathFail(path);
-				}
-
-				//click("id=departmentLink_3074457345616682180_alt");
-				if (findTheElement(
-						"id=departmentLink_3074457345616682180_alt")
-						.isDisplayed()) {
-					rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
-							"Selecting Products Displayed - For Verify Selecting Products");
-					rpt.Pass("Selecting Products Displayed - For Verify Selecting Products");
-					rpt.Category("CC_Previous Viewed - Verify Selecting Products ");
-					String path = rpt.CaptureScreen(browser, "ValidMessage");
-					rpt.imgPathPass(path);
-					click("id=departmentLink_3074457345616682180_alt");
-
-				} else {
-					rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
-							"Selecting Products is NOT Displayed - For Verify Selecting Products");
-					rpt.Fail("Selecting Products Page is NOT Displayed - For Verify Selecting Products");
-					rpt.Category("CC_Previously Viewed - Verify Selecting Products");
-					String path = rpt.CaptureScreen(browser, "InvalidMessage");
-					rpt.imgPathFail(path);
-				}
-		Thread.sleep(30000);
+//		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+//				if (findTheElement(
+//						"xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span")
+//						.isDisplayed()) {
+//					rpt.createTest("CC - Previous Viewed - Verify Products",
+//							"Products Displayed - For Verify Products");
+//					rpt.Pass("Products Displayed - For Verify Products");
+//					rpt.Category("CC_Previous Viewed - Verify Products ");
+//					String path = rpt.CaptureScreen(browser, "ValidMessage");
+//					rpt.imgPathPass(path);
+//					click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
+//
+//				} else {
+//					rpt.createTest("CC - Previous Viewed - Verify Products",
+//							"Products is NOT Displayed - For Verify Products");
+//					rpt.Fail("Products Page is NOT Displayed - For Verify Products");
+//					rpt.Category("CC_Previously Viewed - Verify Products");
+//					String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//					rpt.imgPathFail(path);
+//				}
+//
+//				//click("id=departmentLink_3074457345616682180_alt");
+//				if (findTheElement(
+//						"id=departmentLink_3074457345616682180_alt")
+//						.isDisplayed()) {
+//					rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
+//							"Selecting Products Displayed - For Verify Selecting Products");
+//					rpt.Pass("Selecting Products Displayed - For Verify Selecting Products");
+//					rpt.Category("CC_Previous Viewed - Verify Selecting Products ");
+//					String path = rpt.CaptureScreen(browser, "ValidMessage");
+//					rpt.imgPathPass(path);
+//					click("id=departmentLink_3074457345616682180_alt");
+//
+//				} else {
+//					rpt.createTest("CC - Previous Viewed - Verify Selecting Products",
+//							"Selecting Products is NOT Displayed - For Verify Selecting Products");
+//					rpt.Fail("Selecting Products Page is NOT Displayed - For Verify Selecting Products");
+//					rpt.Category("CC_Previously Viewed - Verify Selecting Products");
+//					String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//					rpt.imgPathFail(path);
+//				}
+//		Thread.sleep(30000);
 		//click("xpath=//*[@id='listViewAdd2Cart_3074457345616722799']");
+		click("id=allDepartmentsButton");
+		Thread.sleep(2000);
+		click("link=Audio");//categories
+		Thread.sleep(2000);
+		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_image']");
+		Thread.sleep(2000);
+		click("id=allDepartmentsButton");
+		Thread.sleep(2000);
+		click("link=Audio");//categories
+		Thread.sleep(2000);
+		//click("xpath=//a[contains(text(),'Creative')]"); //product
+		click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_image']");
+		Thread.sleep(3000);
+		//click("id=id=contentImage_1_HeaderStoreLogo_Content");
+		browser.navigate().back();
+		Thread.sleep(3000);
+		
 		if (findTheElement(
-				"xpath=//*[@id='listViewAdd2Cart_3074457345616722799']")
+				"xpath=//a[contains(text(),'BUY NOW')]")
 				.isDisplayed()) {
 			rpt.createTest("CC - Previous Viewed - Verify Shop Now",
-					"Shop Now Displayed - For Verify Shop Now");
-			rpt.Pass("Shop Now Displayed - For Verify Shop Now");
+					"Product is added to cart from previously viewed section - For Verify Shop Now");
+			rpt.Pass("Product is added to cart from previously viewed section - For Verify Shop Now");
 			rpt.Category("CC_Previous Viewed - Verify Shop Now ");
 			String path = rpt.CaptureScreen(browser, "ValidMessage");
 			rpt.imgPathPass(path);
-			click("xpath=//*[@id='listViewAdd2Cart_3074457345616722799']");
+			click("xpath=//a[contains(text(),'BUY NOW')]");
 
 		} else {
 			rpt.createTest("CC - Previous Viewed - Verify Shop Now",
-					"Shop Now is NOT Displayed - For Verify Shop Now");
-			rpt.Fail("Shop Now Page is NOT Displayed - For Verify Shop Now");
+					"Product NOT added to cart from previously viewed section - For Verify Shop Now");
+			rpt.Fail("Product NOT added to cart from previously viewed section - For Verify Shop Now");
 			rpt.Category("CC_Previously Viewed - Verify Shop Now");
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		Thread.sleep(4000);
+		click("id=MiniShopCartCloseButton_2"); 
+		
+		
+	}
+	//tc-04
+	public void addToComapre()throws Exception
+	{
+		//click("xpath=//div[@class='product_option']//label[contains(text(),'Compare')]");
+		//click("css=div.compare_target compare_target_hidden");
+		//click("xpath=//div/div[2]/div[7]/label");
+		if (findTheElement(
+				"xpath=//div/div[2]/div[7]/label")
+				.isDisplayed())
+		{
+			rpt.createTest("CC - Previous Viewed - Verify Add To Comapre",
+					"Product is added to comapre from previously viewed section - For Verify Add To Comapre");
+			rpt.Pass("Product is added to comapre from previously viewed section - For Verify Add To Comapre");
+			rpt.Category("CC_Previous Viewed - Verify Add To Comapre ");
+			String path = rpt.CaptureScreen(browser, "ValidMessage");
+			rpt.imgPathPass(path);
+			click("xpath=//div/div[2]/div[7]/label");
 
-		String SuccessMessage = getText("id=cartDropdownMessage");
-
-		if (SuccessMessage.contains("Your item was added")) {
-			System.out.println("Item was added Successfully and Passed");
-		} else {
-			System.out.println("Fail");
+		} else 
+		{
+			rpt.createTest("CC - Previous Viewed - Verify Add To Comapre",
+					"Product NOT added to comapre from previously viewed section - For Verify Add To Comapre");
+			rpt.Fail("Product NOT added to comapre from previously viewed section - For Verify Add To Comapre");
+			rpt.Category("CC_Previously Viewed - Verify Add To Comapre");
+			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+			rpt.imgPathFail(path);
 		}
+		Thread.sleep(2000);
+		//tc-05
+		jse.executeScript("window.scrollBy(0,90)");
+		Thread.sleep(2000);
+		click("xpath=//div[2]/div/div[2]/div[7]/label");
+		Thread.sleep(2000);
+		click("id=stickyCompare");
+		Thread.sleep(2000);
+		String title=Browser.getTitle();
+		System.out.println(title);
+		
+		if(title.contains("Circuit City - Compare Products"))
+		{
+			//System.out.println("Passed");
+			 rpt.createTest("CC - Previous Viewed", "Compare from Previously Viewed section is navigated to Comapare Products page : " +title);
+	         rpt.Pass("Compare from Previously Viewed section is navigated to Comapare Products page : " +title);
+	         rpt.Category("CC - Previous Viewed");
+	         String path = rpt.CaptureScreen(browser, "ValidMessage");
+	         rpt.imgPathPass(path);
+		}
+		else
+		{
+			//System.out.println("Failed");
+			rpt.createTest("CC - Previous Viewed", "Compare from Previously Viewed section NOT navigated to Comapare Products page");
+	         rpt.Fail("Compare from Previously Viewed section NOT navigated to Comapare Products page");
+	         rpt.Category("CC - Previous Viewed");
+	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
+	         rpt.imgPathFail(path);
+		}
+		Thread.sleep(2000);
+		click("id=compareBackLink");
+		Thread.sleep(2000);
 	}
 
 }

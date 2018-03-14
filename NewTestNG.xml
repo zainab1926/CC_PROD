@@ -20,7 +20,7 @@
    
    <parameter name="browser" value="FF"/>  
    <parameter name="url" value="https://prodlive.circuitcity.com/" />
-   <parameter name="Module" value="CheckoutFlow" />
+   <parameter name="Module" value="savedPaymentMehods" />
    
     <!-- <parameter name="url" value="172.125.38.144/webapp/wcs/stores/servlet/en/circuitcityb2c/" />-->
     <test name="RC Test" verbose="2">

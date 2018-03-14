@@ -8,26 +8,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+
+
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class orderHistoryModule extends Browser {
 	Report rpt = new Report();
 	Browser br = new Browser();
-
+    String orderID="87071820689";
 	@SuppressWarnings("static-access")
 	@Parameters({ "browser" })
 	@Test
 	public void executeAll() throws Exception {
 		Login();
-		addProduct_order();
-//		chk_AccSection();
-//		navigateOptions();
-//		verifyOrderHistory();
-//		detailedOrderDetails();
-//		searchOrderByID();
-//		searchOrderWithKeyword();
-//		searchOrderByCategory();
+//		addProduct_order();
+		chk_AccSection();
+		navigateOptions();
+		verifyOrderHistory();
+		detailedOrderDetails();
+		searchOrderByID();
+//		searchOrderWithKeyword(); //failed in manual testing CIR 1652
+//		searchOrderByCategory(); //failed in manual testing CIR 1652
 
 	}
 
@@ -44,38 +49,39 @@ public class orderHistoryModule extends Browser {
 				"Royalcyber1");
 		click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");// Signin Button
 		Thread.sleep(4000);
-		click("id=wishListQuickLink_alt");
-		click("xpath=//*[@id=\"myAccountQuickLink\"]");
-		Thread.sleep(5000);
-		waitForPageElementToBeDisplayed("xpath=//*[@id=\"Header_GlobalLogin_loggedInDropdown\"]");
-		// click("xpath=/html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[2]/div[4]/div[1]/a");
-		if (findTheElement(
-				"xpath=//a[@href='https://qalive.circuitcity.com/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']")
-						.isDisplayed()) {
-			rpt.createTest("CC - Order History - Verify Login", "Order history link Displayed - For Verify Login");
-			rpt.Pass("Order history link Displayed - For Verify Login");
-			rpt.Category("CC_Order History  - Verify Login ");
-			String path = rpt.CaptureScreen(browser, "ValidMessage");
-			rpt.imgPathPass(path);
-			click("xpath=//a[@href='https://qalive.circuitcity.com/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
-
-		} else {
-			rpt.createTest("CC - Order History  - Verify Login",
-					"Order history link is NOT Displayed - For Verify Login");
-			rpt.Fail("Order history link is NOT Displayed - For Verify Login");
-			rpt.Category("CC_Order History - Verify Login");
-			String path = rpt.CaptureScreen(browser, "InvalidMessage");
-			rpt.imgPathFail(path);
-		}
+		click("xpath=//a[contains(text(),'My Account')]"); //my acc
+		//click("id=wishListQuickLink_alt");
+//		click("xpath=//*[@id=\"myAccountQuickLink\"]");
+//		Thread.sleep(5000);
+//		waitForPageElementToBeDisplayed("xpath=//*[@id=\"Header_GlobalLogin_loggedInDropdown\"]");
+//		// click("xpath=/html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[2]/div[4]/div[1]/a");
+//		if (findTheElement(
+//				"xpath=//a[@href='https://qalive.circuitcity.com/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']")
+//						.isDisplayed()) {
+//			rpt.createTest("CC - Order History - Verify Login", "Order history link Displayed - For Verify Login");
+//			rpt.Pass("Order history link Displayed - For Verify Login");
+//			rpt.Category("CC_Order History  - Verify Login ");
+//			String path = rpt.CaptureScreen(browser, "ValidMessage");
+//			rpt.imgPathPass(path);
+//			click("xpath=//a[@href='https://qalive.circuitcity.com/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
+//
+//		} else {
+//			rpt.createTest("CC - Order History  - Verify Login",
+//					"Order history link is NOT Displayed - For Verify Login");
+//			rpt.Fail("Order history link is NOT Displayed - For Verify Login");
+//			rpt.Category("CC_Order History - Verify Login");
+//			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+//			rpt.imgPathFail(path);
+//		}
 	}
-	public void addProduct_order()throws Exception 
-	{
-		sendKeys("id=SimpleSearchForm_SearchTerm","lenovo");
-		Thread.sleep(2000);
-		click("css=div.submitButton");
-		Thread.sleep(2000);
-		
-	}
+//	public void addProduct_order()throws Exception 
+//	{
+//		sendKeys("id=SimpleSearchForm_SearchTerm","lenovo");
+//		Thread.sleep(2000);
+//		click("css=div.submitButton");
+//		Thread.sleep(2000);
+//		
+//	}
 
 	public void chk_AccSection() throws Exception {
 		Map<String, String> ids = new HashMap<String, String>();
@@ -205,24 +211,25 @@ public class orderHistoryModule extends Browser {
 	// CC_ACC_007
 	public void verifyOrderHistory() throws Exception {
 		Thread.sleep(3000);
-		if (findTheElement("xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]")
-				.isDisplayed()
-				&& findTheElement(
-						"xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]/div[1]")
-								.isDisplayed()
-				&& findTheElement(
-						"xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]/div[4]")
-								.isDisplayed()
-				&& findTheElement(
-						"xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]/div[2]")
-								.isDisplayed()) {
+		 Map<String,String> ids= new HashMap<String,String>();
+		 ids.put("Order NO", "//div[@id='Processed_OrderList_list_table']/div[2]/div[4]/div/b");
+		 ids.put("Order Date", "//div[@id='Processed_OrderList_list_table']/div[2]/div/div/b");
+		 //ids.put("Status", "section_button_orders");
+		 ids.put("Total Price", "//div[@id='Processed_OrderList_list_table']/div[2]/div[2]/div/b");
+		 for(Map.Entry<String, String> id : ids.entrySet() )
+		 {
+			 if (findTheElement("xpath=" + id.getValue() + "").isDisplayed())
+		
+		 {
 			rpt.createTest("CC -Order History  - Verify Order History details",
 					"Each Order's history details is Displayed - For Verify Order History details");
 			rpt.Pass("Each Order's history details is Displayed - For Verify Order History details");
 			rpt.Category("CC_Order History  - Verify Order History details");
 			String path = rpt.CaptureScreen(browser, "ValidMessage");
 			rpt.imgPathPass(path);
-		} else {
+		} 
+			 else 
+			 {
 			rpt.createTest("CC - Order History - Verify Order History details",
 					"Each Order's history details is NOT Displayed - For Verify Order History details");
 			rpt.Fail("Each Order's history details is NOT Displayed - For Verify Order History details");
@@ -230,19 +237,20 @@ public class orderHistoryModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		 }
 	}
 
 	// CC_ACC_008
 	public void detailedOrderDetails() throws Exception {
 		// click("id=Processed_actionButton1");
-		if (findTheElement("css=div.button_secondary actionButton").isDisplayed()) {
+		if (findTheElement("xpath=//a[@id='Processed_actionButton1']/div/span").isDisplayed()) {
 			rpt.createTest("CC -Order History  - Verify Detailed order history",
 					"View Details Button Displayed - For Verify Detailed order history");
 			rpt.Pass("View Details Button Displayed - For Verify Detailed order history");
 			rpt.Category("CC_Order History  - Verify Detailed order history");
 			String path = rpt.CaptureScreen(browser, "ValidMessage");
 			rpt.imgPathPass(path);
-			click("css=div.button_secondary actionButton");// View Details Button
+			click("xpath=//a[@id='Processed_actionButton1']/div/span");// View Details Button
 		} else {
 			rpt.createTest("CC - Order History - Verify Detailed order history",
 					"View Details Button is NOT Displayed - For Verify Detailed order history");
@@ -287,7 +295,7 @@ public class orderHistoryModule extends Browser {
 			rpt.Category("CC_Order History  - Verify Search option");
 			String path = rpt.CaptureScreen(browser, "ValidMessage");
 			rpt.imgPathPass(path);
-			sendKeys("id=orderSearchTerm", "140512587573");
+			sendKeys("id=orderSearchTerm", orderID);
 		} else {
 			rpt.createTest("CC - Order History - Verify Search option",
 					"Search Input is NOT Displayed - For Verify Search option");
@@ -296,11 +304,20 @@ public class orderHistoryModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
-		click("xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/button/i");
+//		click("xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/button/i");
 		Thread.sleep(5000);
+		//findTheElement("id=orderSearchTerm").sendKeys(Keys.ENTER);
+//		Actions action = new Actions(browser);
+//		action.sendKeys(Keys.ENTER).build().perform();
+		 Robot robot = new Robot();
+
+		 robot.keyPress(KeyEvent.VK_ENTER);
+	       robot.keyRelease(KeyEvent.VK_ENTER);
+
 		String val = getText(
-				"xpath=/html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]/div[4]/div/span[2]");
-		if (val.equals("140512587573")) {
+				"xpath=//div[@id='Processed_OrderList_list_table']/div[2]/div[4]/div/span");
+		Thread.sleep(2000);
+		if (val.equals(orderID)) {
 			rpt.createTest("CC -Order History  - Verify Search result",
 					"Search result is Displayed - For Verify Search result");
 			rpt.Pass("Search result is Displayed - For Verify Search result");
@@ -316,8 +333,28 @@ public class orderHistoryModule extends Browser {
 			rpt.imgPathFail(path);
 		}
 		Thread.sleep(5000);
-		click("id=orderSearchTerm");
-		sendKeys("id=orderSearchTerm", "");
+//		click("id=orderSearchTerm");
+//		sendKeys("id=orderSearchTerm", "");
+		if (findTheElement("id=OrderListPageHeading").isDisplayed()) {
+			rpt.createTest("CC -Order History  - Verify Search option",
+					"Sort By is Displayed - For Verify Search option");
+			rpt.Pass("Sort Bt is Displayed - For Verify Search option");
+			rpt.Category("CC_Order History  - Verify Search option");
+			String path = rpt.CaptureScreen(browser, "ValidMessage");
+			rpt.imgPathPass(path);
+			//sendKeys("id=orderSearchTerm", orderID);
+		} else {
+			rpt.createTest("CC - Order History - Verify Search option",
+					"Sort By is NOT Displayed - For Verify Search option");
+			rpt.Fail("Sort By is NOT Displayed - For Verify Search option");
+			rpt.Category("CC_Order History  - Verify Search option");
+			String path = rpt.CaptureScreen(browser, "InvalidMessage");
+			rpt.imgPathFail(path);
+		}
+		Thread.sleep(2000);
+		click("id=tab2"); //open orders
+		Thread.sleep(2000);
+		click("id=tab3"); //cancelled
 	}
 
 	public void searchOrderWithKeyword() throws Exception {
