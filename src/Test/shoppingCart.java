@@ -503,7 +503,7 @@ public class shoppingCart extends Browser
 	{
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']"); //search bar
 		Thread.sleep(5000);
-		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","Lenovo 20EN001SUS TS P50 E3 16GB 256GB");
+		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","Lenovo 20EN001EUS TS P50 i7 16GB 256GB");
 		Thread.sleep(8000);
 		//click("xpath=.//*[@id='autoSelectOption_0']/div/img");
 		if(findTheElement("xpath=.//*[@id='autoSelectOption_0']/div/img").isDisplayed())
@@ -1642,6 +1642,7 @@ public class shoppingCart extends Browser
 		click("id=summaryButton"); //continue
 		Thread.sleep(3000);
 		click("xpath=//a[contains(text(),'Back to Cart')]"); //back to cart
+		
 		
 		
 	}

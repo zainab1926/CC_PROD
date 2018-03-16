@@ -43,8 +43,8 @@ public class HomePage extends Browser {
 
 //		//HP_Discover_LearnMore(); //To Ask
 
-		customiseRoom(); //TC-13 //this section is missing in prod-live
-		smartRoom(); //TC-14   //this section is missing in prod-live
+		customiseRoom(); //TC-13 //
+		smartRoom(); //TC-14   //
 		featuredProduct(); //TC-15 
 		HP_discoverMore();
      	ShopAllTopCategories(); //TC 25
@@ -62,7 +62,7 @@ public class HomePage extends Browser {
 
 		HP_FreeShipping();
 
-		HP_ScheduleService(); //TC 38 missing in prod-live
+//		HP_ScheduleService(); //TC 38 missing in prod-live
 		HP_Subscribe();
 		connectWithUs();
 		HP_SigninOrCreateAccount();
@@ -429,7 +429,7 @@ public class HomePage extends Browser {
 		 String HomePagetitle=Browser.getTitle();
 			System.out.println(HomePagetitle);
 			
-			if(HomePagetitle.contains("Smart Room | Circuit City"))
+			if(HomePagetitle.contains("Smart Rooms | Circuit City"))
 			{
 				//System.out.println("Passed");
 				 rpt.createTest("CIRCUIT CITY - Verify Customise Room Navigation", "Customise Room from home page is navigating to its respective page : " +HomePagetitle);
@@ -458,7 +458,7 @@ public class HomePage extends Browser {
 		 String HomePagetitle=Browser.getTitle();
 			System.out.println(HomePagetitle);
 			
-			if(HomePagetitle.contains("Smart Room | Circuit City"))
+			if(HomePagetitle.contains("Smart Rooms | Circuit City"))
 			{
 				//System.out.println("Passed");
 				 rpt.createTest("CIRCUIT CITY - Verify Smart Room Navigation", "Smart Room from home page is navigating to its respective page : " +HomePagetitle);
@@ -793,7 +793,7 @@ public class HomePage extends Browser {
 		//Submit Chat
 		//click("id=lc_chat_offline_name");	
 				 if (findTheElement(
-						 "xpath=//div[@id='lc_prechat_form']/ul/li/input")
+						 "id=lc_chat_offline_name")
 							.isDisplayed()) {
 						rpt.createTest("CC - Home Page - Verify Chat - User Name",
 								"Chat - User Name Displayed - For Verify Chat - User Name");
@@ -801,7 +801,7 @@ public class HomePage extends Browser {
 						rpt.Category("CC_Home Page - Verify Chat - User Name");
 						String path = rpt.CaptureScreen(browser, "ValidMessage");
 						rpt.imgPathPass(path);
-						click("xpath=//div[@id='lc_prechat_form']/ul/li/input");
+						click("id=lc_chat_offline_name");
 
 					} else {
 						rpt.createTest("CC - Home Page - Verify Chat - User Name",
@@ -812,9 +812,8 @@ public class HomePage extends Browser {
 						rpt.imgPathFail(path);
 					}
 
-		 //sendKeys("id=lc_chat_offline_name", "Kanimozhi");
 		 if (findTheElement(
-				 "xpath=//div[@id='lc_prechat_form']/ul/li/input")
+				 "id=lc_chat_offline_name")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - User Name",
 						"Chat - User Name Displayed - For Verify Chat - User Name");
@@ -822,7 +821,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - User Name");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				sendKeys("xpath=//div[@id='lc_prechat_form']/ul/li/input", "Test User");
+				sendKeys("id=lc_chat_offline_name", "Test User");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - User Name",
@@ -837,7 +836,7 @@ public class HomePage extends Browser {
 		 
 		 //click("id=lc_chat_offline_email");
 		 if (findTheElement(
-				 "xpath=//div[@id='lc_prechat_form']/ul/li[2]/input")
+				 "id=lc_chat_offline_email")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
 						"Chat - eMail Displayed - For Verify Chat - eMail");
@@ -845,7 +844,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - eMail");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("xpath=//div[@id='lc_prechat_form']/ul/li[2]/input");
+				click("id=lc_chat_offline_email");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
@@ -859,7 +858,7 @@ public class HomePage extends Browser {
 		 
 		 //sendKeys("id=lc_chat_offline_email","kanimozhi.p@rr.com");
 		 if (findTheElement(
-				 "xpath=//div[@id='lc_prechat_form']/ul/li[2]/input")
+				 "id=lc_chat_offline_email")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
 						"Chat - eMail Displayed - For Verify Chat - eMail");
@@ -867,7 +866,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - eMail");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				sendKeys("xpath=//div[@id='lc_prechat_form']/ul/li[2]/input","user@test.com");
+				sendKeys("id=lc_chat_offline_email","user@test.com");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - eMail",
@@ -881,51 +880,51 @@ public class HomePage extends Browser {
 		 
 		// click("id=lc_chat_offline_textarea");
 		 
-//		 if (findTheElement(
-//				 "id=lc_chat_offline_textarea")
-//					.isDisplayed()) {
-//				rpt.createTest("CC - Home Page - Verify Chat - Message",
-//						"Chat - Message Displayed - For Verify Chat - Message");
-//				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
-//				rpt.Category("CC_Home Page - Verify Chat - Message");
-//				String path = rpt.CaptureScreen(browser, "ValidMessage");
-//				rpt.imgPathPass(path);
-//				click("id=lc_chat_offline_textarea");
-//
-//			} else {
-//				rpt.createTest("CC - Home Page - Verify Chat - Message",
-//						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
-//				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
-//				rpt.Category("CC_Home Page - Verify Chat - Message");
-//				String path = rpt.CaptureScreen(browser, "InvalidMessage");
-//				rpt.imgPathFail(path);
-//			}
+		 if (findTheElement(
+				 "id=lc_chat_offline_textarea")
+					.isDisplayed()) {
+				rpt.createTest("CC - Home Page - Verify Chat - Message",
+						"Chat - Message Displayed - For Verify Chat - Message");
+				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
+				rpt.Category("CC_Home Page - Verify Chat - Message");
+				String path = rpt.CaptureScreen(browser, "ValidMessage");
+				rpt.imgPathPass(path);
+				click("id=lc_chat_offline_textarea");
+
+			} else {
+				rpt.createTest("CC - Home Page - Verify Chat - Message",
+						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
+				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
+				rpt.Category("CC_Home Page - Verify Chat - Message");
+				String path = rpt.CaptureScreen(browser, "InvalidMessage");
+				rpt.imgPathFail(path);
+			}
 //
 //		// sendKeys("id=lc_chat_offline_textarea","Testing");
 //		 
-//		 if (findTheElement(
-//				 "id=lc_chat_offline_textarea")
-//					.isDisplayed()) {
-//				rpt.createTest("CC - Home Page - Verify Chat - Message",
-//						"Chat - Message Displayed - For Verify Chat - Message");
-//				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
-//				rpt.Category("CC_Home Page - Verify Chat - Message");
-//				String path = rpt.CaptureScreen(browser, "ValidMessage");
-//				rpt.imgPathPass(path);
-//				sendKeys("id=lc_chat_offline_textarea","Testing");
-//
-//			} else {
-//				rpt.createTest("CC - Home Page - Verify Chat - Message",
-//						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
-//				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
-//				rpt.Category("CC_Home Page - Verify Chat - Message");
-//				String path = rpt.CaptureScreen(browser, "InvalidMessage");
-//				rpt.imgPathFail(path);
-//			}
+		 if (findTheElement(
+				 "id=lc_chat_offline_textarea")
+					.isDisplayed()) {
+				rpt.createTest("CC - Home Page - Verify Chat - Message",
+						"Chat - Message Displayed - For Verify Chat - Message");
+				rpt.Pass("Chat - Message Displayed - For Verify Chat - Message");
+				rpt.Category("CC_Home Page - Verify Chat - Message");
+				String path = rpt.CaptureScreen(browser, "ValidMessage");
+				rpt.imgPathPass(path);
+				sendKeys("id=lc_chat_offline_textarea","Testing");
+
+			} else {
+				rpt.createTest("CC - Home Page - Verify Chat - Message",
+						" Chat - Message Page is NOT Displayed - For Verify Chat - Message");
+				rpt.Fail("Chat - Message is NOT Displayed - For Verify Chat - Message");
+				rpt.Category("CC_Home Page - Verify Chat - Message");
+				String path = rpt.CaptureScreen(browser, "InvalidMessage");
+				rpt.imgPathFail(path);
+			}
 		 
 		// click("id=lc_offline_submit");
 		 if (findTheElement(
-				 "id=lc_prechat_submit")
+				 "id=lc_offline_submit")
 					.isDisplayed()) {
 				rpt.createTest("CC - Home Page - Verify Chat - Submission",
 						"Chat - Submission Displayed - For Verify Chat - Submission");
@@ -933,7 +932,7 @@ public class HomePage extends Browser {
 				rpt.Category("CC_Home Page - Verify Chat - Submission");
 				String path = rpt.CaptureScreen(browser, "ValidMessage");
 				rpt.imgPathPass(path);
-				click("id=lc_prechat_submit");
+				click("id=lc_offline_submit");
 
 			} else {
 				rpt.createTest("CC - Home Page - Verify Chat - Submission",
@@ -943,8 +942,10 @@ public class HomePage extends Browser {
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
-		 Thread.sleep(2000);
+		 Thread.sleep(4000);
 		 click("id=lc_minimize");
+		 //click("id=close");
+		// click("xpath=//div[@id='close']/i");
 		
 		 //Verifying Successfull Submissions
 		 String MessageAfterSubmission=getText("id=lc_chat_title");

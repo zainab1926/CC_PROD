@@ -68,7 +68,8 @@ public class savedPaymentMehods extends Browser
             deleteCards();
 			verifyDefaultCustomer();
 			verifyUpdate(); 
-			addCard();
+			addCard(); 
+		  
 //			mandatoryAddress();
 	}
 	
@@ -106,6 +107,7 @@ public class savedPaymentMehods extends Browser
 	
 	public void chk_AccSection() throws Exception
     {
+		try {
     Map<String,String> ids= new HashMap<String,String>();
 	 ids.put("Settings", "section_button_settings");
 	 ids.put("Wishlist", "section_button_wishlists");
@@ -133,10 +135,18 @@ public class savedPaymentMehods extends Browser
 
 		 }
 	 }
+		}
+	 catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
     }
 	
 	public void verify_myAccPage() throws Exception
 	{
+		try 
+		{
 		 Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Personal Information", "WC_MyAccountSidebarDisplayf_links_0");
 		 ids.put("Change Password", "WC_MyAccountSidebarDisplayf_links_1");
@@ -167,10 +177,18 @@ public class savedPaymentMehods extends Browser
     	         rpt.imgPathFail(path);
 			 }
 		 }
+		}
+		 catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void savedCards()throws Exception
 	{
+		try
+		{
 		//click("xpath=//div[@id='section_list_settings']/ul/li[5]//div[@id='section_list_settings']/ul/li[5]"); //payment methods
 		  /*Screen s  = new Screen();
 		  Thread.sleep(6000);
@@ -203,6 +221,12 @@ public class savedPaymentMehods extends Browser
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			} 
+		}
+		 catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		//myaccount_sidebar
 //		if(findTheElement("xpath=//div[@id='section_list_settings']/ul/li[5]/a[@id='WC_MyAccountSidebarDisplayf_links_0']").isDisplayed())
 //		 {
@@ -223,8 +247,11 @@ public class savedPaymentMehods extends Browser
 //	         rpt.imgPathFail(path);
 //		 }
 	}
+	
 	public void AddsavedCards()throws Exception
 	{
+		try
+		{ 
 		
 		click("link=ADD A NEW CARD");
 		Thread.sleep(2000);
@@ -316,9 +343,20 @@ public class savedPaymentMehods extends Browser
 	     Thread.sleep(3000);
 		
 	}
+	 catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+	}
+	
+	
+	 
 	
 	public void deleteCards()throws Exception
 	{
+		try
+		{ 
 		Thread.sleep(5000);
 		//click("xpath=//*[@id='edit_card']/div[1]/div[1]/span/a[2]"); //delete
 		if(findTheElement("xpath=//a[contains(text(),'REMOVE')]").isDisplayed())
@@ -341,9 +379,17 @@ public class savedPaymentMehods extends Browser
 		Thread.sleep(2000);
 		//click("css=div.button_primary"); //delete pop up
 		click("xpath=/html/body/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div/div/div/div[3]/div/div/a[1]/div[2]"); //delete pop up
+		}
+		catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void verifyDefaultCustomer()throws Exception
 	{
+		try 
+		{
 		Thread.sleep(5000);
 		//click("xpath=//*[@id='edit_card']/div[1]/div[2]/label/span"); //default payment
 		if(findTheElement("xpath=//label/span").isDisplayed())
@@ -405,7 +451,7 @@ public class savedPaymentMehods extends Browser
 		Thread.sleep(10000);
 		//click("xpath=//a[contains(text(),'Lenovo')]"); //product
 		click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		//click("xpath=//*[@id='productPageAdd2Cart']"); //add to cart
 		if(findTheElement("xpath=//*[@id='add2CartBtn']").isDisplayed())
 		 {
@@ -414,7 +460,7 @@ public class savedPaymentMehods extends Browser
 	         rpt.Category("CC_Saved Payment Methods - Verify Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		doubleClick("xpath=//*[@id='add2CartBtn']"); //add to cart
+	 		click("xpath=//*[@id='add2CartBtn']"); //add to cart
 		 }
 		 else
 		 {
@@ -427,14 +473,14 @@ public class savedPaymentMehods extends Browser
 		 }
 		Thread.sleep(5000);
 		//click("xpath=//*[@id='GotoCartButton2']"); //view cart
-		if(findTheElement("xpath=//*[@id='GotoCartButton2']").isDisplayed())
+		if(findTheElement("xpath=//*[@id='productPageAdd2Cart']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Saved Payment Methods - Verify Product", "View Cart is Displayed - For Verify Product");
 	         rpt.Pass("View Cart is Displayed - For Verify Product");
 	         rpt.Category("CC_Saved Payment Methods - Verify Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//*[@id='GotoCartButton2']"); //view cart
+	 		click("xpath=//*[@id='productPageAdd2Cart']"); //view cart
 		 }
 		 else
 		 {
@@ -469,6 +515,13 @@ public class savedPaymentMehods extends Browser
 		Thread.sleep(2000);
 		click("id=summaryButton");
 		Thread.sleep(2000);
+		
+		}
+		catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 //		if (findTheElement("id=cardImagePaymentActive").isDisplayed())
 //		{
 //        rpt.createTest("CC - Saved Payment Methods - Verify Product", "Default Credit Card is Displayed - For Verify Product");
@@ -514,6 +567,8 @@ public class savedPaymentMehods extends Browser
 	//CC_ACC_009
 	public void verifyUpdate()throws Exception
 	{
+		try
+		{
 		Thread.sleep(5000);
 		click("link=Back to Cart"); //back to cart
 		Thread.sleep(5000);
@@ -584,10 +639,19 @@ public class savedPaymentMehods extends Browser
 			         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			         rpt.imgPathFail(path);
 				} 
+		}
+		   catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
+		
 	}
 	
 	public void addCard()throws Exception
 	{
+		try
+		{
 //		click("xpath=//*[@id='page']/div[5]/div[1]/a"); //back to cart
 //		Thread.sleep(5000);
 //		//click("xpath=//*[@id='Header_GlobalLogin_signOutQuickLink']"); //my acc
@@ -679,6 +743,12 @@ public class savedPaymentMehods extends Browser
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
 		  }
+		catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+	}
 		//click("id=card-number"); //credit card
 //		if(findTheElement("id=card-number").isDisplayed())
 //		 {

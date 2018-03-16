@@ -562,7 +562,7 @@ public class WishList extends Browser
 		Thread.sleep(3000);
 		click("id=GotoCartButton2"); //view cart
 		Thread.sleep(3000);
-		click("id=WC_OrderItemDetailsf_links_2_1");
+		click("id=MiniShopCartCloseButton_2");
 		Thread.sleep(2000);
 		click("id=wishListQuickLink_alt"); //wishlist
 		Thread.sleep(2000);
@@ -572,7 +572,7 @@ public class WishList extends Browser
 		Thread.sleep(2000);
 		click("id=shoppingListCreateSuccessPopup_continue_shopping");
 		Thread.sleep(2000);
-		 click("id=myAccountQuickLink");
+		 click("id=Header_GlobalLogin_signOutQuickLink");
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
 	}

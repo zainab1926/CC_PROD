@@ -138,7 +138,7 @@ public class CheckoutFlow extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 	}
-	Thread.sleep(2000);
+	Thread.sleep(5000);
 		
 		
 		click("link=READY TO CHECKOUT");

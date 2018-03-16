@@ -210,15 +210,19 @@ public class PersonalInformation extends Browser
 		//valid values
 		System.out.println("in field vldtn");
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_firstName_1']");//first name
+		findTheElement("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_firstName_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_firstName_1']","test");
 		
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_lastName_1']");//last name
+		findTheElement("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_lastName_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_lastName_1']","user");
 		
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_address1_1']");//street address
+		findTheElement("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_address1_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_address1_1']","349 US-1");
 		
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_city_1']");//city
+		findTheElement("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_city_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_city_1']","Mumbai");
 		
 		/*click("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_country_1-button']/span[1]");//country
@@ -245,8 +249,10 @@ public class PersonalInformation extends Browser
 		sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput__preferredCurrency_In_Register_1-button']/span[1]","US Dollar");*/
 		
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_zipCode_1']");//zip code
+		findTheElement("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_zipCode_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationUpdateForm_AddressEntryForm_FormInput_zipCode_1']","400057");
 		click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']");//phone no
+		findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']","9090900099");
 		
 		/*click("xpath=html/body/div[2]/div[3]/div/div[2]/div/div[2]/div/div/div[2]/div/form/div[14]/span/span[1]");//gender
@@ -279,6 +285,7 @@ public class PersonalInformation extends Browser
 		
 		
 		click("xpath=//*[@id='WC_PersonalInfoExtension_mobile_div_12']");
+		findTheElement("xpath=//*[@id='WC_PersonalInfoExtension_mobile_div_12']").clear();
 		sendKeys("xpath=//*[@id='WC_PersonalInfoExtension_mobile_div_12']","9898989822");
 		
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_links_1']");//update
@@ -592,7 +599,7 @@ public class PersonalInformation extends Browser
 			 }
 	}
 		 Thread.sleep(2000);
-		   click("id=myAccountQuickLink");
+		   click("id=Header_GlobalLogin_signOutQuickLink");
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
 	}

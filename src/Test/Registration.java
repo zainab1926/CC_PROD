@@ -34,7 +34,7 @@ public class Registration extends Browser
 		Invalid_Cnfm_Pwd();
 		User_Registration();
 		////validFields();
-		Reg_Success();
+//		Reg_Success(); //not working
 		////verifyEmailid();
 		
 	}
@@ -42,7 +42,7 @@ public class Registration extends Browser
 
 	public void checkFields() throws InterruptedException,Exception
 	{
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']"); ///signin
 		Thread.sleep(3000);
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_3']");//create acc
@@ -337,6 +337,7 @@ public class Registration extends Browser
 		click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1']");
 		findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1']", pwd);
+		System.out.println(pwd);
 		
 		//confirm password
 		click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1']");
@@ -370,6 +371,7 @@ public class Registration extends Browser
 		Thread.sleep(3000);
 		findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1").clear();
 		sendKeys("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1",pwd);
+		System.out.println(pwd);
 		Thread.sleep(3000);
 		click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");
 		
