@@ -4,6 +4,7 @@ import java.awt.Robot;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.KeyEvent;	
 
 import javax.swing.ImageIcon;
@@ -51,6 +52,7 @@ public class PersonalInformation extends Browser
 	
 	public void executeAllTestcase()throws Exception
 	{
+		try {
 		Thread.sleep(6000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		Thread.sleep(6000);
@@ -60,6 +62,15 @@ public class PersonalInformation extends Browser
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']");
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']", "Royalcyber1");
 		
+		
+//		 browser.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//		 //browser.manage().window().maximize();
+//		 //browser.get("https://prodlive.circuitcity.com/");
+//		 browser.findElement(By.className("signin")).click();
+//		 browser.findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1")).sendKeys("test");
+//		 browser.findElement(By.id("Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1")).sendKeys("Royalcyber1");
+	      
+	      
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_2']");
 		Thread.sleep(5000);
 		click("xpath=//a[contains(text(),'My Account')]");
@@ -71,10 +82,19 @@ public class PersonalInformation extends Browser
 		verifySettings();
 		//verify_details();
 		//mandatoryFields();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+		
+		
 	}
 	
 	public void verify_myAcc()throws Exception
 	{
+		try {
 		 Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Personal Information", "WC_MyAccountSidebarDisplayf_links_0");
 		 ids.put("Change Password", "WC_MyAccountSidebarDisplayf_links_1");
@@ -107,6 +127,12 @@ public class PersonalInformation extends Browser
 		         rpt.imgPathFail(path);
 			 }
 		 }
+		}
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 		 
 		/* Map<String,String> pid=new HashMap<String,String>();
 		 pid.put("Welcome message", "container_MyAccountDisplayB2B");
@@ -156,6 +182,7 @@ public class PersonalInformation extends Browser
 	
 	public void verify_displayedInfo()throws Exception
 	{
+		try {
 		Thread.sleep(5000);
 		click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_0']");
 		 Map<String,String> ids= new HashMap<String,String>();
@@ -203,10 +230,18 @@ public class PersonalInformation extends Browser
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			 }
-		 }     
+		 }   
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void fieldValidation()throws Exception
 	{
+		try 
+		{
 		//valid values
 		System.out.println("in field vldtn");
 		click("xpath=//*[@id='WC_UserRegistrationUpdateForm_NameEntryForm_FormInput_firstName_1']");//first name
@@ -533,11 +568,18 @@ public class PersonalInformation extends Browser
 							   findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_email1_In_Register_1']").clear();
 							   sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_email1_In_Register_1']","user@test.com");
 							   click("xpath=//*[@id='WC_UserRegistrationUpdateForm_links_1']");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	
 							   
   }
 	public void verify_MyAcc()throws Exception
 	{
+		try {
 		 Map<String,String> ids= new HashMap<String,String>();
     	 ids.put("Settings", "section_button_settings");
     	 ids.put("Wishlist", "section_button_wishlists");
@@ -563,11 +605,18 @@ public class PersonalInformation extends Browser
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
     		 }
-    	 }		 
+    	 }	
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	public void verifySettings()throws Exception
 	{
+		try {
 		 System.out.println("in verifySettings");
 		 Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Personal Information", "WC_MyAccountSidebarDisplayf_links_0");
@@ -602,6 +651,12 @@ public class PersonalInformation extends Browser
 		   click("id=Header_GlobalLogin_signOutQuickLink");
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
      public void verify_details()throws Exception
 	{

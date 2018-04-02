@@ -26,9 +26,10 @@ public class productComparison extends Browser
 	
 	public void executeAll() throws Exception
 	{
+		try {
 		verifyProduct();
     	customerView();
-		addedProduct();
+//		addedProduct();
 		addToCart();
 		compareProduct();
 //CC_CP_07 Invalid. Refer CIR-1577
@@ -36,14 +37,21 @@ public class productComparison extends Browser
 		verifyCompare();
 		shareProduct();
 		verifyEmail();
-//		verifyPrint();
+		verifyPrint();
 		verifyRemove();
 		verifySearch();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_CP_01
 	public void verifyProduct() throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		 if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
 		 {
@@ -152,6 +160,12 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		/*Screen s  = new Screen();
 		Thread.sleep(6000);
 		Pattern img=new Pattern("C:\\Users\\user\\workspace\\CC\\sikuli images\\compare_cc.png");
@@ -162,6 +176,7 @@ public class productComparison extends Browser
 	//CC_CP_02
 	public void customerView() throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
 		if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -232,13 +247,13 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
  */
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 //		jse.executeScript("window.scrollBy(0,1000)"); 
 		
 		//click("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616727788_link_9b']");
 //		if(findTheElement("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616727788_link_9b']").isDisplayed())
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Customer View", "Product is Displayed - For Verify Customer View");
 	         rpt.Pass("Product is Displayed - For Verify Customer View");
@@ -246,7 +261,7 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
 //	 		click("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616727788_link_9b']");
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -280,12 +295,19 @@ public class productComparison extends Browser
 		 }
 		 else
 		 {
+			
 			 rpt.createTest("CC - Product Comparison - Verify Customer View", "Product Compare NOT Displayed - For Verify Customer View");
 	         rpt.Fail("Product Compare NOT Displayed - For Verify Customer View");
 	         rpt.Category("CC_Product Comparison - Verify Customer View");
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_CP_03
@@ -334,19 +356,19 @@ public class productComparison extends Browser
 //		for(int i=0; i<6; i++) {
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)"); 
 		
 		//click("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616727788_link_9b']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Added Product", "Product is Displayed - For Verify Added Product");
 	         rpt.Pass("Product is Displayed - For Verify Added Product");
 	         rpt.Category("CC_Product Comparison - Verify Added Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -360,7 +382,7 @@ public class productComparison extends Browser
 //		for(int i=0; i<6; i++) {
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)"); 
 
@@ -384,7 +406,7 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
-	
+		Thread.sleep(2000);
 		click("xpath=//div[@class='owl-item'][2]//label[contains(text(),'Compare')]");
 	    //click("xpath=//*[@id='compareButton_3074457345616734525']"); //compare
 	    if(findTheElement("xpath=//div[@class='owl-item'][2]//a[contains(text(),'Compare')]").isDisplayed())
@@ -410,6 +432,7 @@ public class productComparison extends Browser
 	//CC_CP_05
 	public void addToCart()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='comparePageAdd2Cart_1']"); //add to cart
 		if(findTheElement("xpath=//a[@id='add2CartBtn_1']").isDisplayed())
 		 {
@@ -430,11 +453,18 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_CP_06
    public void compareProduct()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -478,19 +508,19 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 		
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)"); 
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616727788_link_9b']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Compare Product", "Product is Displayed - For Verify Compare Product");
 	         rpt.Pass("Product is Displayed - For Verify Compare Product");
 	         rpt.Category("CC_Product Comparison - Verify Compare Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -621,6 +651,12 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }*/
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    
    }
    
@@ -823,6 +859,7 @@ public class productComparison extends Browser
    //CC_CP_08
    public void verifyCompare()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -866,19 +903,19 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 		
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)");
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='catalogEntry_img3074457345616727848']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Compare Product", "Product is Displayed - For Verify Compare Product");
 	         rpt.Pass("Product is Displayed - For Verify Compare Product");
 	         rpt.Category("CC_Product Comparison - Verify Compare Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -954,11 +991,18 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
   
    //CC_CP_09
    public void shareProduct()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -1002,20 +1046,20 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)");
 		
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='catalogEntry_img3074457345616727848']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Share Product", "Product is Displayed - For Verify Share Product");
 	         rpt.Pass("Product is Displayed - For Verify Share Product");
 	         rpt.Category("CC_Product Comparison - Verify Share Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -1073,11 +1117,18 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
    
    //CC_CP_10
    public void verifyEmail()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -1121,20 +1172,20 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 		
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)");
 		
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='catalogEntry_img3074457345616727848']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Email Product", "Product is Displayed - For Verify Email Product");
 	         rpt.Pass("Product is Displayed - For Verify Email Product");
 	         rpt.Category("CC_Product Comparison - Verify Email Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -1230,12 +1281,19 @@ public class productComparison extends Browser
 	         rpt.imgPathFail(path);
 		 }
 		click("xpath=//button[contains(text(),'SEND')]");
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
 
    
    //CC_CP_11
    public void verifyPrint()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -1279,19 +1337,19 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)");
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='catalogEntry_img3074457345616727848']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Print Product", "Product is Displayed - For Verify Print Product");
 	         rpt.Pass("Product is Displayed - For Verify Print Product");
 	         rpt.Category("CC_Product Comparison - Verify Print Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -1381,11 +1439,18 @@ public class productComparison extends Browser
 //		driver.switchTo().alert().dismiss();
 //		driver.switchTo().window(getWindowHandle());
 //		click("xpath=//div[@id=\"print-header\"]//div[@class='Cancel']");
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
    
    //CC_CP_12
    public void verifyRemove()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='allDepartmentsButton']/span"); //product
    	if(findTheElement("xpath=//li[1]/.//a[@class='departmentButton']").isDisplayed())
 		 {
@@ -1429,19 +1494,19 @@ public class productComparison extends Browser
 //	        r.keyPress(KeyEvent.VK_PAGE_DOWN);
 //	    }
 
-//		Element = findTheElement("xpath=//li[1]/.//div[@class='product_name']");
+//		Element = findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 //		jse.executeScript("arguments[0].scrollIntoView();", Element);
 		jse.executeScript("window.scrollBy(0,1000)");
 		Thread.sleep(4000);
 		//click("xpath=//*[@id='catalogEntry_img3074457345616727848']");
-		if(findTheElement("xpath=//li[1]/.//div[@class='product_name']").isDisplayed())
+		if(findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']").isDisplayed())
 		 {
 	         rpt.createTest("CC - Product Comparison - Verify Remove Product", "Product is Displayed - For Verify Remove Product");
 	         rpt.Pass("Product is Displayed - For Verify Remove Product");
 	         rpt.Category("CC_Product Comparison - Verify Remove Product");
 	         String path = rpt.CaptureScreen(browser, "ValidMessage");
 	         rpt.imgPathPass(path);
-	 		click("xpath=//li[1]/.//div[@class='product_name']");
+	 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 }
 		 else
 		 {
@@ -1498,11 +1563,18 @@ public class productComparison extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
    
    //CC_CP_15
    public void verifySearch()throws Exception
    {
+	   try {
    	//click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
    	 if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
 		 {
@@ -1592,4 +1664,11 @@ public class productComparison extends Browser
 		 }
 		
    }
+   
+   catch(Exception e)
+   {
+   System.out.println("Exception occurred");
+   e.printStackTrace();
+  } 
+}
 }

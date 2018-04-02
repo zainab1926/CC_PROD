@@ -101,7 +101,7 @@
                     <div class="method-list-content passed suite-RC_Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-RC_Suite" title="Test.Initiate" hash-for-method="checkHome(FF, https://prodlive.circuitcity.com/, savedPaymentMehods)">checkHome(FF, https://prodlive.circuitcity.com/, savedPaymentMehods)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-RC_Suite" title="Test.Initiate" hash-for-method="checkHome(FF, https://prodlive.circuitcity.com/, PersonalInformation)">checkHome(FF, https://prodlive.circuitcity.com/, PersonalInformation)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-RC_Suite -->
@@ -124,10 +124,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="checkHome(FF, https://prodlive.circuitcity.com/, savedPaymentMehods)">
-                  </a> <!-- checkHome(FF, https://prodlive.circuitcity.com/, savedPaymentMehods) -->
+                  <a name="checkHome(FF, https://prodlive.circuitcity.com/, PersonalInformation)">
+                  </a> <!-- checkHome(FF, https://prodlive.circuitcity.com/, PersonalInformation) -->
                   <span class="method-name">checkHome</span>
-                  <span class="parameters">(FF, https://prodlive.circuitcity.com/, savedPaymentMehods)</span>
+                  <span class="parameters">(FF, https://prodlive.circuitcity.com/, PersonalInformation)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -141,18 +141,18 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite verbose=&quot;2&quot; name=&quot;RC Suite&quot; parallel=&quot;methods&quot;&gt;
-  &lt;parameter name=&quot;browser&quot; value=&quot;FF&quot;/&gt;
-  &lt;parameter name=&quot;Module&quot; value=&quot;savedPaymentMehods&quot;/&gt;
-  &lt;parameter name=&quot;url&quot; value=&quot;https://prodlive.circuitcity.com/&quot;/&gt;
+&lt;suite thread-count=&quot;2&quot; verbose=&quot;2&quot; name=&quot;RC Suite&quot; parallel=&quot;tests&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;Test.EnvReaderListener&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test verbose=&quot;2&quot; name=&quot;RC Test&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; verbose=&quot;2&quot; name=&quot;RC Test - FF&quot; parallel=&quot;tests&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;FF&quot;/&gt;
+    &lt;parameter name=&quot;Module&quot; value=&quot;PersonalInformation&quot;/&gt;
+    &lt;parameter name=&quot;url&quot; value=&quot;https://prodlive.circuitcity.com/&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;Test.Initiate&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- RC Test --&gt;
+  &lt;/test&gt; &lt;!-- RC Test - FF --&gt;
 &lt;/suite&gt; &lt;!-- RC Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -164,7 +164,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">RC Test (1 class)</span>
+                <span class="test-name">RC Test - FF (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -194,12 +194,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'checkHome')
 data.setCell(0, 2, 'Test.Initiate')
-data.setCell(0, 3, 439488);
+data.setCell(0, 3, 174028);
 window.suiteTableData['RC_Suite']= { tableData: data, tableDiv: 'times-div-RC_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 7 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-RC_Suite">
               </div> <!-- times-div-RC_Suite -->
             </div> <!-- times-div -->
@@ -231,12 +231,12 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">checkHome(FF, https://prodlive.circuitcity.com/, savedPaymentMehods)</span>
-                <span class="method-start">445 ms</span>
+                <span class="method-name">checkHome(FF, https://prodlive.circuitcity.com/, PersonalInformation)</span>
+                <span class="method-start">403 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">publishReport</span>
-                <span class="method-start">439937 ms</span>
+                <span class="method-start">174431 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

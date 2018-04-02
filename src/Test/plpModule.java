@@ -32,7 +32,7 @@ public class plpModule extends Browser {
 	@Test
 	public void executeAll() throws Exception 
 	{
-
+		try {
 		plpPageDetails(); //TC 1
 		addProductsToCompare(); //TC 6
 		filterByBrand();
@@ -40,8 +40,6 @@ public class plpModule extends Browser {
 		//filterByPrice(); //10 to check
 		verifyHyperlink();
 		verifyRatings();
-		
-		
 		addProductToCart();
 		updateQuantityBox(); //14
 		strikeThroughPrice();
@@ -50,12 +48,18 @@ public class plpModule extends Browser {
 		verifyGridView();
 		verifyPagination();
 		verifySortBy();
-		espot(); //not there in prod
-
-	}
-
+		espot(); //not there in prod 
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+		
+		}
 	// TC-1
 	public void plpPageDetails() throws Exception{
+		try {
 		 Thread.sleep(8000);
 		 click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
@@ -90,11 +94,17 @@ public class plpModule extends Browser {
 		             String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		             rpt.imgPathFail(path);
 		      }
-		}
+		} }
+		     catch(Exception e)
+		     {
+		     System.out.println("Exception occurred");
+		     e.printStackTrace();
+		    } 
 		}
 
 	// CC_PL_06
 	public void addProductsToCompare() throws Exception {
+		try {
 		// click("xpath=//*[@id=\'compare_3074457345616726692\']");
 		if (findTheElement("xpath=//li[1]/.//div[@class='compare_target']//label[contains(text(),'Compare')]").isDisplayed()) {
 			rpt.createTest("CC - PLP Module - Add Products to Compare",
@@ -193,11 +203,17 @@ public class plpModule extends Browser {
 			rpt.Category("CC - PLP Module - Add Products to Compare");
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
-		}
+		} }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_08
 	public void filterByBrand() throws Exception {
+		try {
 		Thread.sleep(2000);
 		// click("xpath=//*[@id=\'orderBy_4_-3011_3074457345618265606-button\']");
 //		if (findTheElement("xpath=//*[@id=\'orderBy_4_-3011_3074457345618265606-button\']").isDisplayed()) {
@@ -243,12 +259,18 @@ public class plpModule extends Browser {
 			rpt.imgPathFail(path);
 		}
 		Thread.sleep(8000);
-
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_09
 	public void filterByBadges() throws Exception 
 	{
+		try {
 
 //		waitForPageElementToLoad("xpath=//*[@id=\'orderBy_4_-3011_3074457345618265606-button\']");
 //		Thread.sleep(2000);
@@ -318,6 +340,12 @@ public class plpModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_10
@@ -391,6 +419,7 @@ public class plpModule extends Browser {
 
 	// CC_PL_12
 	public void verifyHyperlink() throws Exception {
+		try {
 		Thread.sleep(4000);
 		// click("xpath=//*[@id="WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616684172_link_9b"]");
 		if (findTheElement("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']")
@@ -412,11 +441,18 @@ public class plpModule extends Browser {
 
 		browser.navigate().back();
 		Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 
 	// CC_PL_13
 	public void addProductToCart() throws Exception {
+		try {
 		Thread.sleep(2000);
 		//click("xpath=(//a[contains(text(),'BUY NOW')])[3]");
 		if (findTheElement("xpath=(//a[contains(text(),'BUY NOW')])[3]").isDisplayed()) {
@@ -439,10 +475,17 @@ public class plpModule extends Browser {
 		Thread.sleep(2000);
 		click("id=MiniShopCartCloseButton_2");
 		Thread.sleep(4000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
     //14
 	public void updateQuantityBox()throws Exception
 	{
+		try {
 		click("xpath=//div[@class='product_listing_container']//li[2]/.//div[@class='product_name']");
 		Thread.sleep(1000);
 		 findTheElement("xpath=//div[6]/input").clear();
@@ -471,11 +514,17 @@ public class plpModule extends Browser {
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
-		 
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 			 
 	}
 	// CC_PL_15
 	public void strikeThroughPrice() throws Exception {
+		try {
 		browser.navigate().back();
 		String price=findTheElement("xpath=//li[3]/.//div[@class='product_price']").getText();
 		Thread.sleep(2000);
@@ -495,9 +544,16 @@ public class plpModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
   //16,17
 	public void wishList() throws Exception {
+		try {
 		click("xpath=//li/div[2]/div/div[2]");
 		Thread.sleep(2000);
 		if (findTheElement("id=SignInPopup").isDisplayed()) {
@@ -519,6 +575,12 @@ public class plpModule extends Browser {
 		Thread.sleep(2000);
 		click("xpath=//div[@id='WC_AccountDisplay_div_2']/a"); //closing sigin popup
 		Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		/*click("css=div.love_it_drop");
 		Thread.sleep(2000);
 		/* String parentWindow = browser.getWindowHandle();
@@ -567,9 +629,11 @@ public class plpModule extends Browser {
 		Thread.sleep(2000);
 		click("link=Remove"); */ 
 	}
+		
 	
 	// CC_PL_18
 	public void verifyListView() throws Exception {
+		try {
 		 click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
 		 click("link=Audio");//categories
@@ -591,10 +655,17 @@ public class plpModule extends Browser {
 			rpt.imgPathFail(path);
 		}
 		Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_19
 	public void verifyGridView() throws Exception {
+		try {
 		// click("xpath=//*[@id=\'WC_SearchBasedNavigationResults_pagination_link_grid_categoryResults\']");
 		if (findTheElement("id=WC_SearchBasedNavigationResults_pagination_link_grid_categoryResults")
 				.isDisplayed()) {
@@ -612,11 +683,18 @@ public class plpModule extends Browser {
 			rpt.imgPathFail(path);
 		}
 		Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_20
 	public void verifyPagination() throws Exception 
 	{
+		try {
 		// JavascriptExecutor jse = (JavascriptExecutor)driver;
 		// jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 //		Robot r = new Robot();
@@ -644,10 +722,17 @@ public class plpModule extends Browser {
 			rpt.imgPathFail(path);
 		}
 		Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PL_21
 	public void verifySortBy() throws Exception {
+		try {
 		
 		// click("xpath=//*[@id=\'pageSize_4_-3011_3074457345618265606-button\']");
 		if (findTheElement("xpath=//div[2]/div/span/label").isDisplayed()) {
@@ -671,8 +756,17 @@ public class plpModule extends Browser {
 //		r.keyPress(KeyEvent.VK_ENTER);
 		click("xpath=//div[@id='ui-id-10']");
 		Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void espot() throws Exception {
+		try {
+	
+		
 		Thread.sleep(2000);
 		click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
@@ -692,5 +786,10 @@ public class plpModule extends Browser {
 				String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				rpt.imgPathFail(path);
 			}
+		}  catch(Exception e)
+	    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}
 }

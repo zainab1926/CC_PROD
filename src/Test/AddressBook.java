@@ -20,7 +20,7 @@ public class AddressBook extends Browser
 	String nickName = email.getRandomString(6);
 	Report rpt = new Report();
 	//WebDriver wd;
-
+	String filePath="D:\\CC_PROD\\CC-Data.xlsx";
 	
 	
 	/*public void first()throws Exception
@@ -48,13 +48,16 @@ public class AddressBook extends Browser
 	@Test
 	public void executeAllTest()throws Exception
 	{
+		try {
 		//first();
 		//chk_details();
 		//lines added
 		  click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']");
+		//String Email_ID=CommonUtils.read_excel(filePath);
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']", "user@test.com");
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']");
+		//String Password=CommonUtils.read_excel(filePath);
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']", "Royalcyber1");
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_2']");//sign in
 		//click("xpath=html/body/div[2]/div[1]/div[2]/div[2]/div[4]/ul/li[3]/a[1]");
@@ -69,14 +72,20 @@ public class AddressBook extends Browser
 		chk_existing_Add();
 		verifyAddNewPage();
 		field_Validation();
-//		//commented as Add address is not ging further after clicking on Save Button - 18/12/2017 - Mahesh
 		Add_Address();
 		//updated_Add();
 	    remove_Add();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	
- public void chk_details() throws Exception
+
+public void chk_details() throws Exception
  {
 	//CC_ACC_001
 	 			
@@ -209,6 +218,8 @@ public class AddressBook extends Browser
      //CC_ACC_002
      public void chk_AccSection() throws Exception
      {
+    	 try
+    	 {
      Map<String,String> ids= new HashMap<String,String>();
 	 ids.put("Settings", "section_button_settings");
 	 ids.put("Wishlist", "section_button_wishlists");
@@ -242,6 +253,12 @@ public class AddressBook extends Browser
 
 		 }
 	 }
+    	 }
+    	  catch(Exception e)
+    	    {
+    	    System.out.println("Exception occurred");
+    	    e.printStackTrace();
+    	   } 
      }
      
    //CC_ACC_003
@@ -249,6 +266,8 @@ public class AddressBook extends Browser
     public void chk_Sections() throws Exception
     {
    // click("xpath=//*[@id='section_button_settings");
+    	try
+    	{
    
      Map<String,String> ids= new HashMap<String,String>();
 	 ids.put("Personal Information", "WC_MyAccountSidebarDisplayf_links_0");
@@ -283,11 +302,19 @@ public class AddressBook extends Browser
 	         rpt.imgPathFail(path);
 		 }
 	 }
+    	}
+    	  catch(Exception e)
+        {
+        System.out.println("Exception occurred");
+        e.printStackTrace();
+       } 
     }
    
     //CC_ACC_004
     public void verify_myAcc()throws Exception
     {
+    	try
+    	{
     	 Map<String,String> ids= new HashMap<String,String>();
     	 ids.put("Settings", "section_button_settings");
     	 ids.put("Wishlist", "section_button_wishlists");
@@ -315,12 +342,20 @@ public class AddressBook extends Browser
     	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	         rpt.imgPathFail(path);
     		 }
-    	 }		 
+    	 }	
+    	}
+    	  catch(Exception e)
+        {
+        System.out.println("Exception occurred");
+        e.printStackTrace();
+       } 
     }
      
     //CC_ACC_005
 	public void verify_myAccPage() throws Exception
 	{
+		try
+		{
 		 Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Personal Information", "WC_MyAccountSidebarDisplayf_links_0");
 		 ids.put("Change Password", "WC_MyAccountSidebarDisplayf_links_1");
@@ -355,6 +390,12 @@ public class AddressBook extends Browser
     	         rpt.imgPathFail(path);
 			 }
 		 }
+		}
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}
     
     //CC_ACC_006
@@ -369,6 +410,8 @@ public class AddressBook extends Browser
     //CC_ACC_007
     public void verifyAddNewPage() throws Exception
     {
+    	try
+    	{
 	 Map<String,String> ids= new HashMap<String,String>();
 	 //ids.put("Radio Button", ""); //not there on page
 	 ids.put("Add Shipping Address", "container_MyAccountDisplayB2B");
@@ -410,6 +453,12 @@ public class AddressBook extends Browser
 	         rpt.imgPathFail(path);
 		 }
 	 }
+    	}
+    	  catch(Exception e)
+        {
+        System.out.println("Exception occurred");
+        e.printStackTrace();
+       } 
     }
  
 
@@ -417,6 +466,8 @@ public class AddressBook extends Browser
      //CC_ACC_008
       public void field_Validation()throws Exception
       {
+    	  try
+    	  {
     	  Thread.sleep(2000);
     	click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_2']"); //addressbook
     	click("xpath=//*[@id='WC_AjaxAddressBookForm_links_1']"); //add address
@@ -678,11 +729,20 @@ public class AddressBook extends Browser
 				click("xpath=//*[@id='WC_AjaxAddressBookForm_links_4a']");	
 				Thread.sleep(6000);
       }
+      
+      catch(Exception e)
+      {
+      System.out.println("Exception occurred");
+      e.printStackTrace();
+     } 
+      }
    
    
   //cc_ACC_009
   public void Add_Address()throws Exception
   {
+	  try
+	  {
 	  Thread.sleep(2000);
 	  click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_2']");
 	  Thread.sleep(3000);
@@ -763,7 +823,12 @@ public class AddressBook extends Browser
 	         rpt.imgPathFail(path);
 
 		}
-	  
+	  }
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		  
 	  
 //	  WebElement element = findTheElement("id=WC_AjaxAddressBookForm_links_4a");
@@ -817,7 +882,8 @@ public class AddressBook extends Browser
   //CC_ACC_11
   public void remove_Add()throws Exception
   {
-	  
+	  try
+	  {
 	  click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_2']");
 	  Thread.sleep(4000);
 //	  if(findTheElement("xpath=//*[@id='WC_AjaxAddressBookForm_links_2']").isEnabled())
@@ -867,7 +933,13 @@ public class AddressBook extends Browser
 	   //Thread.sleep(5000);
 
 	   //click("xpath=html/body/div[2]/div[1]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[1]/div[1]/a/span"); //sign out
-  }
-  
   
   }
+  catch(Exception e)
+  {
+  System.out.println("Exception occurred");
+  e.printStackTrace();
+ } 
+  
+  
+  } }

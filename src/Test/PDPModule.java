@@ -62,6 +62,7 @@ public class PDPModule extends Browser {
 	}
    public void Login()throws Exception
    {
+	   try {
 	   click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']");
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']", "user@test.com");
@@ -72,11 +73,18 @@ public class PDPModule extends Browser {
 		Thread.sleep(6000);
 //		click("xpath=.//*[@id='Header_GlobalLogin_loggedInDropdown']/div/div/div/div[3]/div[1]/div[1]/a"); //my acc
 		click("xpath=//a[contains(text(),'My Account')]"); //my acc
+	   }
+	   catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
    }
 
 
 	// Step_to_PD_Page
 	public void verifyPDpage() throws Exception {
+		try {
 		 Thread.sleep(3000);
 		 click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
@@ -84,6 +92,12 @@ public class PDPModule extends Browser {
 		 Thread.sleep(3000);
 		click("xpath=//div[@class='product_listing_container']//li[1]/.//div[@class='product_name']");
 		 Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 //		Robot r = new Robot();
 //		r.keyPress(KeyboardEvent.DOM_VK_PAGE_DOWN);
 //		Thread.sleep(3000);
@@ -103,6 +117,7 @@ public class PDPModule extends Browser {
 
 	// CC_PD_01
 	public void chk_UISection() throws Exception {
+		try {
 		Map<String, String> ids = new HashMap<String, String>();
 		ids.put("Name", "PageHeading_3074457345618265621");
 		ids.put("Price", "offerPrice_3074457345616726692");
@@ -127,11 +142,17 @@ public class PDPModule extends Browser {
 				rpt.imgPathFail(path);
 
 			}
-		}
+		} }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}
 
 	// CC_PD_02
 	public void addToCart_PD() throws Exception {
+		try {
 		Thread.sleep(5000);
 		// click("id=add2CartBtn");
 		if (findTheElement("id=add2CartBtn").isDisplayed()) {
@@ -159,11 +180,18 @@ public class PDPModule extends Browser {
 		browser.navigate().back();
 		Thread.sleep(4000);
 		//waitForPageElementToBeDisplayed("id=widget_product_image_viewer_2_-3021_3074457345618265628");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 
 	// CC_PD_03,4
 	public void addToWishlist_PD() throws Exception {
+		try {
 		Thread.sleep(2000);
 		// click("id=3074457345616726692addToShoppingList");
 		if (findTheElement("xpath=//div[4]/div[2]/div/div/div/span/div[2]/div/a/img").isDisplayed()) {
@@ -262,10 +290,17 @@ public class PDPModule extends Browser {
 			Thread.sleep(2000);
 			click("id=shoppingListCreateSuccessPopup_continue_shopping");
 			Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_06
 	public void editQuantity() throws Exception {
+		try {
 		Thread.sleep(2000);
 		browser.navigate().back();
 		Thread.sleep(2000);
@@ -311,11 +346,17 @@ public class PDPModule extends Browser {
 		 click("id=add2CartBtn");
 		 Thread.sleep(4000);
 		 click("id=MiniShopCartCloseButton_2"); //closing mini cart
-		Thread.sleep(2000);
+		Thread.sleep(2000); }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_08
 	public void verifyBreadcrumb() throws Exception {
+		try {
 		
 		String text=findTheElement("xpath=//div[@id='widget_breadcrumb']/ul").getText();
 		System.out.println(text);
@@ -354,11 +395,18 @@ public class PDPModule extends Browser {
 		}
 		Thread.sleep(3000);
 		browser.navigate().back();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 
 	// CC_PD_10
 	public void verifyMiniCart() throws Exception {
+		try {
 //		click("id=productPageAdd2Cart");
 //		Thread.sleep(2000);
 //		click("id=MiniShopCartCloseButton_2");
@@ -435,11 +483,18 @@ public class PDPModule extends Browser {
 		 click("id=MiniShopCartCloseButton_2");
 		 Thread.sleep(2000);
 //		 click("xpath=//a[@id='WC_OrderItemDetailsf_links_2_1']/b"); //remove
-//		 Thread.sleep(2000);
+//		 Thread.sleep(2000); }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_11
 	public void pdImageZoom() throws Exception {
+		try {
 
 		Thread.sleep(3000);
 		click("xpath=//div[@id='surround']/img");
@@ -487,10 +542,17 @@ public class PDPModule extends Browser {
 		 Thread.sleep(2000);
 		 click("xpath=//a[@id='WC_OrderItemDetailsf_links_2_1']/b"); //remove
 		 Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_15
 	public void sendMail_Share() throws Exception {
+		try {
 		 Thread.sleep(2000);
 		 click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
@@ -566,10 +628,17 @@ public class PDPModule extends Browser {
 //			rpt.imgPathFail(path);
 //		}
 		Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_12,13,36
 	public void verifyColorOption() throws Exception {
+		try {
 		Thread.sleep(3000);
 		sendKeys("id=SimpleSearchForm_SearchTerm","Tripp Lite P568-006-RA 6FT HDMI CABLE RIGHT ANGLE HD");
 		Thread.sleep(2000);
@@ -624,10 +693,17 @@ public class PDPModule extends Browser {
 		Thread.sleep(2000);
 		//click("xpath=//a[@id='WC_OrderItemDetailsf_links_2_2']/b");
 		//Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_22,23
 	public void verifyinWishlistPage() throws Exception {
+		try {
 //		Robot r = new Robot();
 //		r.keyPress(KeyboardEvent.DOM_VK_PAGE_UP);
 //		Thread.sleep(2000);
@@ -702,10 +778,17 @@ public class PDPModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}
 	//28
 	public void nearImage()throws Exception
 	{
+		try {
     // click("xpath=//div[5]/div/a");
      if (findTheElement("xpath=//div[5]/div/a").isDisplayed()) {
 			rpt.createTest("CC - PDP Module - Verify Near Image of Product",
@@ -723,12 +806,17 @@ public class PDPModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
-     Thread.sleep(2000);
+     Thread.sleep(2000); }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
      
 	}
 	//29
 	public void onImage()throws Exception
-	{
+	{ try {
 		sendKeys("id=SimpleSearchForm_SearchTerm","Antec ONE Gaming Case");
 		Thread.sleep(2000);
 		click("id=autoSelectOption_0");
@@ -750,11 +838,17 @@ public class PDPModule extends Browser {
 				rpt.imgPathFail(path);
 			}
 	     Thread.sleep(2000);
-		
+	}
+	  catch(Exception e)
+    {
+    System.out.println("Exception occurred");
+    e.printStackTrace();
+   } 
 		
 	}
 	public void addImage()throws Exception
 	{
+		try {
 		sendKeys("id=SimpleSearchForm_SearchTerm","   Lenovo 20EN001EUS TS P50 i7 16GB 256GB");
 		Thread.sleep(2000);
 		click("id=autoSelectOption_0");
@@ -796,11 +890,18 @@ public class PDPModule extends Browser {
 	       browser.switchTo().window(parentWindow); 
 		     }
 		  }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	
 	// CC_PD_032
 	public void verifyPriceDetails() throws Exception {
+		try {
 		Thread.sleep(3000);
 		if (findTheElement("id=price_display_3074457345616726692").isDisplayed()) {
 			rpt.createTest("CC - PDP Module - Verify Price Details",
@@ -817,10 +918,17 @@ public class PDPModule extends Browser {
 			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_36, CC_PD_40
 	public void verifyCategoryandProductHighlights() throws Exception {
+		try {
 		sendKeys("id=SimpleSearchForm_SearchTerm","   Lenovo 20EN001EUS TS P50 i7 16GB 256GB");
 		Thread.sleep(2000);
 		click("id=autoSelectOption_0");
@@ -889,10 +997,17 @@ public class PDPModule extends Browser {
 //			String path = rpt.CaptureScreen(browser, "InvalidMessage");
 //			rpt.imgPathFail(path);
 //		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// cc_PD_42,43
 	public void verifyTradeinCashAndPriceMatch() throws Exception {
+		try {
 		sendKeys("id=SimpleSearchForm_SearchTerm","   Lenovo 20EN001EUS TS P50 i7 16GB 256GB");
 		Thread.sleep(2000);
 		click("id=autoSelectOption_0");
@@ -1004,10 +1119,17 @@ public class PDPModule extends Browser {
 			rpt.imgPathFail(path);
 		} */
 		Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_49,51,56
 	public void verifyTabs() throws Exception {
+		try {
 		 Thread.sleep(3000);
 		click("id=allDepartmentsButton"); // Select Products
 		 Thread.sleep(3000);
@@ -1201,10 +1323,17 @@ public class PDPModule extends Browser {
 //			rpt.imgPathFail(path);
 //		}
 //		Thread.sleep(3000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	// CC_PD_60
 	public void VerifyWriteReviews() throws Exception {
+		try {
 		//click("id=tab3");
 		Thread.sleep(2000);
 		if (findTheElement(
@@ -1355,6 +1484,12 @@ public class PDPModule extends Browser {
 		}
 		Thread.sleep(2000);
 	}
+	
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } }
 
 	// CC_PD_45
 //	public void verifyC_A_V() throws Exception {

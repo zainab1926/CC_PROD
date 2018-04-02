@@ -91,7 +91,7 @@ public class BrowserFactory {
 			dc.setAcceptInsecureCerts(true);
 		    browser  = new FirefoxDriver(dc);	
 		    Browser br = new Browser();
-		    br.go(url);
+		    browser.get(url);
 		    String appTitle = br.getTitle();
 			test=extent.createTest("Checking Application Title - HomePage");
 			if(br.getTitle().contains(appTitle))
@@ -156,7 +156,7 @@ public class BrowserFactory {
 		dc.setAcceptInsecureCerts(true);
 		 	browser  = new ChromeDriver(dc);	
 		    Browser br = new Browser();
-		    br.go(url);
+		    browser.get(url);
 		return remoteDriver;
 	}
 	

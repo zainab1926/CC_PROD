@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="RC Suite" duration-ms="440415" started-at="2018-03-16T13:38:31Z" finished-at="2018-03-16T13:45:51Z">
+  <suite name="RC Suite" duration-ms="175293" started-at="2018-03-30T05:47:38Z" finished-at="2018-03-30T05:50:33Z">
     <groups>
     </groups>
-    <test name="RC Test" duration-ms="440415" started-at="2018-03-16T13:38:31Z" finished-at="2018-03-16T13:45:51Z">
+    <test name="RC Test - FF" duration-ms="175293" started-at="2018-03-30T05:47:38Z" finished-at="2018-03-30T05:50:33Z">
       <class name="Test.Initiate">
-        <test-method status="PASS" signature="Ini()[pri:0, instance:Test.Initiate@dc24521]" name="Ini" is-config="true" duration-ms="442" started-at="2018-03-16T19:08:31Z" finished-at="2018-03-16T19:08:31Z">
+        <test-method status="PASS" signature="Ini()[pri:0, instance:Test.Initiate@a67c67e]" name="Ini" is-config="true" duration-ms="403" started-at="2018-03-30T11:17:38Z" finished-at="2018-03-30T11:17:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Ini -->
-        <test-method status="PASS" signature="checkHome(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:Test.Initiate@dc24521]" name="checkHome" duration-ms="439488" started-at="2018-03-16T19:08:31Z" finished-at="2018-03-16T19:15:51Z">
+        <test-method status="PASS" signature="checkHome(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:Test.Initiate@a67c67e]" name="checkHome" duration-ms="174028" started-at="2018-03-30T11:17:38Z" finished-at="2018-03-30T11:20:32Z">
           <params>
             <param index="0">
               <value>
@@ -25,18 +25,18 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[savedPaymentMehods]]>
+                <![CDATA[PersonalInformation]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- checkHome -->
-        <test-method status="PASS" signature="publishReport()[pri:0, instance:Test.Initiate@dc24521]" name="publishReport" is-config="true" duration-ms="448" started-at="2018-03-16T19:15:51Z" finished-at="2018-03-16T19:15:51Z">
+        <test-method status="PASS" signature="publishReport()[pri:0, instance:Test.Initiate@a67c67e]" name="publishReport" is-config="true" duration-ms="840" started-at="2018-03-30T11:20:32Z" finished-at="2018-03-30T11:20:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- publishReport -->
       </class> <!-- Test.Initiate -->
-    </test> <!-- RC Test -->
+    </test> <!-- RC Test - FF -->
   </suite> <!-- RC Suite -->
 </testng-results>

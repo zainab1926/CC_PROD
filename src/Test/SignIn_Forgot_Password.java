@@ -2,6 +2,7 @@ package Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -19,9 +20,11 @@ public class SignIn_Forgot_Password extends Browser
 	@Test
 	public void executeAllTest()throws Exception
 	{
+		browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		try {
 //		Registration r =new Registration();
 //		r.User_Registration();
-//		Thread.sleep(3000);
+//		// Thread.sleep(3000);
 		verifyLogin();
 		verifySignin();
 		verifyEmail();
@@ -29,15 +32,22 @@ public class SignIn_Forgot_Password extends Browser
 		//RememberMe(); //out of box
 		forgotPassword();
 		verify_forgotPassword();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		//newPassword();  //functionality not working
 		//oldPassword();
 	}
 	
 	public void verifyLogin()throws Exception
 	{
-		Thread.sleep(10000);
+		try {
+		// Thread.sleep(10000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("LogIn Id", "Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1"); 
 		 ids.put("Password", "Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1");
@@ -46,7 +56,7 @@ public class SignIn_Forgot_Password extends Browser
 		 ids.put("Forgot Password", "Header_GlobalLogin_WC_AccountDisplay_links_1");
 		 ids.put("Create Account", "Header_GlobalLogin_WC_AccountDisplay_links_3");
 		 
-		  Thread.sleep(8000);                 
+		  // Thread.sleep(8000);                 
 		 for(Map.Entry<String, String> id : ids.entrySet() )
 		 {
 			 if(findTheElement("xpath=//*[@id='"+id.getValue()+"']").isDisplayed())
@@ -67,12 +77,19 @@ public class SignIn_Forgot_Password extends Browser
 		       
 			 }
 		 }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 
 	public void verifySignin()throws Exception
 	{
-		Thread.sleep(5000);
+		try {
+		// Thread.sleep(5000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 		{
@@ -91,7 +108,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(6000);
+		// Thread.sleep(6000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
 		//sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input", "ramya@royalcyber.com");
 		if(findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1").isDisplayed())
@@ -132,7 +149,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[3]/div[1]/div/button"); //SIGN IN
 		if(findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_links_2").isDisplayed())
 		{		
@@ -152,7 +169,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(12000);
+		// Thread.sleep(12000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[1]/div[1]/a/span"); //sign out
 		if(findTheElement("id=Header_GlobalLogin_loggedInDropdown_SignOut").isDisplayed())
 		{		
@@ -171,19 +188,26 @@ public class SignIn_Forgot_Password extends Browser
 		    rpt.Category("CC_SignIn & Forgot Password - Verify Sign In");
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
-		}             
+		} 
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	
 	public void verifyEmail()throws Exception
 	{
+		try {
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(8000);
+		// Thread.sleep(8000);
 		//click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		Thread.sleep(8000);
+		// Thread.sleep(8000);
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 		{	
-	     Thread.sleep(5000);
+	     // Thread.sleep(5000);
 		rpt.createTest("CC - SignIn & Forgot Password - Verify Email", "Sign In Button Displayed - For Verify Email");
 	    rpt.Pass("Sign In Button Displayed - For Verify Email");	
 	    rpt.Category("CC_SignIn & Forgot Password - Verify Email");
@@ -199,7 +223,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
 		//sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input", "ram@royalcyber.com");
 		if(findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1").isDisplayed())
@@ -261,12 +285,19 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 	}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 }
 	
 	public void verifyPassword()throws Exception
 	{
+		try {
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(10000);
+		// Thread.sleep(10000);
 		//click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 		{		
@@ -285,7 +316,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(6000);
+		// Thread.sleep(6000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
 		//sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input", "ramya@royalcyber.com");
 		if(findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1").isDisplayed())
@@ -348,34 +379,41 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 	}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void RememberMe()throws Exception
 	{
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		click("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1");
 		sendKeys("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1", "user@test.com");
 		click("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1");
 		sendKeys("xpath=id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1", "Royalcyber1");
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_rememberMe_In_Logon_1_img']");
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		 click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");//signout is not working
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 	}
 	
 	public void forgotPassword() throws Exception
 	{
+		try {
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		//click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 		{		
 		rpt.createTest("CC - SignIn & Forgot Password - Verify Forgot Password Link", "Sign In Button Displayed - For Verify Forgot Password Link");
@@ -393,7 +431,7 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_1']").isDisplayed())
 		{	
@@ -412,15 +450,21 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	
 	public void verify_forgotPassword()throws Exception
 	{
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-//		Thread.sleep(8000);
+//		// Thread.sleep(8000);
 //		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-//		Thread.sleep(8000);
+//		// Thread.sleep(8000);
 //		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 //		{		
 //		rpt.createTest("CC - SignIn & Forgot Password - Verify Forgot Password", "Sign In Button Displayed - For Verify Forgot Password");
@@ -437,7 +481,7 @@ public class SignIn_Forgot_Password extends Browser
 //	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 //	         rpt.imgPathFail(path);
 //		}
-//		Thread.sleep(5000);
+//		// Thread.sleep(5000);
 //		
 //		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_1']").isDisplayed())
 //		{	
@@ -456,7 +500,7 @@ public class SignIn_Forgot_Password extends Browser
 //	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 //	         rpt.imgPathFail(path);
 //		}
-//		Thread.sleep(5000);
+//		// Thread.sleep(5000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[2]/input"); //email
 		
 		if(findTheElement("id=WC_PasswordResetForm_FormInput_logonId_In_ResetPasswordForm_1").isDisplayed())
@@ -495,16 +539,16 @@ public class SignIn_Forgot_Password extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
-		 Thread.sleep(2000);
+		 // Thread.sleep(2000);
 //		   click("id=Header_GlobalLogin_signInQuickLink");
-//		   Thread.sleep(2000);
+//		   // Thread.sleep(2000);
 //		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
 	}
 	
 	public void newPassword()throws Exception
 	{
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input");
 		sendKeys("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/form[1]/div[2]/div[2]/div/div[1]/input", "ramya@royalcyber.com");
@@ -516,9 +560,9 @@ public class SignIn_Forgot_Password extends Browser
 	public void oldPassword()throws Exception
 	{
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[1]/div/div/div/a/img");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		if(findTheElement("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']").isDisplayed())
 		{		
 		rpt.createTest("CC - SignIn & Forgot Password - Verify Old Password", "Sign In Button Displayed - For Verify Old Password");

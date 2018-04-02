@@ -4,26 +4,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.annotations.Parameters;
 
 public class Registration extends Browser
 {
+	
 	CommonUtils email = new CommonUtils();
 	String Logon_ID = email.getRandomString(6)+"@test.com";
 	String pwd=email.getRandomString(6)+email.getRandomNumber(1);
 	String name=email.getRandomString(6);
 	String phoneNo=email.getRandomNumber(10);
 	Report rpt = new Report();
+	
 
 	@SuppressWarnings("static-access")
 	@Parameters({"browser"})
 	@Test
 	public void executeAllTest()throws Exception
 	{
+		browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		try {
 		checkFields();
 		////validFields();
 		////validName();
@@ -34,17 +42,27 @@ public class Registration extends Browser
 		Invalid_Cnfm_Pwd();
 		User_Registration();
 		////validFields();
-//		Reg_Success(); //not working
+		Reg_Success(); //not working
 		////verifyEmailid();
-		
+	}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	 
 
 	public void checkFields() throws InterruptedException,Exception
 	{
-		Thread.sleep(4000);
+		try {
+		// Thread.sleep(4000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']"); ///signin
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
+
+		WebDriverWait wait = new WebDriverWait(browser, 5);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_3']")));
+		
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_3']");//create acc
 		                  
 		Map<String,String> ids= new HashMap<String,String>();
@@ -80,12 +98,17 @@ public class Registration extends Browser
 		        // rpt.chkdebug("CC_Registration_Validation Fields");
 		  
 			 }
-		 }
+		 } }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}
 	public void validFields() throws Exception
 	{
 		User_Registration();
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		
 		/*String strError  = findTheElement("xpath=//*[@id='UserRegistrationErrorMessage']").getText();
 		 Boolean ErrorMsgReg = findTheElement("xpath=//*[@id='UserRegistrationErrorMessage']").isDisplayed();//For Error MEssage
@@ -155,9 +178,9 @@ public class Registration extends Browser
 			    
 			    rpt.Fail("Message NOT Displayed -  "+Actual);
 			    rpt.Category("CC_Registration-Invalid Name");
-		         Thread.sleep(3000);
+		         // Thread.sleep(3000);
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
-		         Thread.sleep(3000);
+		         // Thread.sleep(3000);
 		         rpt.imgPathFail(path);
 			}
 
@@ -168,6 +191,7 @@ public class Registration extends Browser
 	
 	public void invalidEmail() throws Exception
 	{
+		try {
 		//User_Registration();
 		//findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']").clear();
 		String[] invalidEmail={"1234567890","!@#$%"};
@@ -208,7 +232,12 @@ public class Registration extends Browser
 				click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']");
 				findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']").clear();
 				sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']", Logon_ID);
-		
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void validPassword() throws Exception
 	{
@@ -219,6 +248,7 @@ public class Registration extends Browser
 	
 	public  void InvalidPassword() throws Exception
 	{
+		try {
 		//User_Registration();
 		//email id
 				click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']");
@@ -262,10 +292,17 @@ public class Registration extends Browser
 				findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1']").clear();
 				sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPassword_In_Register_1']", pwd);
 		//browser.switchTo().alert().accept();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 		
 	public void Invalid_Cnfm_Pwd() throws Exception
 	{
+		try {
 		//User_Registration();
 		click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']");
 		findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonId_In_Register_1_1']").clear();
@@ -279,7 +316,7 @@ public class Registration extends Browser
 		findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1']").clear();
 		for(String value :invalidCPassword)
 		{
-			Thread.sleep(2000);
+			// Thread.sleep(2000);
 			findTheElement("id=WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1").clear();
 			sendKeys("xpath=//*[@id='"+"WC_UserRegistrationAddForm_FormInput_logonPasswordVerify_In_Register_1"+"']", value);			
 			click("xpath=//*[@id='WC_UserRegistrationAddForm_links_1']");//submit
@@ -308,13 +345,20 @@ public class Registration extends Browser
 			}
 
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	public void User_Registration() throws Exception
 	{
-		Thread.sleep(5000);
+		try {
+		// Thread.sleep(5000);
 //		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
-//		Thread.sleep(5000);
+//		// Thread.sleep(5000);
 //		click("//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_3']");
 		
 		//first name
@@ -348,31 +392,38 @@ public class Registration extends Browser
 		click("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']");
 		findTheElement("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']").clear();
 		sendKeys("xpath=//*[@id='WC_UserRegistrationAddForm_FormInput_phoneNum_In_Register_1']", phoneNo);
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		//create account button
 		click("id=WC_UserRegistrationAddForm_links_1");
 		
-		Thread.sleep(8000);
+		// Thread.sleep(8000);
 		//click("id=Header_GlobalLogin_signInQuickLink");
-		   Thread.sleep(2000);
+		   // Thread.sleep(2000);
 		//logout
 		 click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	    //click("class=signout");
 	}
 	public void Reg_Success() throws Exception
 	{
+		try {
 		System.out.println("in reg_success");
-		Thread.sleep(5000);
+		// Thread.sleep(5000);
 		//User_Registration();
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']"); ///signin
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1").clear();
 		sendKeys("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1",Logon_ID);
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		findTheElement("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1").clear();
 		sendKeys("id=Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1",pwd);
 		System.out.println(pwd);
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		click("id=Header_GlobalLogin_WC_AccountDisplay_links_2");
 		
 		String HomePagetitle=Browser.getTitle();
@@ -394,9 +445,15 @@ public class Registration extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		//doubleClick("id=Header_GlobalLogin_loggedInDropdown_SignOut");
 		 click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	
@@ -404,7 +461,7 @@ public class Registration extends Browser
  public  void  verifyEmailid() throws Exception
  {
 
-		Thread.sleep(3000);
+		// Thread.sleep(3000);
 		click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']/span");
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']");
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']", "zainab.firdaus@royalcyber.com");
@@ -412,9 +469,9 @@ public class Registration extends Browser
 		sendKeys("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonPassword_In_Logon_1']", "zain@1926");
 		
 		click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_links_2']");
-		Thread.sleep(8000);
+		// Thread.sleep(8000);
 		//click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[2]/div[3]/div[1]/a"); //my acc
-		Thread.sleep(6000); 
+		// Thread.sleep(6000); 
 		click("xpath=html/body/div[2]/div[2]/div[2]/div[2]/div[4]/ul/li[3]/div/div/div/div/div/div[1]/div[1]/a/span"); //sign out
 		
  }

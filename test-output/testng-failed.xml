@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="2" name="Failed suite [RC Suite]" parallel="methods">
+<suite thread-count="2" verbose="2" name="Failed suite [RC Suite]" parallel="tests">
   <parameter name="browser" value="FF"/>
-  <parameter name="Module" value="CheckoutFlow"/>
+  <parameter name="Module" value="AddressBook"/>
   <parameter name="url" value="https://prodlive.circuitcity.com/"/>
   <listeners>
     <listener class-name="Test.EnvReaderListener"/>
   </listeners>
-  <test name="RC Test(failed)" parallel="methods">
+  <test name="RC Test - FF(failed)" parallel="tests">
+    <parameter name="browser" value="FF"/>
+    <parameter name="Module" value="AddressBook"/>
+    <parameter name="url" value="https://prodlive.circuitcity.com/"/>
     <classes>
       <class name="Test.Initiate">
         <methods>
@@ -17,5 +20,5 @@
         </methods>
       </class> <!-- Test.Initiate -->
     </classes>
-  </test> <!-- RC Test(failed) -->
+  </test> <!-- RC Test - FF(failed) -->
 </suite> <!-- Failed suite [RC Suite] -->

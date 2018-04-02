@@ -104,6 +104,8 @@ public class HomePage extends Browser {
 	//CC_HP_001
 	public void homePage() throws Exception
 	{	
+		try
+		{
 		String HomePagetitle=Browser.getTitle();
 		System.out.println(HomePagetitle);
 		
@@ -306,12 +308,20 @@ public class HomePage extends Browser {
 				         rpt.Category("CIRCUIT CITY - Verify Footer Content");
 				         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 				         rpt.imgPathFail(path);
-					 }		 
+					 }	
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		   		 
 	}	
 	//CC_HP_002
 	public void HP_logoHyperlink() throws Exception
 	{
+		try
+		{
 		Thread.sleep(3000);
 		//click("id=contentImage_1_HeaderStoreLogo_Content");
 		if (findTheElement(
@@ -345,6 +355,12 @@ public class HomePage extends Browser {
 		{
 			System.out.println("Failed");
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 		}
 	//CC-TC 6
@@ -355,6 +371,8 @@ public class HomePage extends Browser {
 	//CC_HP_009
 	public void Hp_ShopNow_TopDeal() throws Exception
 	{
+		try
+		{
 		Thread.sleep(3000);
 		//String ProdName=getText("xpath=//*[@id='WC_CatalogEntryDBThumbnailDisplayJSPF_3074457345616682841_link_9b']");
 		//click("xpath=/html/body/div[4]/div/div[1]/div[2]/div[1]/div[1]/div/div[2]/div[1]/div/div[1]/div/div/a");
@@ -391,12 +409,20 @@ public class HomePage extends Browser {
 //		}
 		Thread.sleep(2000);
 		 click("id=contentImage_1_HeaderStoreLogo_Content");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	
 	//CC_HP_011 - Learn More
 	 public void HP_LearnMore() throws Exception
 	 {
+		 try
+		 {
 		 Thread.sleep(3000);
 		 //click("xpath=//img[@src='https://my14.digitalexperience.ibm.com/217849ca-8c55-4fae-922a-9abba9366cf1/dxdam/77/773d2b2d-b900-4a7b-8f8c-d4cfded80b23/pimgpsh_fullsize_distr_less_size.jpg']");
 		 if (findTheElement(
@@ -420,10 +446,18 @@ public class HomePage extends Browser {
 			}
 		 Thread.sleep(2000);
 		 click("id=contentImage_1_HeaderStoreLogo_Content");
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	 }
 	//CC-TC 13
 	 public void customiseRoom()throws Exception
 	 {
+		 try
+		 {
 		 click("link=CUSTOMIZE THIS ROOM");
 		 Thread.sleep(5000);
 		 String HomePagetitle=Browser.getTitle();
@@ -449,10 +483,18 @@ public class HomePage extends Browser {
 			}
 			Thread.sleep(3000);
 			click("id=contentImage_1_HeaderStoreLogo_Content");
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	 }
 	 //CC-14
 	 public void smartRoom()throws Exception
 	 {
+		 try
+		 {
 		 click("link=VIEW ALL SMART ROOMS");
 		 Thread.sleep(5000);
 		 String HomePagetitle=Browser.getTitle();
@@ -478,10 +520,18 @@ public class HomePage extends Browser {
 			}
 			Thread.sleep(3000);
 			click("id=contentImage_1_HeaderStoreLogo_Content");
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	 }
 	 //CC-15
 	 public void featuredProduct()throws Exception
 	 {
+		 try
+		 {
 		 String product=findTheElement("css=div.carouselWrapper").getText();
 		 Thread.sleep(2000);
 		 System.out.println(product);
@@ -503,12 +553,20 @@ public class HomePage extends Browser {
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			}
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	 }
 	 
 	 //CC_HP_016 TO CHECK 
 	 
 	 public void HP_ShopNow_FeaturedProduct() throws Exception
 	 {
+		 try
+		 {
 		 Thread.sleep(5000);
 		// click("xpath=/html/body/div[3]/div/div[1]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div/div[1]/div/div/a");
 		 
@@ -552,6 +610,12 @@ public class HomePage extends Browser {
 //		 }
 		 Thread.sleep(3000);
 			click("id=contentImage_1_HeaderStoreLogo_Content");
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	 }
 	 //CC_HP_019 - Discover-Learn More
 	 public void HP_Discover_LearnMore() throws Exception
@@ -607,6 +671,8 @@ public class HomePage extends Browser {
 	//CC_HP_020
 	 public void HP_discoverMore() throws Exception
 	 {
+		 try
+		 {
 		// JavascriptExecutor executor = (JavascriptExecutor)browser;
 		// executor.executeScript("window.scrollBy(0,2700)");
 		 Thread.sleep(30000);
@@ -633,6 +699,12 @@ public class HomePage extends Browser {
 			}
 		 Thread.sleep(2000);
 		 click("id=contentImage_1_HeaderStoreLogo_Content");
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 		 
 //		String s= getText("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/div/div[1]/ul/h3");
 //		System.out.println(s);
@@ -700,6 +772,8 @@ public class HomePage extends Browser {
 	 //TC 27
 	 public void shopNow_FeaturedProduct() throws Exception
 	 {
+		 try
+		 {
 //		 String product=findTheElement("css=div.carouselWrapper").getText();
 //		 Thread.sleep(2000);
 //		 System.out.println(product);
@@ -726,9 +800,18 @@ public class HomePage extends Browser {
 			click("id=contentImage_1_HeaderStoreLogo_Content");
 	 }
 	 
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+}
+	 
 	 //TC-32 
 	 public void bannerDisplay()throws Exception
 	 { 
+		 try
+		 {
 		 String product=findTheElement("xpath=//div[@id='footerWrapper']/div/div").getText();
 //		 Thread.sleep(2000);
 		 System.out.println(product);
@@ -750,11 +833,19 @@ public class HomePage extends Browser {
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			}
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 		 
 	 }
 	 //CC_HP_033 - Chat
 	 public void HP_Chat() throws Exception
 	 {
+		 try
+		 {
 		 //Thread.sleep(30000);
 		// click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/chat.png']");
 		 //Report
@@ -960,6 +1051,12 @@ public class HomePage extends Browser {
 		 {
 			 System.out.println("Chat - Failed");
 		 }
+		 }
+		  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 		 
 		
 	 }
@@ -1020,6 +1117,8 @@ public class HomePage extends Browser {
 	//CC_HP_035 - Home page - Email (Captcha is present in this screen - N\A for Automate)
 		 public void HP_Email() throws Exception
 		 {
+			 try
+			 {
 			 //Thread.sleep(30000);
 			 //click("xpath=//img[@src='/wcsstore/CircuitCitySAS/images/latter.png']");
 			 
@@ -1055,12 +1154,20 @@ public class HomePage extends Browser {
 					 }
 					 Thread.sleep(2000);
 					 browser.navigate().back();
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 	 
 		 }
 		 
 		//CC_HP_036 - Home page - Price Match
 		 public void HP_PriceMatchguarantee() throws Exception
 		 {
+			 try
+			 {
 			// Thread.sleep(30000);
 			 //click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
 			 if (findTheElement(
@@ -1107,12 +1214,19 @@ public class HomePage extends Browser {
 					       browser.close(); 
 					       browser.switchTo().window(parentWindow); 
 					     }
-					  }   
+					  }  
+			 }  catch(Exception e)
+			    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 		 }
 	 
 		//CC_HP_037 - Home page - Free Shipping
 		 public void HP_FreeShipping() throws Exception
 		 {
+			 try
+			 {
 			 Thread.sleep(30000);
 			 //click("xpath=//a[@href='/en/shopPriceMatchGuarantee']");
 			 if (findTheElement(
@@ -1158,12 +1272,20 @@ public class HomePage extends Browser {
 					       browser.close(); 
 					       browser.switchTo().window(parentWindow); 
 					     }
-					  }   
+					  }
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		 
 		//CC_HP_038 - Home page - schedule service 
 		 public void HP_ScheduleService() throws Exception
 		 {
+			 try
+			 {
 			 Thread.sleep(30000);
 			// click("xpath=//a[@href='/en/shop/Installations']");
 			 if (findTheElement(
@@ -1198,12 +1320,20 @@ public class HomePage extends Browser {
 					 {
 						 System.out.println("Email - Failed");
 					 } 
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 	 
 	   //cc_HP_39 - subscribe
 		 
 		 public void HP_Subscribe() throws Exception
 		 {
+			 try
+			 {
 			 Thread.sleep(20000);
 			 click("id=subscribeemail");
 			 //sendKeys("id=subscribeemail","Test@testmail.com");
@@ -1262,10 +1392,17 @@ public class HomePage extends Browser {
 			 {
 				 System.out.println("Subscribe not Done - Failed");
 			 }
+			 }  catch(Exception e)
+			    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 		 }
 		 //TC-41
 		 public void connectWithUs()throws Exception
 		 {
+			 try
+			 {
 			 String product=findTheElement("css=div.connect_us").getText();
 //			 Thread.sleep(2000);
 			 System.out.println(product);
@@ -1287,11 +1424,19 @@ public class HomePage extends Browser {
 			         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 			         rpt.imgPathFail(path);
 				}
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		 //CC_HP_042 Sign in or create account 
 		 
 		 public void HP_SigninOrCreateAccount() throws Exception
 		 {
+			 try
+			 {
 			// click("xpath=//a[@href='/AjaxLogonForm?catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 
 			if (findTheElement(
@@ -1329,12 +1474,19 @@ public class HomePage extends Browser {
 //			}
 			Thread.sleep(2000);
 			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		 
  //CC_HP_045 Wish List Footer
 		 
 		 public void HP_wishlistFooter() throws Exception
 		 {
+			 try{
 			 Thread.sleep(2000);
 			// click("xpath=//a[@href='/WishListDisplayView?listId=.&catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 
@@ -1371,12 +1523,20 @@ public class HomePage extends Browser {
 //			}
 			Thread.sleep(2000);
 			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		 
  //CC_HP_048 User Rebates
 		 
 		 public void HP_RebatesFooter() throws Exception 
 		 {
+			 try
+			 {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/rebateUserTrackStatusView?catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 if (findTheElement(
@@ -1411,13 +1571,19 @@ public class HomePage extends Browser {
 //				System.out.println("Footer-Rebate is not navigating to corresponding Page. Case Failed");
 //			}
 			Thread.sleep(2000);
-			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			 click("id=contentImage_1_HeaderStoreLogo_Content"); }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		 
 //CC_HP_049 Order Status - footer
 		 
 		 public void HP_OrderStatusFooter() throws Exception 
 		 {
+			 try {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/TrackOrderSearch?catalogId=3074457345616676668&langId=-1&storeId=10801']");
 			 if (findTheElement(
@@ -1478,6 +1644,12 @@ public class HomePage extends Browser {
 			       System.out.print(childWindowTitle);
 			       browser.close(); 
 			       browser.switchTo().window(parentWindow); }}
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 	 
 		 
@@ -1485,6 +1657,7 @@ public class HomePage extends Browser {
 		 
 		 public void HP_OrderHistoryFooter() throws Exception 
 		 {
+			 try {
 			 Thread.sleep(4000);
 			 //click("xpath=//a[@href='/en/shop/TrackOrderStatus?showOrderHeader=true&catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
 			 
@@ -1547,6 +1720,12 @@ public class HomePage extends Browser {
 			       System.out.print(childWindowTitle);
 			       browser.close(); 
 			       browser.switchTo().window(parentWindow); }}
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 
 		 }
 		 
@@ -1554,6 +1733,8 @@ public class HomePage extends Browser {
 		 
 		 public void HP_ShippingAndDeliveryFooter() throws Exception 
 		 {
+			 try
+			 {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/en/shop/shippingdelivery']");
 			 if (findTheElement(
@@ -1616,11 +1797,18 @@ public class HomePage extends Browser {
 			       browser.switchTo().window(parentWindow);
 			       }
 			  }
+			 }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 	 
 	// CC_HP_052 Return and Exchange - footer
 
 	public void HP_ReturnAndExchange() throws Exception {
+		try {
 		Thread.sleep(2000);
 
 		//click("xpath=//a[@href='/en/shop/return-policy']");
@@ -1681,11 +1869,17 @@ public class HomePage extends Browser {
 		       browser.close(); 
 		       browser.switchTo().window(parentWindow);
 		       }
-		  }
+		  } }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_HP_053 - Return an Item Footer
 	public void HP_ReturnAnItemFooter() throws Exception {
+		try {
 		Thread.sleep(2000);
 
 		//click("xpath=//a[@href='/TrackOrderStatus?catalogId=3074457345616676668&langId=-1&storeId=10801&orderStatusStyle=strong']");
@@ -1749,10 +1943,17 @@ public class HomePage extends Browser {
 		       browser.switchTo().window(parentWindow);
 		       }
 		  }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_HP_053 - Return an Item Footer
 	public void HP_ContactUsFooter() throws Exception {
+		try {
 		Thread.sleep(3000);
 
 		//click("xpath=//a[@href='/en/shop/contact-us']");
@@ -1817,11 +2018,18 @@ public class HomePage extends Browser {
 		       browser.switchTo().window(parentWindow);
 		       }
 		  }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	
 	//CC_HP_054 - Help Footer
 	public void HP_Help() throws Exception {
+		try {
 		Thread.sleep(2000);
 
 		//click("xpath=//a[@href='/en/shop/help']");
@@ -1885,10 +2093,17 @@ public class HomePage extends Browser {
 		       browser.switchTo().window(parentWindow);
 		       }
 		  }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	//CC_HP_055 - Customer services
 	public void HP_CustomerServicesFooter() throws Exception {
+		try {
 		Thread.sleep(2000);
 
 		//click("xpath=//a[@href='/en/shop/contact-us']");
@@ -1939,11 +2154,18 @@ public class HomePage extends Browser {
 		}
 		Thread.sleep(2000);
 		 click("id=contentImage_1_HeaderStoreLogo_Content");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	 
 	//CC_HP_056 - Protection Plan
 		public void HP_ProtectionPlanFooter() throws Exception {
+			try {
 			Thread.sleep(2000);
 
 			//click("xpath=//a[@href='/en/shop/protectionplans']");
@@ -2006,11 +2228,17 @@ public class HomePage extends Browser {
 			       browser.close(); 
 			       browser.switchTo().window(parentWindow);
 			       }
-			  }
+			  } }
+			  catch(Exception e)
+		    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 
 		}
 		//CC_HP_057 - Trade In Program
 				public void HP_TradeInProgramFooter() throws Exception {
+					try {
 					Thread.sleep(2000);
 
 					//click("xpath=//a[@href='/en/shop/tradeinprogram']");
@@ -2074,11 +2302,18 @@ public class HomePage extends Browser {
 					       browser.switchTo().window(parentWindow);
 					       }
 					  }
+					}
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 
 				}
 				
 				//CC_HP_058 - Product Recalls
 				public void HP_ProductRecallsFooter() throws Exception {
+					try{
 					Thread.sleep(2000);
 
 					//click("xpath=//a[@href='/en/shop/productrecalls']");
@@ -2142,11 +2377,18 @@ public class HomePage extends Browser {
 					       browser.switchTo().window(parentWindow);
 					       }
 					  }
+					}
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 
 				}
 				
 				//CC_HP_059 - Privacy and Security
 				public void HP_PrivacyAndSecurityFooter() throws Exception {
+					try {
 					Thread.sleep(2000);
 
 					//click("xpath=//a[@href='/en/shop/privacy-policy']");
@@ -2210,12 +2452,19 @@ public class HomePage extends Browser {
 					       browser.switchTo().window(parentWindow);
 					       }
 					  }
+					}
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 
 				}
 				
 				
 				//CC_HP_060 - Privacy and Security
 				public void HP_FeedbackFooter() throws Exception {
+					try {
 					Thread.sleep(2000);
 
 					//click("xpath=//a[@href='/en/shop/feedback']");
@@ -2265,11 +2514,17 @@ public class HomePage extends Browser {
 								.println("Footer-Feedback Link is not navigating to corresponding Page. Case Failed");
 					}
 					Thread.sleep(2000);
-					 click("id=contentImage_1_HeaderStoreLogo_Content");
+					 click("id=contentImage_1_HeaderStoreLogo_Content"); }
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 
 				}
 				public void Installations()throws Exception
 				{
+					try {
 					if (findTheElement(
 							 "xpath=(//a[contains(text(),'Installations')])[2]")
 								.isDisplayed()) {
@@ -2304,9 +2559,16 @@ public class HomePage extends Browser {
 					       browser.switchTo().window(parentWindow);
 					       }
 					  }
+					}
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 				}
 				public void AboutUs()throws Exception
 				{
+					try {
 					if (findTheElement(
 							 "xpath=//div[3]/div/div[4]/ul/li/a")
 								.isDisplayed()) {
@@ -2328,10 +2590,17 @@ public class HomePage extends Browser {
 						}
 					Thread.sleep(2000);
 					 click("id=contentImage_1_HeaderStoreLogo_Content");
+					}
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 				}
 				
 				public void OurStory()throws Exception
 				{
+					try {
 					if (findTheElement(
 							 "xpath=//div[3]/div/div[4]/ul/li[2]/a")
 								.isDisplayed()) {
@@ -2352,11 +2621,17 @@ public class HomePage extends Browser {
 							rpt.imgPathFail(path);
 						}
 					Thread.sleep(2000);
-					 click("id=contentImage_1_HeaderStoreLogo_Content");
+					 click("id=contentImage_1_HeaderStoreLogo_Content"); }
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 				}
 				
 				public void PartnerWithUs()throws Exception
 				{
+					try {
 					if (findTheElement(
 							 "xpath=//div[3]/div/div[4]/ul/li[4]/a")
 								.isDisplayed()) {
@@ -2377,13 +2652,19 @@ public class HomePage extends Browser {
 							rpt.imgPathFail(path);
 						}
 					Thread.sleep(2000);
-					 click("id=contentImage_1_HeaderStoreLogo_Content");
+					 click("id=contentImage_1_HeaderStoreLogo_Content"); }
+					  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 				}
 		
 	 //CC_HP_062 Career Footer
 		 
 		 public void HP_CareerFooter() throws Exception 
 		 {
+			 try {
 			 Thread.sleep(2000);
 			 //click("xpath=//a[@href='/en/shop/careers']");
 			 
@@ -2421,11 +2702,17 @@ public class HomePage extends Browser {
 				System.out.println("Footer-Career Link is not navigating to corresponding Page. Case Failed");
 			}
 			Thread.sleep(2000);
-			 click("id=contentImage_1_HeaderStoreLogo_Content");
+			 click("id=contentImage_1_HeaderStoreLogo_Content"); }
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 		 }
 		
 			//CC_HP_068 - Twitter Footer
 			public void HP_twitterFooter() throws Exception {
+				try {
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@href='http://twitter.com/CircuitCity']");
@@ -2488,11 +2775,17 @@ public class HomePage extends Browser {
 				       browser.close(); 
 				       browser.switchTo().window(parentWindow);
 				       }
-				  }
+				  } }
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 
 			}
 			//CC_HP_069 - Facebook Footer
 			public void HP_FacebookFooter() throws Exception {
+				try {
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@href='http://www.facebook.com/CircuitCity-1663290060604757/']");
@@ -2555,13 +2848,20 @@ public class HomePage extends Browser {
 				       browser.close(); 
 				       browser.switchTo().window(parentWindow);
 				       }
-				  }
+				  } }
+				  catch(Exception e)
+				    {
+				    System.out.println("Exception occurred");
+				    e.printStackTrace();
+				   } 
 
 			}
 		
 		
 			//CC_HP_070 - Youtube Footer
 			public void HP_YouTubeFooter() throws Exception {
+				try {
+			
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@class='youtube']");
@@ -2613,10 +2913,17 @@ public class HomePage extends Browser {
 				}
 				Thread.sleep(2000);
 				browser.navigate().back();
+				}
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 			}
 
 			//CC_HP_071 - Printerest Footer
 			public void HP_PinterestFooter() throws Exception {
+				try {
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@href='http://www.pinterest.com/circuitcity1490/pins/']");
@@ -2681,10 +2988,16 @@ public class HomePage extends Browser {
 				       browser.close(); 
 				       browser.switchTo().window(parentWindow);
 				       }
-				  }
+				  } }
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 			}
 			//CC_HP_072 - Instagram Footer
 			public void HP_InstagramFooter() throws Exception {
+				try {
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@href='http://www.instagram.com/circuitcity/']");
@@ -2748,11 +3061,17 @@ public class HomePage extends Browser {
 				       browser.close(); 
 				       browser.switchTo().window(parentWindow);
 				       }
-				  }
+				  } }
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 			}	 
 	 
 			//CC_HP_073 - GooglePlus Footer
 			public void HP_GooglePlusFooter() throws Exception {
+				try {
 				Thread.sleep(2000);
 
 				//click("xpath=//a[@href='http://plus.google.com/102502279675017944350']");
@@ -2816,10 +3135,17 @@ public class HomePage extends Browser {
 				       browser.switchTo().window(parentWindow);
 				       }
 				  }
+				}
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 			}	
 			//CC_75 Featured Product Carousel
 			public void HP_featuredProductsCarosel() throws Exception
 			{
+				try {
 				Thread.sleep(2000);
 //				click("xpath=//a[@id='nextPageButton_4_-3012_3074457345618261104']"); //--Right Click
 //				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommckendationWidget_4_-3012_3074457345618261104']"));
@@ -2865,6 +3191,12 @@ public class HomePage extends Browser {
 					String path = rpt.CaptureScreen(browser, "InvalidMessage");
 					rpt.imgPathFail(path);
 				}
+				}
+				  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
 				
 				//click("xpath=//a[@id='prevPageButton_4_-3012_3074457345618261104']"); //--Left Click		
 				}
@@ -2872,6 +3204,7 @@ public class HomePage extends Browser {
 			//CC_76 Best Seller Carousel
 			public void HP_BestSellerCarosel() throws Exception
 			{
+				try {
 //				Thread.sleep(2000);
 //				click("xpath=//a[@id='nextPageButton_9_-3012_3074457345618261105']");
 //				List<WebElement> a =browser.findElements(By.xpath(".//*[@id='catalogEntryRecommendationWidget_4_-3012_3074457345618261104']"));
@@ -2922,6 +3255,12 @@ public class HomePage extends Browser {
 				
 			}
 			
+			  catch(Exception e)
+			    {
+			    System.out.println("Exception occurred");
+			    e.printStackTrace();
+			   } 
+			}
 			
 			
 }

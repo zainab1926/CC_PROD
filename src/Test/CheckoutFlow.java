@@ -40,6 +40,8 @@ public class CheckoutFlow extends Browser
 	//for prod environment
 	public void checkout_flow()throws Exception
 	{
+		try
+		{
 		Thread.sleep(3000);
 		click("id=allDepartmentsButton");
 		Thread.sleep(2000);
@@ -87,7 +89,7 @@ public class CheckoutFlow extends Browser
 		click("xpath=//div[@class='product_listing_container']//li[4]/.//div[@class='product_name']");
 		Thread.sleep(8000);
 		click("id=add2CartBtn");//add to cart
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		click("id=GotoCartButton2"); //view my cart
 		Thread.sleep(2000);
 		//click("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div[2]/div/a/b"); //save for later
@@ -321,6 +323,12 @@ public class CheckoutFlow extends Browser
 			      jse1.executeScript("arguments[0].scrollIntoView();", Element1);
 			      Thread.sleep(3000);
 		       click("id=summaryButton"); //place order
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//for qa environment

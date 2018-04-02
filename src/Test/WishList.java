@@ -26,6 +26,8 @@ public class WishList extends Browser
 	@Test
 	public void executeAllTest()throws Exception
 	{
+		try
+		{
 		    Thread.sleep(6000);
 		    click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		    Thread.sleep(6000);
@@ -48,6 +50,12 @@ public class WishList extends Browser
 		
 		removeProduct();
 		addProduct(); 
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 //		verifyWishlist(); dynamic xpath
 	}
 	
@@ -83,6 +91,7 @@ public class WishList extends Browser
 	
 	public void accountPage()throws Exception
 	{
+		try {
 		Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Settings", "section_button_settings");
 		 ids.put("Wishlist", "section_button_wishlists");
@@ -108,11 +117,17 @@ public class WishList extends Browser
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			 }
-		 }
+		 } }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void wishList()throws Exception
 	{
+		try {
 		
 		Map<String,String> ids= new HashMap<String,String>();
 		 ids.put("Personal Wishlist", "WC_MyAccountSidebarDisplayf_links_4");
@@ -137,11 +152,17 @@ public class WishList extends Browser
 		         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 		         rpt.imgPathFail(path);
 			 }
-		 }
+		 } }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void wishListDisplay()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_4']"); //personal wishlist
 		if(findTheElement("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_4']").isDisplayed())
 		{		
@@ -161,10 +182,17 @@ public class WishList extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void newWishlist()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_4']");
 		if(findTheElement("xpath=//*[@id='WC_MyAccountSidebarDisplayf_links_4']").isDisplayed())
 		{		
@@ -230,11 +258,17 @@ public class WishList extends Browser
 		}
 		Thread.sleep(3000);
 		click("id=shoppingListCreateSuccessPopup_continue_shopping"); //continue shopping pop up
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void changeWishlist()throws Exception
 	{
-		
+		try {
 		//click("xpath=//*[@id='multipleWishlistController_link_edit']");//rename
 		if(findTheElement("xpath=//*[@id='multipleWishlistController_link_edit']").isDisplayed())
 		{		
@@ -297,11 +331,18 @@ public class WishList extends Browser
 	         rpt.imgPathFail(path);
 		}
 		Thread.sleep(5000);
-		click("id=shoppingListCreateSuccessPopup_continue_shopping"); //continue shopping
+		click("id=shoppingListCreateSuccessPopup_continue_shopping"); //continue shopping 
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void deleteWishlist()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='multipleWishlistController_link_delete']"); //delete
 		if(findTheElement("id=delete_popup_link").isDisplayed())
 		{		
@@ -343,10 +384,17 @@ public class WishList extends Browser
 		}
 		Thread.sleep(3000);
 		click("xpath=//*[@id='shoppingListCreateSuccessPopup_continue_shopping']/div[2]");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void removeProduct()throws Exception
 	{
+		try {
 		Thread.sleep(2000);
 		click("id=allDepartmentsButton");
 		Thread.sleep(2000);
@@ -400,11 +448,17 @@ public class WishList extends Browser
 	         rpt.imgPathFail(path);
 		}
 		Thread.sleep(3000);
-		click("xpath=//*[@id='shoppingListCreateSuccessPopup_continue_shopping']");
+		click("xpath=//*[@id='shoppingListCreateSuccessPopup_continue_shopping']"); }
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void emailWishlist()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='multipleWishlistController_link_delete']"); //share
 		if(findTheElement("xpath=//*[@id='share_popup_link']").isDisplayed())
 		{		
@@ -535,10 +589,17 @@ public class WishList extends Browser
 //		   click("id=myAccountQuickLink");
 //		   Thread.sleep(2000);
 //		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void addProduct()throws Exception
 	{
+		try {
 		//click("xpath=//*[@id='shoppingListCreateSuccessPopup_continue_shopping']/div[2]"); //continue shopping
 		//click("xpath=//*[@id='listViewAdd2Cart_3074457345616727849']"); //buy now
 		if(findTheElement("xpath=//div[@class='productListingWidget wishlist']//a[contains(text(),'BUY NOW')]").isDisplayed())
@@ -575,6 +636,12 @@ public class WishList extends Browser
 		 click("id=Header_GlobalLogin_signOutQuickLink");
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void verifyWishlist()throws Exception

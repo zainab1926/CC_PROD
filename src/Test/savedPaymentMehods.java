@@ -41,6 +41,8 @@ public class savedPaymentMehods extends Browser
 	
 	public void executeAll() throws Exception
 	{
+		try 
+		{
 		     Thread.sleep(8000);
 		    // browser.manage().window().maximize();
 		     click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
@@ -71,6 +73,12 @@ public class savedPaymentMehods extends Browser
 			addCard(); 
 		  
 //			mandatoryAddress();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void verifySummaryPage()throws Exception

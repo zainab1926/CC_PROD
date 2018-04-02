@@ -21,16 +21,23 @@ public class previousViewed extends Browser {
 	@Parameters({ "browser" })
 	@Test
 	public void ExecuteCase() throws Exception {
+		try {
 		Login();
 		shopNow(); //TC -03
 		addToComapre(); //tc - 04,05
 		loveIt(); //tc-06
-		
 	}
+	
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } }
 
 	// CC_PV_05/04s
 	@BeforeTest
 	public void Login() throws Exception {
+		try {
 		// click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 		 click("xpath=//*[@id='Header_GlobalLogin_signInQuickLink']");
 			click("xpath=//*[@id='Header_GlobalLogin_WC_AccountDisplay_FormInput_logonId_In_Logon_1']");
@@ -42,6 +49,12 @@ public class previousViewed extends Browser {
 			Thread.sleep(6000);
 //			click("xpath=.//*[@id='Header_GlobalLogin_loggedInDropdown']/div/div/div/div[3]/div[1]/div[1]/a"); //my acc
 			click("xpath=//a[contains(text(),'My Account')]"); //my acc
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 		
 	}
@@ -191,6 +204,7 @@ public class previousViewed extends Browser {
 	
 	// CC_PV_06
 	public void loveIt() throws Exception {
+		try {
 		//Thread.sleep(30000);
 //		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
 //		if (findTheElement(
@@ -294,12 +308,19 @@ public class previousViewed extends Browser {
 		 click("id=Header_GlobalLogin_signOutQuickLink");
 		   Thread.sleep(2000);
 		   click("xpath=//a[@id='Header_GlobalLogin_loggedInDropdown_SignOut']/span");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 
 	
 	// //TC -03
 	public void shopNow() throws Exception {
-		Thread.sleep(30000);
+		try {
+		Thread.sleep(3000);
 //		//click("xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span");
 //				if (findTheElement(
 //						"xpath=/html/body/div[2]/div[2]/div[2]/div[4]/div/ul/li[1]/a/span")
@@ -381,12 +402,18 @@ public class previousViewed extends Browser {
 		}
 		Thread.sleep(4000);
 		click("id=MiniShopCartCloseButton_2"); 
-		
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	//tc-04
 	public void addToComapre()throws Exception
 	{
+		try {
 		//click("xpath=//div[@class='product_option']//label[contains(text(),'Compare')]");
 		//click("css=div.compare_target compare_target_hidden");
 		//click("xpath=//div/div[2]/div[7]/label");
@@ -443,6 +470,12 @@ public class previousViewed extends Browser {
 		Thread.sleep(2000);
 		click("id=compareBackLink");
 		Thread.sleep(2000);
+	
 	}
-
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
+	}
 }

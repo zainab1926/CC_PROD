@@ -1,6 +1,7 @@
 package Test;
 
 import java.sql.Driver;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,8 @@ public class Search extends Browser
 	
 	public void execute_Alltestcases()throws Exception
 	{
+		browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		try {
 		verify_searchPageUI();
 		verify_nosearch();
 		alreadySearched();
@@ -37,14 +40,21 @@ public class Search extends Browser
 		typeAhead();
 		sortingSearch();
 		itemPerPage();
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	
 	public void verify_searchPageUI()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","lenovo");
-        Thread.sleep(2000);
+        // Thread.sleep(2000);
     if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
       {
         rpt.createTest("CC - Search - Verify Search Product", "Product is Displayed - For Verify Search Product");
@@ -61,13 +71,19 @@ public class Search extends Browser
 	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	    rpt.imgPathFail(path);
 	  }  	
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void verify_nosearch()throws Exception
 	{
-
+		try {
         click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","");
-        Thread.sleep(2000);
+        // Thread.sleep(2000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify NO Search Product", "Product Displayed - For Verify NO Search Product");
@@ -84,13 +100,20 @@ public class Search extends Browser
      	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
      	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void alreadySearched()throws Exception
 	{
+		try {
         click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
         findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","lenovo");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Already Searched Product", "Product Displayed - For Verify Already Searched Product");
@@ -107,15 +130,22 @@ public class Search extends Browser
      	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
      	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void searchWithPname()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","lenovo");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Search With Product Name", "Product Displayed - For Verify Search With Product Name");
@@ -132,15 +162,22 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
     }
 	public void searchWithItemNo()throws Exception
 	{
+		try {
 	    click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 	    findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","1200");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Search With Item No", "Product Displayed - For Verify Search With Item No");
@@ -157,15 +194,22 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
 	    }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void searchWithKeyword()throws Exception
 	{
+		try {
         click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
         findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","len");	
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 	   click("xpath=//*[@id='autoSelectOption_0']");
-       Thread.sleep(4000);
+       // Thread.sleep(4000);
        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
        {
        rpt.createTest("CC - Search - Verify Search With Keyword", "Product Displayed - For Verify Search With Keyword");
@@ -182,15 +226,22 @@ public class Search extends Browser
    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
    	    rpt.imgPathFail(path);
        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void searchWithDescription()throws Exception
 	{
+		try {
         click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
         findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","speaker");	
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 	   click("xpath=//*[@id='autoSelectOption_0']");	
-       Thread.sleep(4000);
+       // Thread.sleep(4000);
        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
        {
        rpt.createTest("CC - Search - Verify Search With Description", "Product Displayed - For Verify Search With Description");
@@ -207,15 +258,22 @@ public class Search extends Browser
    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
    	    rpt.imgPathFail(path);
        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void searchWithCategoryname()throws Exception
 	{
+		try {
      click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
      findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","TV");	
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 	   click("xpath=//*[@id='autoSelectOption_0']");
-       Thread.sleep(4000);
+       // Thread.sleep(4000);
        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
        {
        rpt.createTest("CC - Search - Verify Search With Category Name", "Product Displayed - For Verify Search With Category Name");
@@ -231,7 +289,12 @@ public class Search extends Browser
    		rpt.Category("CC_Search - Verify Search With Category Name");
    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
    	    rpt.imgPathFail(path);
-       }
+       } }
+       catch(Exception e)
+       {
+       System.out.println("Exception occurred");
+       e.printStackTrace();
+      } 
 	}
 	/*public void verifyDiscontinuedProducts()throws Exception
 	{
@@ -242,12 +305,13 @@ public class Search extends Browser
 	
 	public void searchRelevance()throws Exception
 	{
+		try {
        click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
        findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","speaker");	
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 	   click("xpath=//*[@id='autoSelectOption_0']");
-       Thread.sleep(4000);
+       // Thread.sleep(4000);
        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
        {
        rpt.createTest("CC - Search - Verify Search With Relevance", "Product Displayed - For Verify Search With Relevance");
@@ -264,16 +328,23 @@ public class Search extends Browser
    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
    	    rpt.imgPathFail(path);
        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	public void searchResultPage()throws Exception
 	{
+		try {
 		 click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		 findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 			sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","samsung");	
-			Thread.sleep(2000);
+			// Thread.sleep(2000);
 		   click("xpath=//*[@id='autoSelectOption_0']");
-	        Thread.sleep(4000);
+	        // Thread.sleep(4000);
 	        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
 	        {
 	        rpt.createTest("CC - Search - Verify Search Result Page", "Product Displayed - For Verify Search Result Page");
@@ -290,14 +361,21 @@ public class Search extends Browser
 	    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	    	    rpt.imgPathFail(path);
 	        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	public void verifyinvalidInput()throws Exception
 	{
+		try {
 		 click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		 findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 			sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","!@#");
-	        Thread.sleep(4000);
+	        // Thread.sleep(4000);
 	        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
 	        {
 	        rpt.createTest("CC - Search - Verify Search With Invalid Input", "Product Displayed - For Verify Search Search With Invalid Input");
@@ -314,6 +392,12 @@ public class Search extends Browser
 	    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	    	    rpt.imgPathFail(path);
 	        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 			/*Boolean errorMsg=findTheElement("xpath=//*[@id='PageHeading_5_-3014_2306']/h1").isDisplayed();
 			 if(errorMsg)
 	         {
@@ -333,10 +417,11 @@ public class Search extends Browser
 	}
 	public void verifySpecialCharacter()throws Exception
 	{
+		try {
 		 click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		 findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 			sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","***");	
-	        Thread.sleep(4000);
+	        // Thread.sleep(4000);
 	        if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
 	        {
 	        rpt.createTest("CC - Search - Verify Search With Invalid Input - Special Character", "Product Displayed - For Verify Search Search With Invalid Input - Special Character");
@@ -353,6 +438,12 @@ public class Search extends Browser
 	    	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	    	    rpt.imgPathFail(path);
 	        }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 			/*Boolean errorMsg=findTheElement("xpath=//*[@id='errorPage']/h1").isDisplayed();
 			 if(errorMsg)
 	         {
@@ -370,13 +461,13 @@ public class Search extends Browser
 	}
 	public void ConfinedSearch()throws Exception
 	{
-
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","samsung");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Confined Search", "Product Displayed - For Verify Confined Search");
@@ -393,15 +484,22 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void spellChecker()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","lenov");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Spell Checker ", "Product Displayed - For Verify Spell Checker ");
@@ -418,16 +516,23 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	public void categoryPage()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","monitor");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Category Page", "Product Displayed - For Verify Category Page");
@@ -444,6 +549,12 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	/*public void advancedSearch()throws Exception
 	{
@@ -453,10 +564,11 @@ public class Search extends Browser
 	}*/
 	public void typeAhead()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","sam");	
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Type Ahead", "Product Displayed - For Verify Type Ahead");
@@ -473,18 +585,25 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 
 	}
 	public void sortingSearch()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","lenovo");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
 		//click("xpath=//*[@id='orderBy_6_-3011_2310-button']");
 		//click("xpath=//*[@id='orderBy_6_-3011_2310-button']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Sorting Search", "Product Displayed - For Verify Sorting Search");
@@ -501,17 +620,24 @@ public class Search extends Browser
     	    String path = rpt.CaptureScreen(browser, "InvalidMessage");
     	    rpt.imgPathFail(path);
         }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void itemPerPage()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']");
 		findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").clear();
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","samsung");
-		Thread.sleep(2000);
+		// Thread.sleep(2000);
 		click("xpath=//*[@id='autoSelectOption_0']");
 		//click("xpath=//*[@id='pageSize_6_-3011_2310-button']");
 		//click("xpath=//*[@id='pageSize_6_-3011_2310-button']");
-        Thread.sleep(4000);
+        // Thread.sleep(4000);
         if(findTheElement("xpath=//*[@id='SimpleSearchForm_SearchTerm']").isDisplayed())
         {
         rpt.createTest("CC - Search - Verify Items Per Page", "Product Displayed - For Verify Items Per Page");
@@ -531,7 +657,13 @@ public class Search extends Browser
 
 	}
 	
+	  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	
+	}
 	
 	
 }

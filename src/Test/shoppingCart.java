@@ -39,6 +39,7 @@ public class shoppingCart extends Browser
 	
 	public void executeAll() throws Exception
 	{
+		try {
 		verifyminiCart();
 		quantityIncrease();
 ////		modalWindow(); N/A
@@ -83,11 +84,18 @@ public class shoppingCart extends Browser
 //		shoppingList();N/A
 //		saveProducts();N/A
 //		manageProduct();N/A
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	
 	//CC_A&C_01
 	public void verifyminiCart()throws Exception
 	{
+		try {
 		click("id=allDepartmentsButton"); //products
 		
 		Thread.sleep(5000);//"id=CatalogEntryProdImg_3074457345616727788"
@@ -132,10 +140,17 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	} 
 	
 	public void quantityIncrease()throws Exception
 	{
+		try {
 		Thread.sleep(5000);
 		//click("id=add2CartBtn"); //add to cart
 		if(findTheElement("id=add2CartBtn").isDisplayed())
@@ -216,6 +231,12 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	
@@ -265,6 +286,7 @@ public class shoppingCart extends Browser
 	//CC_A&C_05
 	public void productAdded()throws Exception
 	{
+		try {
 		Thread.sleep(5000);
 		//click("xpath=//*[@id='MiniShopCartCloseButton_1']"); //close mini cart
 		//click("xpath=//*[@id='minishopcart_total']"); //mini cart
@@ -289,6 +311,12 @@ public class shoppingCart extends Browser
 	         rpt.imgPathFail(path);
 		}*/
 		click("xpath=//*[@id='MiniShopCartCloseButton_1']");
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//
 	public void closeButton()throws Exception
@@ -362,6 +390,7 @@ public class shoppingCart extends Browser
 	//CC_A&C_08
 	public void viewCart()throws Exception
 	{
+		try {
 //		click("xpath=//*[@id='MiniShopCartCloseButton_1']"); //close mini cart
 		Thread.sleep(5000);
 		click("id=allDepartmentsButton"); //products
@@ -427,12 +456,18 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
-		return;
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		//click("xpath=//*[@id='MiniShopCartCloseButton_2']"); //close modal window
 	}
 	
 	public void continueShopping()throws Exception
 	{
+		try {
 		click("id=allDepartmentsButton"); //products
 		Thread.sleep(5000);
 		click("link=Audio"); 
@@ -497,10 +532,17 @@ public class shoppingCart extends Browser
 	         rpt.imgPathFail(path);
 		 }
 		Thread.sleep(5000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//CC_A&C_13
 	public void recommendedAccessory()throws Exception
 	{
+		try {
 		click("xpath=//*[@id='SimpleSearchForm_SearchTerm']"); //search bar
 		Thread.sleep(5000);
 		sendKeys("xpath=//*[@id='SimpleSearchForm_SearchTerm']","Lenovo 20EN001EUS TS P50 i7 16GB 256GB");
@@ -585,11 +627,18 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		 }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		// click("xpath=.//*[@id='listViewAdd2Cart_3074457345616683129']"); //buy now
 		 
 	}
 	public void addToCart()throws Exception
 	{
+		try {
 		 //click("xpath=.//*[@id='listViewAdd2Cart_3074457345616683129']"); //buy now
 		 Thread.sleep(5000);
 		 if(findTheElement("xpath=//div[@class='accessory '][1]//a[contains(text(),'BUY NOW')]").isDisplayed())
@@ -635,6 +684,12 @@ public class shoppingCart extends Browser
 //			}
 			Thread.sleep(3000);
 			click("xpath=//*[@id='GotoCartButton1']"); //go to cart
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//CC_A&C_16
 	public void allAccessory()throws Exception
@@ -1068,6 +1123,7 @@ public class shoppingCart extends Browser
 	//CC_A&C_26
 	public void shoppingCart()throws Exception
 	{
+		try {
 //		click("xpath=.//*[@id='allDepartmentsButton']/span"); //products
 //		Thread.sleep(5000);
 //		click("xpath=.//*[@id='departmentLink_3074457345616682178_alt']"); //tv n home theatre
@@ -1169,10 +1225,17 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//CC_A&C_32
 	public void verifySKU()throws Exception
 	{
+		try {
 		  Map<String,String> xpaths= new HashMap<String,String>();
 		  //xpaths.put("Product Image", "/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div[1]/div[1]/div/a/img");
 		  xpaths.put("Product Name", "//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div/div/div/div/a");
@@ -1198,9 +1261,16 @@ public class shoppingCart extends Browser
 		             rpt.imgPathFail(path);
 		      }
 		      }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void productImage()throws Exception
 	{
+		try {
 		//click("xpath=/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div[1]/div[1]/div/a/img"); //product image
 		Thread.sleep(5000);
 		if(findTheElement("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div/div/div/div/a").isDisplayed())
@@ -1223,6 +1293,12 @@ public class shoppingCart extends Browser
 		Thread.sleep(2000);
 		click("id=GotoCartButtonTemp");
 		Thread.sleep(2000);
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 	}
 	//CC_A&C_34
@@ -1291,6 +1367,7 @@ public class shoppingCart extends Browser
 	}
 	public void remove()throws Exception
 	{
+		try {
 		//click("xpath=/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[2]/div/a[2]/b"); //remove
 		Thread.sleep(5000);
 		if(findTheElement("xpath=//b[contains(text(),'Remove')]").isDisplayed())
@@ -1310,9 +1387,16 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
      }
 	public void availability()throws Exception
 	{
+		try {
 		//click("xpath=/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/div[1]/div/span"); //remove
 		Thread.sleep(5000);
 		if(findTheElement("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div/div/span").isDisplayed())
@@ -1335,9 +1419,16 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
      }
 	public void quantity()throws Exception
 	{
+		try {
 		if(findTheElement("xpath=//*[@id='qty_1']").isDisplayed())
 		{
 			String total=getText("xpath=//*[@id='qty_1']");
@@ -1360,10 +1451,17 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//38
 	public void price()throws Exception
 	{
+		try {
 		if(findTheElement("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]/span").isDisplayed())
 		{
 			String total=getText("xpath=//div[@id='ShopCartPagingDisplay']/div/div[2]/div[2]/div/div/div/div/div[2]/div[2]/span");
@@ -1384,10 +1482,17 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//39
 	public void totalPrice()throws Exception 
 	{
+		try {
 		if(findTheElement("xpath=/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div/div[5]").isDisplayed())
 		{
 			//String total=getText("css=div.data total_amout");
@@ -1407,6 +1512,11 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}  catch(Exception e)
+	    {
+		    System.out.println("Exception occurred");
+		    e.printStackTrace();
+		   } 
 	}	
 	public void lineSeparator()throws Exception 
 	{
@@ -1433,6 +1543,7 @@ public class shoppingCart extends Browser
 	}
 	public void promoCode()throws Exception 
 	{
+		try {
 		if(findTheElement("id=promoCode").isDisplayed())
 		{
 			String total=getText("id=promoCode");
@@ -1454,9 +1565,16 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void promoCodeText()throws Exception 
 	{
+		try {
 		//sendKeys("id=promoCode","10PERCOFF");
 		if(findTheElement("id=promoCode").isDisplayed())
 		{
@@ -1479,9 +1597,16 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	public void applyButton()throws Exception 
 	{
+		try {
 		if(findTheElement("xpath=//a[@id='WC_PromotionCodeDisplay_links_1']/div[2]").isDisplayed())
 		{
 			String total=getText("xpath=//a[@id='WC_PromotionCodeDisplay_links_1']/div[2]");
@@ -1504,10 +1629,17 @@ public class shoppingCart extends Browser
 	         String path = rpt.CaptureScreen(browser, "InvalidMessage");
 	         rpt.imgPathFail(path);
 		}
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//44
 	public void orderTotal()throws Exception
 	{
+		try {
 		Map<String,String> xpaths= new HashMap<String,String>();
 		  xpaths.put("Order Subtotal", "/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div/div[1]/span[2]");
 		  xpaths.put("Promo", "/html/body/div[2]/div/div/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/span[2]");
@@ -1532,6 +1664,12 @@ public class shoppingCart extends Browser
 		             rpt.imgPathFail(path);
 		      }
 		      }
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 	}
 	//46
 	public void guestDetails()throws Exception
@@ -1564,6 +1702,7 @@ public class shoppingCart extends Browser
 	//47
 	public void checkOut()throws Exception 
 	{
+		try {
 		//click("link=READY TO CHECKOUT");
 		if(findTheElement("link=READY TO CHECKOUT").isDisplayed())
 		{
@@ -1642,6 +1781,12 @@ public class shoppingCart extends Browser
 		click("id=summaryButton"); //continue
 		Thread.sleep(3000);
 		click("xpath=//a[contains(text(),'Back to Cart')]"); //back to cart
+		}
+		  catch(Exception e)
+	    {
+	    System.out.println("Exception occurred");
+	    e.printStackTrace();
+	   } 
 		
 		
 		
